@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /armx
+/usr/bin/xfce4-terminal -I /armx/run/armx-icon128.png -T "ARM-X Console" -x /armx/run/launcher &

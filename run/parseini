@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Parses the config file and extracts
+# variables of importance. Could write this
+# in a much better manner.
+
+if [ "$1" = "" ]
+then
+   echo "Usage: $0 <ini file>"
+   exit
+fi
+
+while IFS='=' read key value
+do
+   case ${key} in
+      id)
+         ID="${value}"
+         ;;
+      nvram)
+         NVRAM="${value}"
+         ;;
+      randomize_va_space)
+         RANDOMIZE_VA_SPACE="${value}"
+         ;;
+      rootfs)
+         ROOTFS="${value}"
+         ;;
+      initcommands)
+         if [ "${value}" = "" ]
+         then
+            INITCOMMANDS="/bin/sh"
+         else
+            INITCOMMANDS="${value}"
+         fi
+         ;;
+      initpath)
+         if [ "${value}" = "" ]
+         then
+            INITPATH="/etc/armxinit"
+         else
+            INITPATH="${value}"
+         fi
+         ;;
+   esac
+done <<< "$(cat "$1" | sed -e 's/#.*//g')"

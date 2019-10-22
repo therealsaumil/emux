@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /armx
+/usr/bin/xfce4-terminal -I /armx/run/armx-ssh128.png -T "ARM-X Terminal" -e "ssh root@192.168.100.2" &

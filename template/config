@@ -1,0 +1,8 @@
+# Sample device configuration file
+#
+id=MYNEWDEVICE
+nvram=nvram.ini
+rootfs=rootfs
+randomize_va_space=0
+initcommands="/etc/init.d/rcS;/bin/sh"
+initpath=

@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# ARM-X QEMU Launcher
+#
+# By Saumil Shah
+# The Exploit Laboratory
+#
+# requires dialog to be installed
+
+source /armx/run/parsedevices
+
+hostfs=/armx/hostfs/hostfs.ext2
+
+fundialog=${fundialog=dialog}
+
+declare -a choices
+
+j=0
+
+for i in $(seq 0 $((count - 1)))
+do
+   choices[$j]=$i
+   choices[$((j + 1))]=${descs[$i]}
+   j=$((j + 2))
+done
+
+x=`$fundialog --stdout --clear --cancel-label "Quit" \
+   --backtitle "ARM-X - The Versatile ARM IoT Device Emulator" \
+   --menu "ARM-X Launcher" 0 0 0 "${choices[@]}"`
+
+status=$?
+clear
+
+if [ $status -ne 0 ]
+then
+   exit
+fi
+
+cpu=""
+dtb=""
+
+if [ "${cpus[$x]}" != "" ]
+then
+   cpu="-cpu ${cpus[$x]}"
+fi
+
+if [ "${dtbs[$x]}" != "" ]
+then
+   dtb="-dtb /armx/dtb/${dtbs[$x]}"
+fi
+
+append=${bootargs[$x]}
+
+qemucmd="qemu-system-arm -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /armx/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} -append \"$append\" -net ${nics[$x]} -net tap,ifname=tap0,script=no,downscript=no -nographic"
+
+eval "$qemucmd"
+

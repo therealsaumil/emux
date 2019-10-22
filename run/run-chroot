@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# Starts up the chroot'ed environment after mount binding
+# /proc, /sys and /dev
+
+echo ${RANDOMIZE_VA_SPACE} > /proc/sys/kernel/randomize_va_space
+
+if [ "$ID" = "" ]
+then
+   echo "Environment variables not set"
+   exit
+fi
+
+NEWROOT="/armx/${ID}/${ROOTFS}"
+mount --bind /proc ${NEWROOT}/proc
+mount --bind /sys ${NEWROOT}/sys
+mount --bind /dev ${NEWROOT}/dev
+
+echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
+echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' >> ${NEWROOT}${INITPATH}
+chmod 755 ${NEWROOT}${INITPATH}
+
+echo "Press Enter to start ${ID}"
+read
+
+#chroot ${NEWROOT} /bin/sh
+chroot ${NEWROOT} ${INITPATH}
