@@ -81,9 +81,34 @@ ARM-X was released at [HITB+Cyberweek][HITB] on October 16 2019. Here are the sl
 
 [HITB]: https://cyberweek.ae/speaker/saumil-shah/
 
-<iframe src="https://www.slideshare.net/slideshow/embed_code/key/9FqUwLVZaoLaxO" width="800" height="600" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #003c62; border-width:1px; margin-bottom:5px; max-width: 100%;"></iframe>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/9FqUwLVZaoLaxO" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/introducing-armx" title="Introducing ARM-X" target="_blank">Introducing ARM-X</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
-<strong> <a href="//www.slideshare.net/saumilshah/introducing-armx" title="Introducing ARM-X" target="_blank">Introducing ARM-X</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+### The ARM IoT Firmware Laboratory - NEW TRAINING
+
+**An all new class where the ARM IoT EXPLOIT LABORATORY leaves off. The ARM IoT Firmware Laboratory dives into analysis, extraction and emulation of IoT device firmware, using a variety of techniques. Students shall be given ample hands on practice in emulating a variety of IoT devices. Lab exercises feature firmware extraction directly from the hardware, building a custom kernel and buildroot environment, extracting contents of nvram and emulating the device under ARM-X. The class also goes on to fuzzing and exploit development exercises for the emulated devices.**
+
+
+#### Upcoming classes: 
+
+1. **44CONnect Training December 2020, London:**
+https://44con.com/44con-training/arm-iot-firmware-laboratory-2020-preview/
+
+2. **OffensiveCon 2020, Berlin:**
+https://www.offensivecon.org/trainings/2020/the-arm-iot-firmware-laboratory-2020.html
+
+
+### Downloads
+#### Pre-built VM with ARM-X installed
+
+VMware VM: https://armx.exploitlab.net/armx-preview-vm.zip
+
+VirtualBox VM: (coming soon, but don't hold your breath)
+
+SHA256sum: `53545d507238fa4e63528a762512de0bce97784260c8e4e23512f2f9eb18d350`
+
+#### ARM-X Code
+
+Github: https://github.com/therealsaumil/armx/
 
 ### TODO
 
