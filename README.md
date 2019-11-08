@@ -75,9 +75,48 @@ The diagram below describes each stage of ARM-X:
 
 <img src="docs/06-armx-trivision-browser.png" width="600">
 
-### Release Presentation
+### Creating your own emulated IoT Device
 
-ARM-X was released at [HITB+Cyberweek][HITB] on October 16 2019. Here are the slides from the talk at HITB+Cyberweek:
+Before you begin to emulate an IoT device, you will need the following:
+
+* Detailed analysis of the IoT device
+* CPU (ARMv5/ARMv6/ARMv7)
+* Linux Kernel version
+* Extracted mtdblocks (rootfs)
+* Contents of nvram
+* Generate a compatible kernel using Buildroot or Linux Kernel sources
+* A week for troubleshooting!
+
+The following diagram outlines the overall process of IoT device emulation.
+
+<img src="docs/armx-newdevice.png" width="600">
+
+Steps involved:
+
+1. Copy the `template` directory to make a new device configuration.
+2. Compile a matching kernel from source, and place it in the `kernel/` directory.
+3. Copy the extracted `rootfs` from the device's firmware into the `rootfs/` directory. Typically these would be SquashFS or CramFS filesystems, uncompressed using `binwalk` or `unsquashfs` or `cramfsck`.
+4. Place the contents of extracted nvram in `nvram.ini`
+5. Edit the `config` file with the newly populated device firmware contents.
+6. Create a new device record in the `devices` file. Pay close attention to QEMU command line options.
+
+The following sample kernels are provided with the template.
+
+* `zImage-2.6.39.4-vexpress` ARMv7 CPU on a `vexpress-a9` board.
+* `zImage-2.6.31.14-realview-rv130-nothumb` ARMv6 CPU on a `realview-eb` board.
+* `zImage-2.6.31-versatile-nothumb` ARMv5 CPU on a `versatilepb` board.
+
+However, it is encouraged to build a compatible kernel from source.
+
+### ARM-X Presentations
+
+Presentation at [Countermeasure 2019][cmeasurecon] on 7 November 2019.
+
+[cmeasurecon]: https://www.countermeasure.ca/speaker/saumil-udayan-shah/
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/6P5quK19YMwYQ5" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/inside-armx-countermeasure-2019" title="INSIDE ARM-X - Countermeasure 2019" target="_blank">INSIDE ARM-X - Countermeasure 2019</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+
+Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
 
 [HITB]: https://cyberweek.ae/speaker/saumil-shah/
 
@@ -85,7 +124,7 @@ ARM-X was released at [HITB+Cyberweek][HITB] on October 16 2019. Here are the sl
 
 ### The ARM IoT Firmware Laboratory - NEW TRAINING
 
-**An all new class where the ARM IoT EXPLOIT LABORATORY leaves off. The ARM IoT Firmware Laboratory dives into analysis, extraction and emulation of IoT device firmware, using a variety of techniques. Students shall be given ample hands on practice in emulating a variety of IoT devices. Lab exercises feature firmware extraction directly from the hardware, building a custom kernel and buildroot environment, extracting contents of nvram and emulating the device under ARM-X. The class also goes on to fuzzing and exploit development exercises for the emulated devices.**
+> An all new class where the ARM IoT EXPLOIT LABORATORY leaves off. The ARM IoT Firmware Laboratory dives into analysis, extraction and emulation of IoT device firmware, using a variety of techniques. Students shall be given ample hands on practice in emulating a variety of IoT devices. Lab exercises feature firmware extraction directly from the hardware, building a custom kernel and buildroot environment, extracting contents of nvram and emulating the device under ARM-X. The class also goes on to fuzzing and exploit development exercises for the emulated devices.
 
 
 #### Upcoming classes: 
@@ -102,9 +141,9 @@ https://www.offensivecon.org/trainings/2020/the-arm-iot-firmware-laboratory-2020
 
 VMware VM: https://armx.exploitlab.net/armx-preview-vm.zip
 
-VirtualBox VM: (coming soon, but don't hold your breath)
-
 SHA256sum: `53545d507238fa4e63528a762512de0bce97784260c8e4e23512f2f9eb18d350`
+
+VirtualBox VM: (coming soon, but don't hold your breath)
 
 #### ARM-X Code
 
