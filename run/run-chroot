@@ -17,7 +17,7 @@ mount --bind /sys ${NEWROOT}/sys
 mount --bind /dev ${NEWROOT}/dev
 
 echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
-echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' >> ${NEWROOT}${INITPATH}
+echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' -e 's/;/\n/g' >> ${NEWROOT}${INITPATH}
 chmod 755 ${NEWROOT}${INITPATH}
 
 echo "Press Enter to start ${ID}"
