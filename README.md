@@ -55,25 +55,25 @@ The diagram below describes each stage of ARM-X:
 
 1. Invoke `/armx/run/launcher`. This will display a menu as shown below. In this example, we select the Trivision TRI227WF Wireless IP Camera.
 
-<img src="docs/01-armx-launcher.png" width="600">
+![ARM-X Launcher](docs/01-armx-launcher.png)
 
 2. Selecting one of the devices will launch it under QEMU. The kernel which is included in the `kernel/` directory of the Trivision IP Camera's device configuration, is booted in `qemu-system-arm` and uses a pre-built Buildroot filesystem, which is referred to as `hostfs.ext2`. Host and guest IP addresses are assigned to `192.168.100.1` and `192.168.100.2` respectively.
 
-<img src="docs/02-armx-kernel-boot-up.png" width="600">
+![ARM-X Kernel Boot Up](docs/02-armx-kernel-boot-up.png)
 
 3. `hostfs.ext2` contains several scripts and tools useful for running and dynamic analysis of the emulated device. The init scripts in `hostfs.ext2` mount the `/armx` directory over NFS. Thus, the contents of `/armx` are shared by both the host and the QEMU guest.
 
 4. To kick off the rest of the device startup, connect to the QEMU guest using SSH `ssh root@192.168.100.2`. This brings up a menu as shown below:
 
-<img src="docs/03-armx-trivision-init.png" width="600">
+![ARM-X Trivision Init](docs/03-armx-trivision-init.png)
 
 5. Selecting the option to launch the userland init scripts of the device results in `run-init` being invoked from the corresponding device configuration directory within `/armx`. First, the contents of `nvram.ini` are loaded into the kernel's emulated nvram driver. Next, a `chroot` jail is created using the `rootfs` of the device. Lastly, the registered initialisation commands are invoked in the newly `chroot`ed `rootfs`, bringing up the device's services and init scripts.
 
-<img src="docs/04-armx-trivision-started.png" width="600">
+![ARM-X Trivision Started](docs/04-armx-trivision-started.png)
 
 6. Once the device has fully "booted up" in ARM-X, it is available for testing and analysis. The image below shows the administration interface of the IP Camera loaded in a browser:
 
-<img src="docs/06-armx-trivision-browser.png" width="600">
+![ARM-X Admin Interface](docs/06-armx-trivision-browser.png)
 
 ### Creating your own emulated IoT Device
 
@@ -89,7 +89,7 @@ Before you begin to emulate an IoT device, you will need the following:
 
 The following diagram outlines the overall process of IoT device emulation.
 
-<img src="docs/armx-newdevice.png" width="600">
+![ARM-X Adding a new device](docs/armx-newdevice.png)
 
 Steps involved:
 
