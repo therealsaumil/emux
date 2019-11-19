@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Script to invoke gdbserver on the ARM-X instance and attach
+# multi-arch gdb to the remote gdbserver
+#
+# Requires a parameter - pid or process name
+
+gdb="arm-linux-gnueabi-gdb"
+
+if [ "$1" = "" ]
+then
+   echo "Usage: $0 remote <pid>|<process name>"
+   echo "Use armxps to obtain remote processes"
+   exit
+fi
+
+if [[ "$1" =~ ^[0-9]+$ ]]
+then
+   attach="--attach $1"
+else
+   attach="--attach \\\`pidof $1\\\`"
+fi
+
+source /armx/run/checkarmx
+$gdb -q \
+   -ex="target remote | ssh -T root@192.168.100.2 gdbserver - $attach" \
+   -ex="set sysroot target:/armx/$(</tmp/armxrunning)/rootfs"
+
+
