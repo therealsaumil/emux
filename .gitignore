@@ -2,8 +2,10 @@ notes.txt
 images
 README.html
 css
+overlay
 
 *.swp
+*.psd
 
 # Compiled source #
 ###################
