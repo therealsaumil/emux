@@ -4,7 +4,7 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-October 2019
+November 2019
 
 ![ARMX](docs/armx-banner.png "ARM-X")
 
@@ -139,9 +139,22 @@ https://www.offensivecon.org/trainings/2020/the-arm-iot-firmware-laboratory-2020
 ### Downloads
 #### Pre-built VM with ARM-X installed
 
-VMware VM: https://armx.exploitlab.net/armx-preview-vm.zip
+VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
 
-SHA256sum: `53545d507238fa4e63528a762512de0bce97784260c8e4e23512f2f9eb18d350`
+The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files of 200MB each, because several cloud hosting providers impose a maximum limit. To extract the VM, use the 7z command line utility:
+
+`7z e armx-november2019.7z.001`
+
+SHA 256 Checksums:
+
+```
+d49b537211607feb36cfc1df03a3b86c4f2dccb905fd96ca79f768caa7500e05  armx-november2019.7z.001
+34e1a939707ea08bf1487cc354c8c7ea79911f72894528f5381c5bf12e9fd485  armx-november2019.7z.002
+
+2fa814609c86b2ecf331508f38d4b24834d814cf2f203f499a6ffd7681f7ef26  armx-alpine.vmx
+ed28f8bbc792825b8d432372387c9ebc773a023732cfe9c75cfd5545899c401a  armx-s001.vmdk
+421f097547f71ff0d3f1c7d189d457f1b25a27e7b0e69af69f3bc0abf2a59a92  armx.vmdk
+```
 
 VirtualBox VM: (coming soon, but don't hold your breath)
 
@@ -157,6 +170,7 @@ Github: https://github.com/therealsaumil/armx/
 
 ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 
-v0.9	22-October-2019, Preview Release
+- v0.9.0  22-October-2019, Preview Release
+- v0.9.1  19-November-2019
 
 
