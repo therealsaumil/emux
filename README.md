@@ -129,10 +129,7 @@ Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
 
 #### Upcoming classes: 
 
-1. **44CONnect Training December 2020, London:**
-https://44con.com/44con-training/arm-iot-firmware-laboratory-2020-preview/
-
-2. **OffensiveCon 2020, Berlin:**
+1. **OffensiveCon 2020, Berlin:**
 https://www.offensivecon.org/trainings/2020/the-arm-iot-firmware-laboratory-2020.html
 
 
