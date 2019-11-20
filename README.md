@@ -6,7 +6,7 @@ by Saumil Shah [@therealsaumil][saumil]
 
 November 2019
 
-![ARMX](docs/armx-banner.png "ARM-X")
+![ARMX](docs/img/armx-banner.png "ARM-X")
 
 The ARM-X Firmware Emulation Framework is a collection of scripts, kernels and filesystems to be used with [QEMU][qemu] to emulate ARM/Linux IoT devices.  ARM-X is aimed to facilitate IoT research by virtualising as much of the physical device as possible. It is the closest we can get to an actual IoT VM.
 
@@ -30,11 +30,11 @@ ARM-X is a collection of scripts, kernels and filesystems residing in the `/armx
 
 The host system running `qemu-system-arm` is assigned the IP address `192.168.100.1` and the QEMU guest is assigned `192.168.100.2` via `tap0` interface.
 
-![Architecture](docs/armx-architecture.png)
+![Architecture](docs/img/armx-architecture.png "ARM-X Architecture")
 
 The `/armx` directory is organised as follows:
 
-![Directory Structure](docs/armx-dirstructure.png)
+![Directory Structure](docs/img/armx-dirstructure.png "ARM-X Directory Structure")
 
 * `devices`: This file contains device definitions, one per line.
 * `run/`: This folder contains scripts necessary to parse the device configuration, preload nvram contents and eventually invoke the userland processes of the device being emulated.
@@ -51,29 +51,29 @@ Each emulated device contains the following files/directories:
 
 The diagram below describes each stage of ARM-X:
 
-![ARM-X Operations](docs/armx-operations.png)
+![ARM-X Operations](docs/img/armx-operations.png "ARM-X Operations")
 
 1. Invoke `/armx/run/launcher`. This will display a menu as shown below. In this example, we select the Trivision TRI227WF Wireless IP Camera.
 
-![ARM-X Launcher](docs/01-armx-launcher.png)
+![ARM-X Launcher](docs/img/01-armx-launcher.png "ARM-X Launcher")
 
 2. Selecting one of the devices will launch it under QEMU. The kernel which is included in the `kernel/` directory of the Trivision IP Camera's device configuration, is booted in `qemu-system-arm` and uses a pre-built Buildroot filesystem, which is referred to as `hostfs.ext2`. Host and guest IP addresses are assigned to `192.168.100.1` and `192.168.100.2` respectively.
 
-![ARM-X Kernel Boot Up](docs/02-armx-kernel-boot-up.png)
+![ARM-X Kernel Boot Up](docs/img/02-armx-kernel-boot-up.png "ARM-X Kernel Boot Up")
 
 3. `hostfs.ext2` contains several scripts and tools useful for running and dynamic analysis of the emulated device. The init scripts in `hostfs.ext2` mount the `/armx` directory over NFS. Thus, the contents of `/armx` are shared by both the host and the QEMU guest.
 
 4. To kick off the rest of the device startup, connect to the QEMU guest using SSH `ssh root@192.168.100.2`. This brings up a menu as shown below:
 
-![ARM-X Trivision Init](docs/03-armx-trivision-init.png)
+![ARM-X Trivision Init](docs/img/03-armx-trivision-init.png "ARM-X Trivision Init")
 
 5. Selecting the option to launch the userland init scripts of the device results in `run-init` being invoked from the corresponding device configuration directory within `/armx`. First, the contents of `nvram.ini` are loaded into the kernel's emulated nvram driver. Next, a `chroot` jail is created using the `rootfs` of the device. Lastly, the registered initialisation commands are invoked in the newly `chroot`ed `rootfs`, bringing up the device's services and init scripts.
 
-![ARM-X Trivision Started](docs/04-armx-trivision-started.png)
+![ARM-X Trivision Started](docs/img/04-armx-trivision-started.png "ARM-X Trivision Started")
 
 6. Once the device has fully "booted up" in ARM-X, it is available for testing and analysis. The image below shows the administration interface of the IP Camera loaded in a browser:
 
-![ARM-X Admin Interface](docs/06-armx-trivision-browser.png)
+![ARM-X Admin Interface](docs/img/06-armx-trivision-browser.png "Trivision Admin Interface")
 
 ### Creating your own emulated IoT Device
 
@@ -89,7 +89,7 @@ Before you begin to emulate an IoT device, you will need the following:
 
 The following diagram outlines the overall process of IoT device emulation.
 
-![ARM-X Adding a new device](docs/armx-newdevice.png)
+![Adding a new device](/docs/img/armx-newdevice.png "Adding a new device")
 
 Steps involved:
 
