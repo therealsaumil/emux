@@ -159,9 +159,9 @@ VirtualBox VM: (coming soon, but don't hold your breath)
 
 Github: https://github.com/therealsaumil/armx/
 
-### TODO
+### ARM-X Documentation
 
-* Clean up the documentation
+Tutorial: [Debugging With ARM-X](docs/debugging-with-armx.html)
 
 ### END
 

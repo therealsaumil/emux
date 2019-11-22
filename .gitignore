@@ -1,6 +1,6 @@
 notes.txt
 images
-README.html
+*.html
 css
 overlay
 publish.sh
