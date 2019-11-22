@@ -3,6 +3,7 @@ images
 README.html
 css
 overlay
+publish.sh
 
 *.swp
 *.psd

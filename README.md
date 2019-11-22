@@ -145,12 +145,12 @@ The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files
 SHA 256 Checksums:
 
 ```
-d49b537211607feb36cfc1df03a3b86c4f2dccb905fd96ca79f768caa7500e05  armx-november2019.7z.001
-34e1a939707ea08bf1487cc354c8c7ea79911f72894528f5381c5bf12e9fd485  armx-november2019.7z.002
+562144c896ec586ef3676efdc44957b28638dde9c14e48bef54aeb16c01714e2  armx-november2019.7z.001
+9755449202e8c7677a6987a8bb2b84b72320446813b4c9fafcefe0f135eded37  armx-november2019.7z.002
 
 2fa814609c86b2ecf331508f38d4b24834d814cf2f203f499a6ffd7681f7ef26  armx-alpine.vmx
-ed28f8bbc792825b8d432372387c9ebc773a023732cfe9c75cfd5545899c401a  armx-s001.vmdk
-421f097547f71ff0d3f1c7d189d457f1b25a27e7b0e69af69f3bc0abf2a59a92  armx.vmdk
+c491a8d0181b4af5df4a8cd0009cbf392e534fba7ea1e5dc5524c631fe37d08e  armx-s001.vmdk
+f5d961585bd4b3911f2394a0ee49eb7b928b7f22e20fcdd759b74786dafacff3  armx.vmdk
 ```
 
 VirtualBox VM: (coming soon, but don't hold your breath)

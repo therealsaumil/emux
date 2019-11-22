@@ -22,6 +22,9 @@ do
       randomize_va_space)
          RANDOMIZE_VA_SPACE="${value}"
          ;;
+      legacy_va_layout)
+         LEGACY_VA_LAYOUT="${value}"
+         ;;
       rootfs)
          ROOTFS="${value}"
          ;;

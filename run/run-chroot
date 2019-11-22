@@ -5,6 +5,11 @@
 
 echo ${RANDOMIZE_VA_SPACE} > /proc/sys/kernel/randomize_va_space
 
+if [ "$LEGACY_VA_LAYOUT" != "" ]
+then
+   echo ${LEGACY_VA_LAYOUT} > /proc/sys/vm/legacy_va_layout
+fi
+
 if [ "$ID" = "" ]
 then
    echo "Environment variables not set"

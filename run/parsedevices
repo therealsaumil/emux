@@ -2,16 +2,17 @@
 #
 # Parses the devices file
 
-declare -a ids machines cpus dtbs mems kernels drives bootargs nics  descs
+declare -a ids qemus machines cpus dtbs mems kernels drives bootargs nics descs
 count=0
 
 DEVICES="/armx/devices"
 
-while IFS=',' read ID MACHINE CPU DTB MEM KERNEL DRIVE BOOTARGS NIC DESC
+while IFS=',' read ID QEMU MACHINE CPU DTB MEM KERNEL DRIVE BOOTARGS NIC DESC
 do
    if [ "$ID" != "" ]
    then
       ids[$count]=$ID
+      qemus[$count]=$QEMU
       machines[$count]=$MACHINE
       cpus[$count]=$CPU
       dtbs[$count]=$DTB

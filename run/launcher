@@ -10,7 +10,6 @@
 source /armx/run/parsedevices
 
 hostfs=/armx/hostfs/hostfs.ext2
-qemu=/armx/run/qemu-system-arm
 
 fundialog=${fundialog=dialog}
 
@@ -52,7 +51,7 @@ fi
 
 append=${bootargs[$x]}
 
-qemucmd="${qemu} -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /armx/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} -append \"$append\" -net ${nics[$x]} -net tap,ifname=tap0,script=no,downscript=no -nographic"
+qemucmd="/armx/run/${qemus[$x]} -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /armx/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} -append \"$append\" -net ${nics[$x]} -net tap,ifname=tap0,script=no,downscript=no -nographic"
 
 echo ${ids[$x]} > /tmp/armxrunning
 
