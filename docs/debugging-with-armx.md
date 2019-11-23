@@ -57,7 +57,7 @@ Open a new terminal on the VM and run `armxps`:
 ![armxps](img/armxps-02.png)
 
 ```
-armx:/armx/run$ ./armxps
+armx~$ armxps
   PID TTY      STAT   TIME COMMAND
     1 ?        Ss     0:00 init      
     2 ?        S<     0:00 [kthreadd]
@@ -140,7 +140,7 @@ However, all this is made easy using `/armx/run/armxgdb`. `armxgdb` launches `ar
 ![armxgdb](img/armxgdb-04.png)
 
 ```
-armx:/armx/run$ ./armxgdb webs
+armx:~$ armxgdb webs
 Remote debugging using | ssh -T root@192.168.100.2 gdbserver - --attach \`pidof webs\`
 Attached; pid = 556
 Remote debugging using stdio
