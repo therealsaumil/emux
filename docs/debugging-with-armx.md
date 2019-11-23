@@ -24,7 +24,7 @@ The ARM-X Firmware Emulation Framework contains essential tools and utilities to
 
 Click the ARM-X Launcher icon on the top toolbar and select the **Trivision NC-227-WF IP Camera**:
 
-![Launcher](img/01-armx-launcher.png "ARM-X Launcher")
+![Launcher](img/01-armx-vm-launcher.png "ARM-X Launcher")
 
 The ARM-X launcher invokes QEMU and boots the kernel registered with the IP Camera, mounts `hostfs.ext2` and shows the ARM-X console.
 
