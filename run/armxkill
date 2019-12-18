@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Script to kill -9 / killall -9 remote process(es)
+#
+# Requires a parameter - pid or process name
+
+if [ "$1" = "" ]
+then
+   echo "Usage: $0 remote <pid>|<process name>"
+   echo "Use armxps to obtain remote processes"
+   exit
+fi
+
+if [[ "$1" =~ ^[0-9]+$ ]]
+then
+   cmd="kill -9 $1"
+else
+   cmd="killall -9 $1"
+fi
+
+source /armx/run/checkarmx
+ssh -T root@192.168.100.2 "$cmd"
+
