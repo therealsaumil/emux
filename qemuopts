@@ -1,0 +1,5 @@
+#MACHINE,drive,bootcmd,net
+VEXPRESS1,if=sd\,format=raw\,index=0,console=ttyAMA0 rw root=/dev/mmcblk0,nic
+VEXPRESS2,if=sd\,format=raw,pty.legacy_count=16 console=ttyAMA0 rw root=/dev/mmcblk0 rootwait rootfstype=ext2,nic\,model=lan9118
+REALVIEW-EB,if=sd\,format=raw,root=/dev/mmcblk0 rw console=ttyAMA0,nic
+VERSATILEPB,if=scsi,root=/dev/sda rw console=ttyAMA0\,115200,nic

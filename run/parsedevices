@@ -2,12 +2,27 @@
 #
 # Parses the devices file
 
-declare -a ids qemus machines cpus dtbs mems kernels drives bootargs nics descs
-count=0
+declare -a ids qemus machines cpus dtbs mems kernels qemuopts drives bootargs nics descs
+declare -A qmachine qdrives qbootargs qnics
 
 DEVICES="/armx/devices"
+QEMUOPTS="/armx/qemuopts"
 
-while IFS=',' read ID QEMU MACHINE CPU DTB MEM KERNEL DRIVE BOOTARGS NIC DESC
+while IFS=',' read QMACHINE QDRIVE QBOOTCMD QNIC
+do
+   if [ "$QMACHINE" != "" ]
+   then
+      qmachine[$QMACHINE]=$QMACHINE
+      qdrives[$QMACHINE]=$QDRIVE
+      qbootargs[$QMACHINE]=$QBOOTCMD
+      qnics[$QMACHINE]=$QNIC
+      # Uncomment - for debugging purposes only
+      #echo "$QMACHINE|${qbootargs[$QMACHINE]}|${qdrives[$QMACHINE]}|${qbootargs[$QMACHINE]}|${qnics[$QMACHINE]}"
+   fi
+done <<< "$(cat "${QEMUOPTS}" | sed -e 's/#.*//g')"
+
+count=0
+while IFS=',' read ID QEMU MACHINE CPU DTB MEM KERNEL QOPTS DESC
 do
    if [ "$ID" != "" ]
    then
@@ -18,10 +33,12 @@ do
       dtbs[$count]=$DTB
       mems[$count]=$MEM
       kernels[$count]=$KERNEL
-      drives[$count]=$DRIVE
-      bootargs[$count]="$BOOTARGS ARMX=$ID"
-      nics[$count]=$NIC
+      drives[$count]=${qdrives[$QOPTS]}
+      bootargs[$count]="${qbootargs[$QOPTS]} ARMX=$ID"
+      nics[$count]=${qnics[$QOPTS]}
       descs[$count]=$DESC
+      # Uncomment - for debugging purposes only
+      #echo "${ids[$count]}|${qemus[$count]}|${machines[$count]}|${cpus[$count]}|${dtbs[$count]}|${mems[$count]}|${kernels[$count]}|${drives[$count]}|${bootargs[$count]}|${nics[$count]}|${descs[$count]}"
       count=$((count + 1))
    fi
 done <<< "$(cat "${DEVICES}" | sed -e 's/#.*//g')"

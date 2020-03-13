@@ -20,9 +20,9 @@ Devices successfully emulated with ARM-X so far:
 * Trivision NC227WF Wireless IP Camera
 * Cisco RV130 Wi-Fi Router
 
-Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armexploitlab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
+Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armfirmwarelab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
 
-[armexploitlab]: https://ringzer0.training/arm-iot-exploitlab.html
+[armfirmwarelab]: https://ringzer0.training/arm-iot-firmwarelab.html
 
 ## ARM-X Architecture and Operations
 
@@ -127,11 +127,16 @@ Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
 > An all new class where the ARM IoT EXPLOIT LABORATORY leaves off. The ARM IoT Firmware Laboratory dives into analysis, extraction and emulation of IoT device firmware, using a variety of techniques. Students shall be given ample hands on practice in emulating a variety of IoT devices. Lab exercises feature firmware extraction directly from the hardware, building a custom kernel and buildroot environment, extracting contents of nvram and emulating the device under ARM-X. The class also goes on to fuzzing and exploit development exercises for the emulated devices.
 
 
-#### Upcoming classes: 
+#### Upcoming classes:
 
-1. **OffensiveCon 2020, Berlin:**
+1. **OffensiveCon 2020, Berlin: [SOLD OUT]**
 https://www.offensivecon.org/trainings/2020/the-arm-iot-firmware-laboratory-2020.html
 
+2. **HITB2020AMS, Amsterdam: (3 day class)**
+https://conference.hitb.org/hitbsecconf2020ams/sessions/3-day-training-1-the-arm-iot-laboratory/
+
+3. **Ringzer0 2020, Las Vegas: (4 day class)**
+https://ringzer0.training/arm-iot-firmwarelab.html
 
 ### Downloads
 #### Pre-built VM with ARM-X installed
@@ -169,5 +174,3 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 
 - v0.9.0  22-October-2019, Preview Release
 - v0.9.1  19-November-2019
-
-

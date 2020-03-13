@@ -4,9 +4,17 @@ images
 css
 overlay
 publish.sh
+gethostfs.sh
+full_version
+full_version/
 
 *.swp
 *.psd
+
+# Backups #
+###########
+*.bak
+*.old
 
 # Compiled source #
 ###################
@@ -45,4 +53,3 @@ publish.sh
 .Trashes
 ehthumbs.db
 Thumbs.db
-
