@@ -4,7 +4,7 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-November 2019
+March 2020
 
 ![ARMX](docs/img/armx-banner.png "ARM-X")
 
@@ -37,6 +37,7 @@ The `/armx` directory is organised as follows:
 ![Directory Structure](docs/img/armx-dirstructure.png "ARM-X Directory Structure")
 
 * `devices`: This file contains device definitions, one per line.
+* `qemuopts`: Abstracted QEMU options definitions for various types of QEMU Machines.
 * `run/`: This folder contains scripts necessary to parse the device configuration, preload nvram contents and eventually invoke the userland processes of the device being emulated.
 * `run/launcher`: The main script. `launcher` parses the `devices` file and displays a menu of registered devices. Selecting one of the devices will in turn invoke `qemu-system-arm` with the pre-defined QEMU options, corresponding Linux kernel and extracted root file system registered with the device.
 * `template/`: Sample configuration and layout for a new device. Make a copy of the template when beginning to emulate a new IoT device.
@@ -129,13 +130,10 @@ Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
 
 #### Upcoming classes:
 
-1. **OffensiveCon 2020, Berlin: [SOLD OUT]**
-https://www.offensivecon.org/trainings/2020/the-arm-iot-firmware-laboratory-2020.html
-
-2. **HITB2020AMS, Amsterdam: (3 day class)**
+1. **HITB2020AMS, Amsterdam: (3 day class)**
 https://conference.hitb.org/hitbsecconf2020ams/sessions/3-day-training-1-the-arm-iot-laboratory/
 
-3. **Ringzer0 2020, Las Vegas: (4 day class)**
+2. **Ringzer0 2020, Las Vegas: (4 day class)**
 https://ringzer0.training/arm-iot-firmwarelab.html
 
 ### Downloads
@@ -145,17 +143,17 @@ VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
 
 The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files of 200MB each, because several cloud hosting providers impose a maximum limit. To extract the VM, use the 7z command line utility:
 
-`7z e armx-november2019.7z.001`
+`7z e armx-march2020.7z.001`
 
 SHA 256 Checksums:
 
 ```
-562144c896ec586ef3676efdc44957b28638dde9c14e48bef54aeb16c01714e2  armx-november2019.7z.001
-9755449202e8c7677a6987a8bb2b84b72320446813b4c9fafcefe0f135eded37  armx-november2019.7z.002
+286fbfcda02f5161d4fc983584873ccd5462c315a8c9783232cbef717c5c054e  armx-march2020.7z.001
+f513145ed451bc3e07014824deb9ffa5c66b0ebad97ba24aed500abcdea6f7f6  armx-march2020.7z.002
 
-2fa814609c86b2ecf331508f38d4b24834d814cf2f203f499a6ffd7681f7ef26  armx-alpine.vmx
-c491a8d0181b4af5df4a8cd0009cbf392e534fba7ea1e5dc5524c631fe37d08e  armx-s001.vmdk
-f5d961585bd4b3911f2394a0ee49eb7b928b7f22e20fcdd759b74786dafacff3  armx.vmdk
+1a41f4a028db80787adbeac03bfb20794994f3658e67764c200d885498521d2f  armx-mar2020.vmx
+eba62de7c6235859e2150503a29f4bf84a85dd9dba5c5ba46e44940de6a03387  armx-s001.vmdk
+5feeb87965d0e04dff31bbc6c61eb676e1a8c72c11076ba2167d960195391dd1  armx.vmdk
 ```
 
 VirtualBox VM: (coming soon, but don't hold your breath)
@@ -174,3 +172,4 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 
 - v0.9.0  22-October-2019, Preview Release
 - v0.9.1  19-November-2019
+- v0.9.2  12-March-2020
