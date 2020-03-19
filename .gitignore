@@ -53,3 +53,7 @@ full_version/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# vbox conversion #
+######################
+vbox_conversion/*images/*
