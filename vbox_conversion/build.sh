@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-set -x
+# debug
+# set -x
+
 ##################################################
 ## variables
 
@@ -15,6 +17,7 @@ download_link='https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q'
 compressed_folder='./compressed_images'
 uncompressed_folder='uncompressed_images'
 
+vm_name="armx"
 ##################################################
 
 # unzip ARMX-PREVIEW-selected.zip -d ./compressed_images
@@ -28,19 +31,24 @@ function deps(){
 }
 
 function extraction(){
-    # https://github.com/koalaman/shellcheck/wiki/SC2115
     rm -rf "${compressed_folder:?}"/* "${uncompressed_folder:?}"/*
     unzip "${archive_file}" -d "${compressed_folder}"
     7z e "${compressed_folder}/armx-march2020.7z.001" -o"${uncompressed_folder}"
 }
 
 function vbox_conversion(){
-  vm="${1}"
-  metasploitable_folder="${vm}_vm"
+    vm="${1}"
+    if [[ -f "./*.ova" ]] ; then
+        rm ./*.ova
+    fi
 
-  pushd "${vm}"
-  ./vmx-vbox.sh "${vm}" "./${metasploitable_folder}/Metasploitable.vmdk"
-  popd
+    ./vmx-vbox.sh "${vm}" "./${uncompressed_folder}/armx.vmdk"
+}
+
+function cleanup(){
+    # https://github.com/koalaman/shellcheck/wiki/SC2115
+    rm -rf "${compressed_folder:?}"/* "${uncompressed_folder:?}"/*
+    ./vmx-vbox.sh "${1}"
 }
 
 function main(){
@@ -68,6 +76,8 @@ function main(){
     fi
 
     extraction
-    packer_build
+    vbox_conversion "${vm_name}"
+    cleanup "${vm_name}"
 }
+
 main

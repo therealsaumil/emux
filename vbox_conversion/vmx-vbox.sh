@@ -1,16 +1,21 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
+# debug
+# set -x
 
 
 # https://nakkaya.com/2012/08/30/create-manage-virtualBox-vms-from-the-command-line/
 function create_vm(){
-  VBoxManage createvm --name "${1}" --register
-  VBoxManage modifyvm "${1}" --memory 512 --acpi on
-  VBoxManage modifyvm "${1}" --nic1 nat
-  VBoxManage modifyvm "${1}" --ostype Linux26_64
-  VBoxManage storagectl "${1}" --name "ide_controller" --add ide
-  VBoxManage storageattach "${1}" --storagectl "ide_controller"  --port 0 --device 0 --type hdd --medium "${2}"
+  vboxmanage createvm --name "${1}" --register
+  vboxmanage modifyvm "${1}" --memory 2048 --acpi on
+  vboxmanage modifyvm "${1}" --cpus 2
+  vboxmanage modifyvm "${1}" --vram 20
+  vboxmanage modifyvm "${1}" --graphicscontroller vmsvga
+  vboxmanage modifyvm "${1}" --nic1 nat
+  vboxmanage modifyvm "${1}" --ostype Linux26_64
+  vboxmanage storagectl "${1}" --name "ide_controller" --add ide
+  vboxmanage storageattach "${1}" --storagectl "ide_controller"  --port 0 --device 0 --type hdd --medium "${2}"
 }
 
 function export_vm(){
@@ -18,10 +23,7 @@ function export_vm(){
 }
 
 function remove_vm(){
-  vm_folder="$(vboxmanage showvminfo "${1}" --machinereadable | grep -i 'sata-0' | cut -d '=' -f 2 | tr -d '"' | rev | cut -d '/' -f 2- | rev)"
   vboxmanage unregistervm "${1}" --delete
-  rm -rf ${vm_folder}
-  rm "${1}-vbox.ova"
 }
 
 
