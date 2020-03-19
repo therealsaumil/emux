@@ -158,6 +158,8 @@ eba62de7c6235859e2150503a29f4bf84a85dd9dba5c5ba46e44940de6a03387  armx-s001.vmdk
 
 VirtualBox VM: (coming soon, but don't hold your breath)
 
+**NOTE:** not official vbox image, but there is a conversion script in [vbox_conversion](/vbox_conversion/) folder to convert the current vmware image to a vbox ova. Checkout the folders [README](/vbox_conversion/README.md) for more details.
+
 #### ARM-X Code
 
 Github: https://github.com/therealsaumil/armx/
