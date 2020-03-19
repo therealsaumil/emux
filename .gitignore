@@ -37,6 +37,7 @@ full_version/
 *.rar
 *.tar
 *.zip
+*.ova
 
 # Logs and databases #
 ######################
