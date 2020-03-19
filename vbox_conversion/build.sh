@@ -8,7 +8,7 @@ set -euo pipefail
 ## variables
 
 # array of dependencies
-deps_array=( "unzip" "7z" "packer" )
+deps_array=( "unzip" "7z" )
 
 # link to download the 7z files from
 download_link='https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q'
