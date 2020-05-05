@@ -4,7 +4,7 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-March 2020
+May 2020
 
 ![ARMX](docs/img/armx-banner.png "ARM-X")
 
@@ -48,7 +48,6 @@ Each emulated device contains the following files/directories:
 * `nvram.ini`: Contents of the device's non volatile memory, used for storing configuration settings. Contents of `nvram.ini` are preloaded into the emulated nvram before invoking the userland init scripts.
 * `kernel/`: Contains a Linux kernel compiled (mostly via Buildroot) to closely match the properties of the emulated device such as kernel version, CPU support, VM_SPLIT, supported peripherals, etc.
 * `rootfs/`: Populated with the uncompressed file system extracted from the device's firmware.
-* `run-init`: Script invoked by the launcher.
 
 The diagram below describes each stage of ARM-X:
 
@@ -106,6 +105,7 @@ The following sample kernels are provided with the template.
 * `zImage-2.6.39.4-vexpress` ARMv7 CPU on a `vexpress-a9` board.
 * `zImage-2.6.31.14-realview-rv130-nothumb` ARMv6 CPU on a `realview-eb` board.
 * `zImage-2.6.31-versatile-nothumb` ARMv5 CPU on a `versatilepb` board.
+* `zImage-2.6.28-versatile-nothumb` ARMv5 CPU on a `versatilepb` board.
 
 However, it is encouraged to build a compatible kernel from source.
 
@@ -115,7 +115,7 @@ Presentation at [Countermeasure 2019][cmeasurecon] on 7 November 2019.
 
 [cmeasurecon]: https://www.countermeasure.ca/speaker/saumil-udayan-shah/
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/6P5quK19YMwYQ5" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/inside-armx-countermeasure-2019" title="INSIDE ARM-X - Countermeasure 2019" target="_blank">INSIDE ARM-X - Countermeasure 2019</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/6P5quK19YMwYQ5" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/inside-armx-countermeasure-2019" title="INSIDE ARM-X - Countermeasure 2019" target="_blank">INSIDE ARM-X - Countermeasure 2019</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
 Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
 
@@ -130,10 +130,7 @@ Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
 
 #### Upcoming classes:
 
-1. **HITB2020AMS, Amsterdam: (3 day class)**
-https://conference.hitb.org/hitbsecconf2020ams/sessions/3-day-training-1-the-arm-iot-laboratory/
-
-2. **Ringzer0 2020, Las Vegas: (4 day class)**
+**Ringzer0 August 2020, Online Remote Training: (4 day class)**
 https://ringzer0.training/arm-iot-firmwarelab.html
 
 ### Downloads
@@ -173,3 +170,4 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v0.9.0  22-October-2019, Preview Release
 - v0.9.1  19-November-2019
 - v0.9.2  12-March-2020
+- v0.9.3  05-May-2020

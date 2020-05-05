@@ -1,0 +1,10 @@
+#!/bin/bash
+
+armxdir=$(dirname $0)
+
+echo $$ > /tmp/armxstarted
+
+source ${armxdir}/../run/parseini config
+source ${armxdir}/../run/loadnvram "$NVRAM"
+source ${armxdir}/../run/run-chroot
+

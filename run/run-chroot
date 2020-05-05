@@ -17,16 +17,30 @@ then
 fi
 
 NEWROOT="/armx/${ID}/${ROOTFS}"
+
 mount --bind /proc ${NEWROOT}/proc
 mount --bind /sys ${NEWROOT}/sys
-mount --bind /dev ${NEWROOT}/dev
 
-echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
-echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' -e 's/;/\n/g' >> ${NEWROOT}${INITPATH}
-chmod 755 ${NEWROOT}${INITPATH}
+# Mount the /dev tree only if the
+# flag mount_dev_tree=1 is set
+if [ "$MOUNTDEVTREE" = "1" ]
+then
+   mount --bind /dev ${NEWROOT}/dev
+fi
 
-echo "Press Enter to start ${ID}"
-read
+# If run-chroot is invoked with "shell" as a command line argument
+# then simply drop to /bin/sh after chroot. Don't run the initcommands
+if [ "$1" != "shell" ]
+then
+   echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
+   echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' -e 's/;/\n/g' >> ${NEWROOT}${INITPATH}
+   chmod 755 ${NEWROOT}${INITPATH}
 
-#chroot ${NEWROOT} /bin/sh
-chroot ${NEWROOT} ${INITPATH}
+   echo ">>> Starting ${ID}"
+   echo "[+] chroot $NEWROOT $INITPATH"
+
+   chroot ${NEWROOT} ${INITPATH}
+else
+   chroot ${NEWROOT} /bin/sh
+fi
+

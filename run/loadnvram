@@ -6,13 +6,12 @@
 if [ "$1" = "" ]
 then
    echo "Syntax: $0 <ini file>"
-   exit
+else
+   echo "Loading nvram from $1"
+   while IFS='=' read key value
+   do
+      echo "${key}='${value}'"
+      nvram set ${key}="${value}"
+   done <<< "$(cat "$1" | sed -e 's/#.*//g')"
 fi
-
-echo "Loading nvram from $1"
-while IFS='=' read key value
-do
-   echo "${key}='${value}'"
-   nvram set ${key}="${value}"
-done <<< "$(cat "$1" | sed -e 's/#.*//g')"
 

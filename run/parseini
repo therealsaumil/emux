@@ -28,6 +28,9 @@ do
       rootfs)
          ROOTFS="${value}"
          ;;
+      mount_dev_tree)
+         MOUNTDEVTREE="${value}"
+	 ;;
       initcommands)
          if [ "${value}" = "" ]
          then

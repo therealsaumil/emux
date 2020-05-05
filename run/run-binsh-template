@@ -1,0 +1,7 @@
+#!/bin/bash
+
+armxdir=$(dirname $0)
+
+source ${armxdir}/../run/parseini config
+source ${armxdir}/../run/run-chroot shell
+
