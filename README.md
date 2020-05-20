@@ -19,6 +19,7 @@ Devices successfully emulated with ARM-X so far:
 * Netgear Nighthawk R6400 Wi-Fi Router
 * Trivision NC227WF Wireless IP Camera
 * Cisco RV130 Wi-Fi Router
+* Auerswald Comfortel 1200 VoIP Phone
 
 Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armfirmwarelab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
 
@@ -41,6 +42,15 @@ The `/armx` directory is organised as follows:
 * `run/`: This folder contains scripts necessary to parse the device configuration, preload nvram contents and eventually invoke the userland processes of the device being emulated.
 * `run/launcher`: The main script. `launcher` parses the `devices` file and displays a menu of registered devices. Selecting one of the devices will in turn invoke `qemu-system-arm` with the pre-defined QEMU options, corresponding Linux kernel and extracted root file system registered with the device.
 * `template/`: Sample configuration and layout for a new device. Make a copy of the template when beginning to emulate a new IoT device.
+
+The `run/` directory also contains a few commands that can be used from the host to interact with processes running within an ARM-X emulated device.
+
+* `armxhalt`: Cleanly shut down the emulated device, and unmount all NFS mounts. Without a clean shutdown, there's always the risk of stale MFS handles.
+* `armxps`: Remotely enumerate processes running within ARM-X.
+* `armxmaps`: Remotely dump the process memory layout of a process running within ARM-X.
+* `armxgdb`: Attach `gdb` to a process running within ARM-X.
+
+`armxps`, `armxmaps` and `armxgdb` are explained in detail in the [Debugging With ARM-X][debuggingwitharmx] tutorial.
 
 Each emulated device contains the following files/directories:
 
@@ -89,7 +99,7 @@ Before you begin to emulate an IoT device, you will need the following:
 
 The following diagram outlines the overall process of IoT device emulation.
 
-![Adding a new device](/docs/img/armx-newdevice.png "Adding a new device")
+![Adding a new device](docs/img/armx-newdevice.png "Adding a new device")
 
 Steps involved:
 
@@ -161,7 +171,9 @@ Github: https://github.com/therealsaumil/armx/
 
 ### ARM-X Documentation
 
-Tutorial: [Debugging With ARM-X](docs/debugging-with-armx.html)
+Tutorial: [Debugging With ARM-X][debuggingwitharmx]
+
+[debuggingwitharmx]: docs/debugging-with-armx.html
 
 ### END
 
@@ -171,3 +183,4 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v0.9.1  19-November-2019
 - v0.9.2  12-March-2020
 - v0.9.3  05-May-2020
+- v0.9.4  20-May-2020
