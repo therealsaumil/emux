@@ -4,7 +4,7 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-May 2020
+June 2020
 
 ![ARMX](docs/img/armx-banner.png "ARM-X")
 
@@ -20,6 +20,7 @@ Devices successfully emulated with ARM-X so far:
 * Trivision NC227WF Wireless IP Camera
 * Cisco RV130 Wi-Fi Router
 * Auerswald Comfortel 1200 VoIP Phone
+* Tenda AC15 Wi-Fi Router
 
 Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armfirmwarelab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
 
@@ -57,7 +58,7 @@ Each emulated device contains the following files/directories:
 * `config`: Contains the device's name and description, ASLR settings, location of its root file system and commands to issue after the kernel has booted up and transferred control to the userland.
 * `nvram.ini`: Contents of the device's non volatile memory, used for storing configuration settings. Contents of `nvram.ini` are preloaded into the emulated nvram before invoking the userland init scripts.
 * `kernel/`: Contains a Linux kernel compiled (mostly via Buildroot) to closely match the properties of the emulated device such as kernel version, CPU support, VM_SPLIT, supported peripherals, etc.
-* `rootfs/`: Populated with the uncompressed file system extracted from the device's firmware.
+* `rootfs/`: Populated with the uncompressed file system extracted from the device's firmware. This directory can be renamed.
 
 The diagram below describes each stage of ARM-X:
 
@@ -115,6 +116,7 @@ The following sample kernels are provided with the template.
 * `zImage-2.6.39.4-vexpress` ARMv7 CPU on a `vexpress-a9` board.
 * `zImage-2.6.31.14-realview-rv130-nothumb` ARMv6 CPU on a `realview-eb` board.
 * `zImage-2.6.31-versatile-nothumb` ARMv5 CPU on a `versatilepb` board.
+* `zImage-2.6.29.6-versatile` ARMv5 CPU on a `versatilepb` board.
 * `zImage-2.6.28-versatile-nothumb` ARMv5 CPU on a `versatilepb` board.
 
 However, it is encouraged to build a compatible kernel from source.
@@ -150,17 +152,17 @@ VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
 
 The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files of 200MB each, because several cloud hosting providers impose a maximum limit. To extract the VM, use the 7z command line utility:
 
-`7z e armx-march2020.7z.001`
+`7z e armx-june2020.7z.001`
 
 SHA 256 Checksums:
 
 ```
-286fbfcda02f5161d4fc983584873ccd5462c315a8c9783232cbef717c5c054e  armx-march2020.7z.001
-f513145ed451bc3e07014824deb9ffa5c66b0ebad97ba24aed500abcdea6f7f6  armx-march2020.7z.002
+4a8bf8b7d75ebc9165ae0e2048cba12722012c26f81cdcba3c427eba5b4cab65  armx-june2020.7z.001
+20af804523e94b548511af7e17cd730b2d23a830e0f3a0ac9bf2d7513d2279e2  armx-june2020.7z.002
 
-1a41f4a028db80787adbeac03bfb20794994f3658e67764c200d885498521d2f  armx-mar2020.vmx
-eba62de7c6235859e2150503a29f4bf84a85dd9dba5c5ba46e44940de6a03387  armx-s001.vmdk
-5feeb87965d0e04dff31bbc6c61eb676e1a8c72c11076ba2167d960195391dd1  armx.vmdk
+719ea86fd0e7e826d201100296b8fe978cdb316fe480eca84a065e2e7a8c65ca  armx-june2020.vmx
+c246568f069d2a44f38ad0c9169e9fa1f85741896f2525c5010cdefd9f2f9186  armx-s001.vmdk
+97b21df34573ded92529f041cd4d199eb8d947efb8a9999fd2c86c573ddc3cc9  armx.vmdk
 ```
 
 VirtualBox VM: (coming soon, but don't hold your breath)
@@ -179,8 +181,9 @@ Tutorial: [Debugging With ARM-X][debuggingwitharmx]
 
 ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 
-- v0.9.0  22-October-2019, Preview Release
-- v0.9.1  19-November-2019
-- v0.9.2  12-March-2020
-- v0.9.3  05-May-2020
-- v0.9.4  20-May-2020
+- v0.9  22-October-2019, Preview Release
+- v1.0  19-November-2019
+- v1.1  12-March-2020
+- v1.2  05-May-2020
+- v1.2  20-May-2020 (minor update)
+- v1.3  29-May-2020
