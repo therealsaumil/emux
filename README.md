@@ -20,7 +20,7 @@ Devices successfully emulated with ARM-X so far:
 * Trivision NC227WF Wireless IP Camera
 * Cisco RV130 Wi-Fi Router
 * Auerswald Comfortel 1200 VoIP Phone
-* Tenda AC15 Wi-Fi Router
+* [NEW! Tenda AC15 Wi-Fi Router][emulatingtenda]
 
 Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armfirmwarelab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
 
@@ -157,12 +157,12 @@ The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files
 SHA 256 Checksums:
 
 ```
-4a8bf8b7d75ebc9165ae0e2048cba12722012c26f81cdcba3c427eba5b4cab65  armx-june2020.7z.001
-20af804523e94b548511af7e17cd730b2d23a830e0f3a0ac9bf2d7513d2279e2  armx-june2020.7z.002
+714bddb26b19591f425b3465177ae98b347cbfb2a4b4e3343c39dc9c2438308d  armx-june2020.7z.001
+9f0d619aa597d5c8bc9285bd3d00ed170c65f059c644aed57762ccfab932f8ef  armx-june2020.7z.002
 
 719ea86fd0e7e826d201100296b8fe978cdb316fe480eca84a065e2e7a8c65ca  armx-june2020.vmx
-c246568f069d2a44f38ad0c9169e9fa1f85741896f2525c5010cdefd9f2f9186  armx-s001.vmdk
-97b21df34573ded92529f041cd4d199eb8d947efb8a9999fd2c86c573ddc3cc9  armx.vmdk
+a18560126846bda69550866cb1c2abbc3e6f14dc608617bd3c6f29700ddbd44f  armx-s001.vmdk
+21d0566c06df51150b483458ab275ed564d9dd0673d2efd9d5b905a0b4f42993  armx.vmdk
 ```
 
 VirtualBox VM: (coming soon, but don't hold your breath)
@@ -174,8 +174,10 @@ Github: https://github.com/therealsaumil/armx/
 ### ARM-X Documentation
 
 Tutorial: [Debugging With ARM-X][debuggingwitharmx]
+Case Study: [Emulating the Tenda AC15 Router][emulatingtenda]
 
 [debuggingwitharmx]: docs/debugging-with-armx.html
+[emulatingtenda]: docs/emulating-tenda-ac15.html
 
 ### END
 
@@ -186,4 +188,4 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v1.1  12-March-2020
 - v1.2  05-May-2020
 - v1.2  20-May-2020 (minor update)
-- v1.3  29-May-2020
+- v1.3  02-June-2020
