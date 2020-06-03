@@ -173,8 +173,8 @@ Github: https://github.com/therealsaumil/armx/
 
 ### ARM-X Documentation
 
-Tutorial: [Debugging With ARM-X][debuggingwitharmx]
-Case Study: [Emulating the Tenda AC15 Router][emulatingtenda]
+- Tutorial: [Debugging With ARM-X][debuggingwitharmx]
+- Case Study: [Emulating the Tenda AC15 Router][emulatingtenda]
 
 [debuggingwitharmx]: docs/debugging-with-armx.html
 [emulatingtenda]: docs/emulating-tenda-ac15.html
