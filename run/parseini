@@ -31,20 +31,15 @@ do
       mount_dev_tree)
          MOUNTDEVTREE="${value}"
 	 ;;
+      ld_preload)
+         PRELOADDIR="${value}"
+	 ;;
       initcommands)
          if [ "${value}" = "" ]
          then
             INITCOMMANDS="/bin/sh"
          else
             INITCOMMANDS="${value}"
-         fi
-         ;;
-      initpath)
-         if [ "${value}" = "" ]
-         then
-            INITPATH="/etc/armxinit"
-         else
-            INITPATH="${value}"
          fi
          ;;
    esac

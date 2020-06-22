@@ -28,19 +28,33 @@ then
    mount --bind /dev ${NEWROOT}/dev
 fi
 
+# copy the libs to be LD_PRELOADed into ${NEWROOT}/.armx
+
+rm -Rf ${NEWROOT}/.armx
+mkdir -p ${NEWROOT}/.armx
+PRELOADLIBS=""
+for lib in ${PRELOADDIR}/*.so
+do
+   cp ${lib} ${NEWROOT}/.armx/
+   libfile=$(basename ${lib})
+   PRELOADLIBS="/.armx/${libfile}:${PRELOADLIBS}"
+done
+INITPATH="/.armx/armxinit"
+
 # If run-chroot is invoked with "shell" as a command line argument
 # then simply drop to /bin/sh after chroot. Don't run the initcommands
+
+echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
+echo "export LD_PRELOAD=${PRELOADLIBS}" >> ${NEWROOT}${INITPATH}
+
 if [ "$1" != "shell" ]
 then
-   echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
    echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' -e 's/;/\n/g' >> ${NEWROOT}${INITPATH}
-   chmod 755 ${NEWROOT}${INITPATH}
-
    echo ">>> Starting ${ID}"
-   echo "[+] chroot $NEWROOT $INITPATH"
-
-   chroot ${NEWROOT} ${INITPATH}
 else
-   chroot ${NEWROOT} /bin/sh
+   echo "/bin/sh" >> ${NEWROOT}${INITPATH}
 fi
 
+chmod 755 ${NEWROOT}${INITPATH}
+echo "[+] chroot $NEWROOT $INITPATH"
+chroot ${NEWROOT} ${INITPATH}

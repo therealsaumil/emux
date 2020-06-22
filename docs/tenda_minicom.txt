@@ -1,0 +1,662 @@
+Digital core power voltage set to 0.9375V
+Decompressing...done
+Digital core power voltage set to 0.9375V
+
+SHMOO VER 1.13
+
+PKID07DC06011801080000000000001A103F01000000
+
+S300001E7
+000014A0
+
+
+RDLYW0 00000004
+
+RDENW0 00000031
+
+RDQSW0 
+
+    0000000000111111111122222222223333333333444444444455555555556666
+    0123456789012345678901234567890123456789012345678901234567890123
+ 00 --------++++++++++++++++++++++++++X+++++++++++++++++++++++++----
+ 01 ---------+++++++++++++++++++++++++X+++++++++++++++++++++++++----
+ 02 ----------+++++++++++++++++++++++++++X+++++++++++++++++++++++++-
+ 03 --------+++++++++++++++++++++++++X++++++++++++++++++++++++------
+ 04 --++++++++++++++++++++++++++X++++++++++++++++++++++++++---------
+ 05 ---------++++++++++++++++++++++++X+++++++++++++++++++++++-------
+ 06 ----+++++++++++++++++++++++++X+++++++++++++++++++++++++---------
+ 07 ----------+++++++++++++++++++++++++X++++++++++++++++++++++++----
+ 08 --------+++++++++++++++++++++++++X+++++++++++++++++++++++++-----
+ 09 ----------+++++++++++++++++++++++++++X++++++++++++++++++++++++--
+ 10 ------++++++++++++++++++++++++++X++++++++++++++++++++++++++-----
+ 11 ----------+++++++++++++++++++++++++X+++++++++++++++++++++++++---
+ 12 ------+++++++++++++++++++++++++X+++++++++++++++++++++++++-------
+ 13 -------------+++++++++++++++++++++++++X+++++++++++++++++++++++--
+ 14 ------++++++++++++++++++++++++++X+++++++++++++++++++++++++------
+ 15 ----------+++++++++++++++++++++++++++X++++++++++++++++++++++++--
+
+
+PW0 
+
+    0000000000111111111122222222223333333333444444444455555555556666
+    0123456789012345678901234567890123456789012345678901234567890123
+ 00 -------+++++++++++++++++++++++++++X++++++++++++++++++++++++++---
+ 01 ---------+++++++++++++++++++++++++++X++++++++++++++++++++++++++-
+ 02 ---------+++++++++++++++++++++++++++X+++++++++++++++++++++++++++
+ 03 -------+++++++++++++++++++++++++X+++++++++++++++++++++++++------
+ 04 --++++++++++++++++++++++++++X++++++++++++++++++++++++++---------
+ 05 --------++++++++++++++++++++++++X++++++++++++++++++++++++-------
+ 06 -----+++++++++++++++++++++++++X++++++++++++++++++++++++---------
+ 07 ---------+++++++++++++++++++++++++X+++++++++++++++++++++++++----
+ 08 --------+++++++++++++++++++++++++X+++++++++++++++++++++++++-----
+ 09 ----------+++++++++++++++++++++++++++X++++++++++++++++++++++++--
+ 10 -----+++++++++++++++++++++++++++X++++++++++++++++++++++++++-----
+ 11 ----------+++++++++++++++++++++++++X+++++++++++++++++++++++++---
+ 12 ------+++++++++++++++++++++++++X+++++++++++++++++++++++++-------
+ 13 ------------++++++++++++++++++++++++++X+++++++++++++++++++++++--
+ 14 ------++++++++++++++++++++++++++X+++++++++++++++++++++++++------
+ 15 ----------+++++++++++++++++++++++++++X++++++++++++++++++++++++--
+
+
+NW0 
+
+    0000000000111111111122222222223333333333444444444455555555556666
+    0123456789012345678901234567890123456789012345678901234567890123
+ 00 ------+++++++++++++++++++++++++++X++++++++++++++++++++++++++----
+ 01 -------++++++++++++++++++++++++++X+++++++++++++++++++++++++-----
+ 02 -------++++++++++++++++++++++++++++X+++++++++++++++++++++++++++-
+ 03 ----+++++++++++++++++++++++++++X++++++++++++++++++++++++++------
+ 04 --++++++++++++++++++++++++++X++++++++++++++++++++++++++---------
+ 05 ------+++++++++++++++++++++++++++X+++++++++++++++++++++++++++---
+ 06 ---++++++++++++++++++++++++++X++++++++++++++++++++++++++--------
+ 07 -----+++++++++++++++++++++++++++X+++++++++++++++++++++++++++----
+ 08 -------++++++++++++++++++++++++++++X++++++++++++++++++++++++++--
+ 09 ----------+++++++++++++++++++++++++++X++++++++++++++++++++++++++
+ 10 ------+++++++++++++++++++++++++++X+++++++++++++++++++++++++++---
+ 11 ---------+++++++++++++++++++++++++++X+++++++++++++++++++++++++++
+ 12 -----+++++++++++++++++++++++++++X++++++++++++++++++++++++++-----
+ 13 -----------++++++++++++++++++++++++++X++++++++++++++++++++++++++
+ 14 ------+++++++++++++++++++++++++++X++++++++++++++++++++++++++----
+ 15 ----------+++++++++++++++++++++++++++X++++++++++++++++++++++++++
+
+
+WRDQW0 
+
+    0000000000111111111122222222223333333333444444444455555555556666
+    0123456789012345678901234567890123456789012345678901234567890123
+ 00 ++++++++++++++++++++++X++++++++++++++++++++++------------++++++-
+ 01 +++++++++++++++++++++++++X++++++++++++++++++++++++----------+++-
+ 02 ++++++++++++++++++++++++X++++++++++++++++++++++++----------++++-
+ 03 +++++++++++++++++++++++X+++++++++++++++++++++++-----------+++++-
+ 04 ++++++++++++++++++++X++++++++++++++++++++---------------+++++++-
+ 05 +++++++++++++++++++++++X++++++++++++++++++++++-------------++++-
+ 06 ++++++++++++++++++++++X+++++++++++++++++++++------------+++++++-
+ 07 +++++++++++++++++++++++X++++++++++++++++++++++----------+++++++-
+ 08 +++++++++++++++++++++++X+++++++++++++++++++++++------------++++-
+ 09 ---++++++++++++++++++++++++X+++++++++++++++++++++++-------------
+ 10 +++++++++++++++++++++++X+++++++++++++++++++++++-------------+++-
+ 11 --++++++++++++++++++++++++X++++++++++++++++++++++++-----------+-
+ 12 +++++++++++++++++++++++X+++++++++++++++++++++++-----------+++++-
+ 13 --++++++++++++++++++++++++X++++++++++++++++++++++++-------------
+ 14 +++++++++++++++++++++++X+++++++++++++++++++++++-------------+++-
+ 15 +++++++++++++++++++++++++X++++++++++++++++++++++++-----------++-
+
+
+WRDMW0 00000022
+WRDMW0 00000024
+
+
+ADDR
+
+    0000000000111111111122222222223333333333444444444455555555556666
+    0123456789012345678901234567890123456789012345678901234567890123
+ 00 ++++++++++++++++++++S++++++++++X++++++++++++++++++++++++++++++++
+
+Decompressing...done
+CJ++ for mspi get id 0xc8 0x17
+CJ++ for mspi get id 0xc8 0x17
+Found a ST compatible (Micron) serial flash with 256 64KB blocks; total size 16MB
+
+
+CFE version 6.37.14.93 (r469350) based on BBP 1.0.37 for BCM947XX (32bit,SP,)
+Build Date: Sat Aug 15 04:37:51 EDT 2015 (root@AirHost)
+Copyright (C) 2000-2008 Broadcom Corporation.
+
+Init Arena
+Init Devs.
+Boot partition size = 262144(0x40000)
+Can't find nandflash! ccrev = 42, chipst= 0 
+DDR Clock: 666 MHz
+Warning: using legacy sdram_ncdl parameter to set DDR frequency. Equivalent setting in clkfreq=800,*0* will be ignored.
+et0: Broadcom BCM47XX 10/100/1000 Mbps Ethernet Controller 6.37.14.93 (r469350)
+CPU type 0x0: 800MHz
+Tot mem: 131072 KBytes
+
+CFE mem:    0x00F00000 - 0x017A81FC (9077244)
+Data:       0x00F5F5B0 - 0x00F60C58 (5800)
+BSS:        0x00F60C68 - 0x00FA61FC (284052)
+Heap:       0x00FA61FC - 0x017A61FC (8388608)
+Stack:      0x017A61FC - 0x017A81FC (8192)
+Text:       0x00F00000 - 0x00F53798 (341912)
+Boot:       0x017A9000 - 0x017E9000
+Reloc:      I:00000000 - D:00000000
+
+Mac:c8-3a-35-32-ce-b0 
+Device eth0:  hwaddr C8-3A-35-32-CE-B0, ipaddr 192.168.1.1, mask 255.255.255.0
+        gateway not set, nameserver not set
+upgrade wait time is 3s
+**upgrade_wait over!
+Loader:raw Filesys:raw Dev:flash0.os File: Options:(null)
+Loading: .... 4114848 bytes read
+Entry at 0x00008000
+Closing network.
+Starting program at 0x00008000
+console [ttyS0] enabled, bootconsole disabled
+serial8250.0: ttyS1 at MMIO 0x18000400 (irq = 117) is a 16550
+brd: module loaded
+loop: module loaded
+pflash: found no supported devices
+bcmsflash: squash filesystem found at block 29
+Creating 8 MTD partitions on "bcmsflash":
+0x000000000000-0x000001000000 : "All"
+0x000000000000-0x000000040000 : "Bootloader"
+0x000000040000-0x000000fc0000 : "KernelFS"
+0x0000001d8d14-0x000000fc0000 : "RootFS"
+0x000000fc0000-0x000000fd0000 : "Policy"
+0x000000fd0000-0x000000fe0000 : "CFM_BACKUP"
+0x000000fe0000-0x000000ff0000 : "CFM"
+0x000000ff0000-0x000001000000 : "nvram"
+nflash: found no supported devices
+PPP generic driver version 2.4.2
+PPP Deflate Compression module registered
+PPP BSD Compression module registered
+PPP MPPE Compression module registered
+NET: Registered protocol family 24
+u32 classifier
+    Actions configured
+Netfilter messages via NETLINK v0.30.
+nf_conntrack version 0.5.0 (1961 buckets, 7844 max)
+[BM CORE     ]  INFO: online ip data hash table created, size = 199
+[BM CORE     ]  INFO: online_ip proc file created
+ctnetlink v0.93: registering with nfnetlink.
+ create /proc/behavior/emailbcc SUCCESSFULLY.
+netfilter smtp init successfully
+xt_time: kernel timezone is -0000
+Kernel:Init flow dev success.
+IPv4 over IPv4 tunneling driver
+ip_tables: (C) 2000-2006 Netfilter Core Team
+TCP cubic registered
+NET: Registered protocol family 17
+NET: Registered protocol family 15
+L2TP core driver, V2.0
+PPPoL2TP kernel driver, V2.0
+L2TP IP encapsulation support (L2TPv3)
+L2TP netlink interface
+L2TP ethernet pseudowire support (L2TPv3)
+802.1Q VLAN Support v1.8 Ben Greear <greearb@candelatech.com>
+All bugs added by David S. Miller <davem@redhat.com>
+Northstar brcmnand NAND Flash Controller driver, Version 0.1 (c) Broadcom Inc. 2012
+brcmnand: found no supported devices
+VFS: Mounted root (squashfs filesystem) readonly on device 31:3.
+devtmpfs: mounted
+Freeing init memory: 216K
+mkdir: can't create directory '/var/run': File exists
+_fastnat_attach: fastnat attach is successful  register.
+fastnat_init: FastNat_init successful .
+[BM CORE     ]  INFO: bm_init success
+bm_debug_init_proc success!
+[U2K MODULE  ]  INFO: bm_u2k_info_init success
+insmod: can't read '/lib/modules/ai.ko': No such file or directory
+[MAC FILTER  ]  INFO: bm_mac_filter init success 
+[QOS         ]  INFO: qos module init success
+OS TYPE INIT FINISHED
+[URL FILTER  ]  INFO: url filter init success
+Give root password for system maintenance
+(or type Control-D for normal startup):init_core_dump 1784: rlim_cur = 0, rlim_max = -1
+init_core_dump 1793: open core dump success
+init_core_dump 1802: rlim_cur = -1, rlim_max = -1
+func:InitCfm begin load_mib....
+flash_read:ret = 65536
+crc = 3e1cef29, newcrc = 3e1cef29
+
+######## STARTING PROGRAM #########
+flash_read:ret = 65536
+crc = 4e2b34d6, newcrc = 4e2b34d6
+flash_read:ret = 65536
+crc = 4e2b34d6, newcrc = 4e2b34d6
+MTD[Policy] size is 64K 
+read flash:uncompress len=240468; crc=0a2959c2
+left wan[0]:0
+right lan[3]:1
+right lan[2]:2
+right lan[1]:3
+right lan[0]:4
+vlan_array[0]: value 1  index_num 1 index[0] 0  index[1] 0  index[2] 0  index[3] 0  index[4] 0  
+vlan_array[1]: value 0  index_num 4 index[0] 1  index[1] 2  index[2] 3  index[3] 4  index[4] 0  
+vlan_array[2]: value -2  index_num 0 index[0] 0  index[1] 0  index[2] 0  index[3] 0  index[4] 0  
+vlan_array[3]: value -2  index_num 0 index[0] 0  index[1] 0  index[2] 0  index[3] 0  index[4] 0  
+vlan_array[4]: value -2  index_num 0 index[0] 0  index[1] 0  index[2] 0  index[3] 0  index[4] 0  
+nvram unset vlan1ports
+nvram unset vlan2ports
+nvram unset vlan3ports
+nvram unset vlan4ports
+nvram unset vlan5ports
+nvram set vlan2ports="0  5"
+nvram set vlan1ports="1  2  3  4  5*"
+#IPTV STB VLAN ID mode is disable!#
+main=>100:init server success.1..
+No need to start gpio thread.
+et: module license 'Proprietary' taints kernel.
+Disabling lock debugging due to kernel taint
+et_module_init: passivemode set to 0x0
+et_module_init: txworkq set to 0x1
+et_module_init: et_txq_thresh set to 0x0
+stbport=4=
+eth0: Broadcom BCM47XX 10/100/1000 Mbps Ethernet Controller 6.37.14.93 (r469350)
+wl_module_init: passivemode set to 0x0
+wl_module_init: txworkq set to 0x1
+srom rev:0
+--td_phy_status_init--
+eth1: Broadcom BCM4360 802.11 Wireless Controller 6.37.14.93 (r469350 WLTEST)
+srom rev:0
+--td_phy_status_init--
+eth2: Broadcom BCM4360 802.11 Wireless Controller 6.37.14.93 (r469350 WLTEST)
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci_hcd 0000:00:0b.1: EHCI Host Controller
+ehci_hcd 0000:00:0b.1: new USB bus registered, assigned bus number 1
+ehci_hcd 0000:00:0b.1: irq 111, io mem 0x18021000
+ehci_hcd 0000:00:0b.1: USB 0.0 started, EHCI 1.00
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 2 ports detected
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+ohci_hcd 0000:00:0b.0: OHCI Host Controller
+ohci_hcd 0000:00:0b.0: new USB bus registered, assigned bus number 2
+ohci_hcd 0000:00:0b.0: irq 111, io mem 0x18022000
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 2 ports detected
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+insmod: can't read '/lib/modules/2.6.36.4brcmarm/kernel/drivers/usb/class/usblp.ko': No such file or directory
+xhci_hcd 0000:00:0c.0: xHCI Host Controller
+xhci_hcd 0000:00:0c.0: new USB bus registered, assigned bus number 3
+xhci_hcd 0000:00:0c.0: irq 112, io mem 0x18023000
+xhci_hcd 0000:00:0c.0: Failed to enable MSI-X
+xhci_hcd 0000:00:0c.0: failed to allocate MSI entry
+usb usb3: No SuperSpeed endpoint companion for config 1  interface 0 altsetting 0 ep 129: using minimum values
+xHCI xhci_add_endpoint called for root hub
+xHCI xhci_check_bandwidth called for root hub
+hub 3-0:1.0: USB hub found
+hub 3-0:1.0: 1 port detected
+Hello,This is the USB LED handling Driver
+>>si_gpioreserve : 0xffffffff
+>>si_gpiocontrol : 0x0
+>>si_gpioouten : 0x4645
+>>si_gpioout : 0x4601
+ufsd:: trace mask set to 0000000f
+ufsd: driver (lke_9.2.0 lke_9.2.0_r247506_b7, build_host("fsd-bs-cluster03"), LBD=OFF, acl, ioctl, bdi, sd2(0), wb, bz, tr) loaded at bf6d1000
+NTFS support included
+optimized: speed
+Build_for__Tenda_AC7_k2.6.36_2015-04-07_lke_9.2.0_r247506_b7
+ 'Evaluation version - not for resale!'
+ifconfig: SIOCSIFHWADDR: No such device
+ifconfig: SIOCGIFFLAGS: No such device
+### set br0 mac [c8:3a:35:32:ce:b0]### [5]
+##############add vlan devices [vconfig add eth0 2]
+##############add vlan devices [vconfig add eth0 1]
+device eth0 entered promiscuous mode
+ifconfig: SIOCSIFHWADDR: No such device
+device eth0.1 entered promiscuous mode
+br0: topology change detected, propagating
+br0: port 1(eth0.1) entering forwarding state
+br0: port 1(eth0.1) entering forwarding state
+IPv4 FIB: Using LC-trie version 0.409
+Sun May  1 00:00:00 UTC 2011
+Loading dnrd...
+killall: dnrd: no process killed
+_eval 98: child process create success
+_eval 98: child process create success
+_start_time_check 202: time_check register success, register_pid = 509
+_eval 94: child process status is 0
+_start_httpd 219: httpd register success, register_pid = 510
+httpd
+_eval 94: child process status is 0
+_start_multiwan 259: _start_multiwan register success, register_pid = 511
+_eval 94: child process status is 0
+_start_ucloud 288: ucloud register success, register_pid = 512
+ucloud
+multiWAN
+time_check
+netctrl
+init_core_dump 1784: rlim_cur = -1, rlim_max = -1
+init_core_dump 1793: open core dump success
+[TIMER_CHECK >>time_check_reboot_info_printf(51)]:		 enable:1
+[TIMER_CHECK >>time_check_reboot_info_printf(52)]:		 type:1
+[TIMER_CHECK >>time_check_reboot_info_printf(57)]:		 wday_en:1;1;1;1;1;1;1
+[TIMER_CHECK >>time_check_reboot_info_printf(58)]:		 start_time:03:00
+[TIMER_CHECK >>time_check_reboot_info_printf(59)]:		 end_time:05:00
+[TIMER_CHECK >>time_check_reboot_info_printf(60)]:		 max_speed:3
+[TIMER_CHECK >>time_check_reboot_info_printf(61)]:		 check_speed=3000
+[TIMER_CHECK >>time_check_reboot_info_printf(62)]:		 wan_ifnames:eth0.2
+[TIMER_CHECK >>time_check_power_info_printf(48)]:		 enable:0
+[TIMER_CHECK >>time_check_power_info_printf(49)]:		 type:1
+[TIMER_CHECK >>time_check_power_info_printf(54)]:		 wday_en:1;1;1;1;1;1;1
+[TIMER_CHECK >>time_check_power_info_printf(55)]:		 start_time:00:00
+[TIMER_CHECK >>time_check_power_info_printf(56)]:		 end_time:07:00
+[TIMER_CHECK >>time_check_power_info_printf(57)]:		 max_speed:3
+[TIMER_CHECK >>time_check_power_info_printf(58)]:		 check_speed=3000
+init_core_dump 1802: rlim_cur = -1, rlim_max = -1
+init_core_dump 1784: rlim_cur = -1, rlim_max = -1
+init_core_dump 1793: open core dump success
+init_core_dump 1802: rlim_cur = -1, rlim_max = -1
+
+
+Yes:
+
+      ****** WeLoveLinux****** 
+
+ Welcome to ...
+init_core_dump 1784: rlim_cur = -1, rlim_max = -1
+init_core_dump 1793: open core dump success
+init_core_dump 1802: rlim_cur = -1, rlim_max = -1
+old - soft: -1, hard: -1
+old - soft: 4096000, hard: -1
+not need to write flash,crc:[7abe1867]
+commit cfm failed or not need write flash
+logserver.c check network 192.168.0.1 success
+[httpd][debug]----------------------------webs.c,157
+httpd listen ip = 192.168.0.1 port = 80
+webs: Listening for HTTP requests at address 192.168.0.1
+RTNETLINK answers: Operation not supported
+sh: can't create /proc/br0_ip: nonexistent directory
+max_new_conntrack=4000 
+sh: nkgw: not found
+Debug->tpi_port.c: tpi_port_handle(61)--type = 0
+Debug->tpi_port.c: tpi_port_mode_set(12)--wan_num=1
+Debug->tpi_port.c: tpi_port_mode_set(14)--wan[0].portmode=0
+Notice: caching turned off
+set port 0 to AUTO
+######## RECEIVING DATA #########
+[ DEBUG ] ******Sucessed to change lan config! ******
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `dmz_forward_pre':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `vpnserver':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `dmz_forward_post':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: Index of insertion too big.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `port_forward_pre':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables v1.4.12.2: Couldn't load target `port_forward_post':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `web_wanadmin':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `web_wanadmin':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+killall: 3322ip: no process killed
+killall: 88ip: no process killed
+killall: gnway: no process killed
+killall: phddns: no process killed
+killall: inadyn: no process killed
+rm: can't remove '/etc/ddns_*': No such file or directory
+iptables: No chain/target/match by that name.
+nbns task start:
+arp task satrt:
+iptables v1.4.12.2: Couldn't load target `MINIUPNPD':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+miniupnpd.c,865,ver=1.0,osname=Wireless Router,osver=1.0,osurl=http://192.168.0.1,manuft=Tenda,descri=
+RTNETLINK answers: No such file or directory
+dhcpsCfgToStruct 479: lan type is 
+dhcps_lan_dhcpc_configure 251: lan dhcp client not get ip
+[QOS         ]  INFO: g_qos_enable = disable
+Init gsbmac dev success.
+The ARP attack defence is init v1 successful
+killall: arpbrocast: no process killed
+Kernel:Init attack fence dev success.
+the ddos ip attack defnence init successful
+iptables v1.4.12.2: Couldn't load target `icmp_drop':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+Error: argument "xmain" is wrong: invalid table ID
+
+Error: argument "xmain" is wrong: invalid table ID
+
+RTNETLINK answers: No such file or directory
+RTNETLINK answers: No such file or directory
+RTNETLINK answers: No such file or directory
+RTNETLINK answers: No such file or directory
+RTNETLINK answers: No such file or directory
+iptables v1.4.12.2: Couldn't load target `access_ctrl':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+SET_LAN_PARAM_DATA k_data:
+	lan ip:3232235521
+	lan mask:4294967040
+	lan submask:3232235520
+	lan interface:br0
+	lan http port:80
+icmset the proceee ture
+p iSET_IPOP_FENCE_ATTACK_DATA k_data:
+s 1	ip options:32512
+,15SET_BAD_PKT_FENCE_ATTACK_DATA k_data:
+00	bad pkt:248
+,udSET_DDOS_FENCE_ATTACK_DATA k_data:
+p i	status:7
+s 1	tcp threshold:1500
+,1	udp threshold:1500
+500	icmp threshold:1500
+,tcp_syn is 1,1500
+---------->>[ start_wifi, wl_rate=24 ]
+30562042
+[ ERROR ] invalid access mode:
+killall: wps_monitor: no process killed
+killall: nas: no process killed
+killall: eapd: no process killed
+[ DEBUG ] len=6,lan1_ifnames = wl1.1
+br1: No such device
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `guest_access_input':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `guest_access_forward':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+[ ERROR ] Guest dhcp server is disable,do nothing!
+killall: acsd: no process killed
+mdns task start:
+eth1: cmd=231: Invalid argument
+eth1: WLC_SET_VAR(chanspec): Invalid argument
+eth1: Wmaxrssi=-100,int_val=-100
+LC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operatset tenda auto width obss_coex:1
+ion not supported
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation ndevice eth1 entered promiscuous mode
+ot supbr0: topology change detected, propagating
+porbr0: port 2(eth1) entering forwarding state
+tedbr0: port 2(eth1) entering forwarding state
+
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth1: WLC_SET_VAR(bg_rate): Operation not supported
+eth1: WLC_SET_VAR(a_rate): Operation not supported
+eth1: WLC_SET_VAR(bg_rate): Operation not supported
+eth1: WLC_SET_VAR(a_rate): Operation not supported
+eth1: WLC_SET_VAR(bg_mrate): Operation not supported
+eth1: WLC_SET_VAR(a_mrate): Operation not supported
+eth1: WLC_SET_VAR(bg_mrate): Operation not supported
+eth1: WLC_SET_VAR(a_mrate): Operation not supported
+eth1: WLC_SET_VAR(avg_dma_xfer_rate): Operation not supported
+eth1: cmd=64: Operation not supported
+eth2: WLC_GET_VAR(psta_if): Invalid argument
+[ DEBUG ] len=6,lan1_ifnames = wl1.1
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `guest_access_input':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `guest_access_forward':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+[ ERROR ] guest dhcp server disable or tpi_wl_guest_dhcps_saveConfig returns error ,ret=0
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: selected channel spec: 0x100a
+eth2: WLC_GET_VAR(bw_cap): Invalid argument
+ACSD >>acs_get_rs_info(1209): failed to get bw_capret code: -1
+wisp or APC is close 
+[ Message ]------msgsnd--------[ ucloud ][ 721621, 65538 ]
+[ Message ]------msgsnd--------[ ucloud, 1 ]
+---------->>[ start_wifi, wl_rate=5 ]
+[ Message ]------msgrcv--------[ ucloud ][ 721621 / 65538 ]
+[ Message ]------msghdl--------[ ucloud / 1 ]
+30562042
+[ ERROR ] invalid access mode:
+[ ERROR ] coutry_code=US
+[ DEBUG ] len=6,lan1_ifnames = wl1.1
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `guest_access_input':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables v1.4.12.2: Couldn't load target `guest_access_forward':No such file or directory
+
+Try `iptables -h' or 'iptables --help' for more information.
+iptables: No chain/target/match by that name.
+[ ERROR ] Guest dhcp server is disable,do nothing!
+eth2: cmd=231: Invalid argument
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Opemaxrssi=-100,int_val=-100
+ration not supported
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supporset tenda auto width obss_coex:0
+ted
+eth2: WLC_SET_VAR(ampdu_retry_limit_tid): Operation not supporteddevice eth2 entered promiscuous mode
+
+ethbr0: topology change detected, propagating
+2: br0: port 3(eth2) entering forwarding state
+WLCbr0: port 3(eth2) entering forwarding state
+_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(ampdu_rr_retry_limit_tid): Operation not supported
+eth2: WLC_SET_VAR(bg_rate): Operation not supported
+eth2: WLC_SET_VAR(a_rate): Operation not supported
+eth2: WLC_SET_VAR(bg_rate): Operation not supported
+eth2: WLC_SET_VAR(a_rate): Operation not supported
+eth2: WLC_SET_VAR(bg_mrate): Operation not supported
+eth2: WLC_SET_VAR(a_mrate): Operation not supported
+eth2: WLC_SET_VAR(bg_mrate): Operation not supported
+eth2: WLC_SET_VAR(a_mrate): Operation not supported
+eth2: WLC_SET_VAR(avg_dma_xfer_rate): Operation not supported
+eth2: cmd=64: Operation not supported
+device br1 already exists; can't create bridge with the same name
+[ DEBUG ] len=1,lan1_ifnames = 
+[ ERROR ] Do not exsit ifname of guest_network,do nothing!
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: scan in progress ...
+###fd failed to recv packet!###
+##### NO SERVER FOUND! #####
+acsd: scan in progress ...
+acsd: scan in progress ...
+acsd: selected channel spec: 0x1805
+wisp or APC is close 
+[ Message ]------msgsnd--------[ ucloud ][ 721621, 65538 ]
+[ Message ]------msgsnd--------[ ucloud, 1 ]
+msg str: [cfm Post time_check 4?relate_module_id=19,string_info=first_time_start]
+[ Message ]------msgrcv--------[ ucloud ][ 721621 / 65538 ]
+[ Message ]------msghdl--------[ ucloud / 1 ]
+[ Message ]------msgsnd--------[ time_check ][ 721602, 32769 ]
+[ Message ]------msgsnd--------[ time_check, 4?relate_module_id=19,string_info=first_time_start ]
+[ Message ]------msgrcv--------[ time_check ][ 721602 / 32769 ]
+[ Message ]------msghdl--------[ time_check / 4?relate_module_id=19,string_info=first_time_start ]
+[TIMER_CHECK >>TimeCheckMsgHandle(163)]:msg:4?relate_module_id=19,string_info=first_time_start
+[TIMER_CHECK >>init_time_check_module_var(146)]:key = relate_module_id,value = 19
+[TIMER_CHECK >>init_time_check_module_var(154)]:key = string_info,value = first_time_start
+tpi_sntp_handle(44): start sntp...
+tpi_set_user_policy,35: entry count:0
+systime_server = 211.138.200.208
+main,334,sntp_en =1,tz=20.00,checktime=86400
+[ DEBUG[MAC FILTER  ]  INFO: g_mac_filter_enable = disable, mf_default_action = accept
+ ] RL FILTER  ]  INFO: g_uf_enable = disable
+[mlan dhcp[MAC FILTER  ]  INFO: g_mac_filter_enable = disable, mf_default_action = accept
+ not [URL FILTER  ]  INFO: g_uf_enable = disable
+enable
+Open /tmp/UDiskname is FailDisk:the file was locked.
+Writesamba.config.bak OK!
+Disk:/tmp/samba/lib/samba.config.bak the file was unlocked.
+******* unlink /tmp/smbpasswd is fail 
+startsmbfilepwent_internal: file /tmp/samba/private/smbpasswd did not exist. File successfully created.
+account_policy_get: tdb_fetch_uint32 failed for field 1 (min password length), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 2 (password history), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 3 (user must logon to change password), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 4 (maximum password age), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 5 (minimum password age), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 6 (lockout duration), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 7 (reset count minutes), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 8 (bad lockout attempt), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 9 (disconnect time), returning 0
+account_policy_get: tdb_fetch_uint32 failed for field 10 (refuse machine password change), returning 0
+Added user admin.
