@@ -54,7 +54,7 @@ The approach described here does not require you to have a physical Tenda
 router on hand. All you need is a copy of the Tenda firmware from its website.
 
 I subsequently intend to publish two more articles
-- Extracting the Tenda AC15's firmware directly from its SPI Flash chip, and
+- [Extracting the Tenda AC15's firmware directly from its SPI Flash chip][fw-extraction], and
 - Exploiting the vast array of vulnerabilities present in the AC15.
 
 ## Contents
@@ -1266,7 +1266,7 @@ challenge and discover vulnerabilities on the AC15. Try to reproduce some
 existing CVE's against the emulated AC15, or find 0-days on your own!
 
 ### Upcoming articles
-- Extracting the Tenda AC15's firmware directly from its SPI Flash chip, and
+- [Extracting the Tenda AC15's firmware directly from its SPI Flash chip][fw-extraction], and
 - Exploiting the vast array of vulnerabilities present in the AC15.
 
 Follow me on Twitter *[@therealsaumil][saumil]* for updates on [ARM-X][armx],
@@ -1279,3 +1279,4 @@ new articles, talks and trainings!
 [armx]: https://armx.exploitlab.net/
 [PreviewVM]: https://armx.exploitlab.net/#downloads
 [saumil]: https://twitter.com/therealsaumil
+[fw-extraction]: extracting-tenda-ac15-firmware.html
