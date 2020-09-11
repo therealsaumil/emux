@@ -30,31 +30,63 @@ fi
 
 # copy the libs to be LD_PRELOADed into ${NEWROOT}/.armx
 
-rm -Rf ${NEWROOT}/.armx
-mkdir -p ${NEWROOT}/.armx
-PRELOADLIBS=""
-for lib in ${PRELOADDIR}/*.so
-do
-   cp ${lib} ${NEWROOT}/.armx/
-   libfile=$(basename ${lib})
-   PRELOADLIBS="/.armx/${libfile}:${PRELOADLIBS}"
-done
-INITPATH="/.armx/armxinit"
+DOTARMX="${NEWROOT}/.armx"
+
+if [ ! -x ${DOTARMX} ]
+then
+   mkdir -p ${DOTARMX}
+   chmod 755 ${DOTARMX}
+fi
+rm -f ${DOTARMX}/*.so
+
+if [ "$PRELOADDIR" != "" ]
+then
+   PRELOADLIBS=""
+   for lib in ${PRELOADDIR}/*.so
+   do
+      cp ${lib} ${DOTARMX}
+      libfile=$(basename ${lib})
+      PRELOADLIBS="/.armx/${libfile}:${PRELOADLIBS}"
+   done
+fi
+
+# if invoked as a shell, don't overwrite
+# /.armx/armxinit. instead use /.armx/armxshell
+
+if [ "$1" != "shell" ]
+then
+   INITPATH="/.armx/armxinit"
+else
+   INITPATH="/.armx/armxshell"
+fi
 
 # If run-chroot is invoked with "shell" as a command line argument
 # then simply drop to /bin/sh after chroot. Don't run the initcommands
 
 echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
-echo "export LD_PRELOAD=${PRELOADLIBS}" >> ${NEWROOT}${INITPATH}
+if [ "$PRELOADDIR" != "" ]
+then
+   echo "export LD_PRELOAD=${PRELOADLIBS}" >> ${NEWROOT}${INITPATH}
+fi
 
 if [ "$1" != "shell" ]
 then
    echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' -e 's/;/\n/g' >> ${NEWROOT}${INITPATH}
    echo ">>> Starting ${ID}"
+   log ">>> Starting ${ID}"
 else
    echo "/bin/sh" >> ${NEWROOT}${INITPATH}
 fi
 
 chmod 755 ${NEWROOT}${INITPATH}
+log "[+] Contents of $INITPATH\n$(cat ${NEWROOT}${INITPATH})"
+
 echo "[+] chroot $NEWROOT $INITPATH"
-chroot ${NEWROOT} ${INITPATH}
+log "[+] chroot $NEWROOT $INITPATH"
+
+if [ "$ARMXLOGFILE" ]
+then
+   script -a -f -c "chroot ${NEWROOT} ${INITPATH}" ${ARMXLOGFILE}
+else
+   chroot ${NEWROOT} ${INITPATH}
+fi

@@ -4,5 +4,5 @@ id=MYNEWDEVICE
 nvram=nvram.ini
 rootfs=rootfs
 randomize_va_space=0
+#ld_preload=preload
 initcommands="/etc/init.d/rcS;/bin/sh"
-initpath=

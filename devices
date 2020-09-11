@@ -1,3 +1,5 @@
 #ID,qemu-binary,machine-type,cpu-type,dtb,memory,kernel-image,qemuopts,description
 DVAR,qemu-system-arm-2.7.0,vexpress-a9,arm11mpcore,,128M,zImage-3.16.57-vexpress,VEXPRESS1,TinysploitARM - Damn Vulnerable ARM Router
-TRI227WF,qemu-system-arm-4.1.0,versatilepb,,,128M,zImage-2.6.31-versatile-nothumb,VERSATILEPB,Trivision NC-227-WF IP Camera
+TRI227WF,qemu-system-arm-4.1.0,versatilepb,,,128M,zImage-2.6.28-versatile-nothumb,VERSATILEPB,Trivision NC-227-WF IP Camera
+AC15,qemu-system-arm-4.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Tenda AC15 Wi-Fi Router
+ARCHERC9,qemu-system-arm-4.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Archer C9 Wi-Fi Router

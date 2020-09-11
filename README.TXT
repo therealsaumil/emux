@@ -15,4 +15,6 @@ v1.1	March 2020
 
 v1.2	May 2020
 
-v1.3  June 2020
+v1.3	June 2020
+
+v1.4	September 2020

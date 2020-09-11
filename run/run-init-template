@@ -1,10 +1,16 @@
 #!/bin/bash
 
 armxdir=$(dirname $0)
+source ${armxdir}/../run/utils
+check_if_logging_required
 
 echo $$ > /tmp/armxstarted
 
+log "[+] ${ARMX} parseini config"
 source ${armxdir}/../run/parseini config
-source ${armxdir}/../run/loadnvram "$NVRAM"
-source ${armxdir}/../run/run-chroot
 
+log "[+] ${ARMX} loadnvram $NVRAM"
+source ${armxdir}/../run/loadnvram "$NVRAM"
+
+log "[+] ${ARMX} run-chroot"
+source ${armxdir}/../run/run-chroot
