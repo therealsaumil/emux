@@ -10,6 +10,13 @@ September 2020
 
 The ARM-X Firmware Emulation Framework is a collection of scripts, kernels and filesystems to be used with [QEMU][qemu] to emulate ARM/Linux IoT devices.  ARM-X is aimed to facilitate IoT research by virtualising as much of the physical device as possible. It is the closest we can get to an actual IoT VM.
 
+![ARM-X Launcher](docs/img/01-armx-launcher.png "ARM-X Launcher")
+
+> ### Shut up and give me the g00diez
+>
+> - VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
+> - Github: https://github.com/therealsaumil/armx
+
 [qemu]: https://www.qemu.org/
 
 Devices successfully emulated with ARM-X so far:
