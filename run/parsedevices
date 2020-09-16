@@ -2,12 +2,16 @@
 #
 # Parses the devices file
 
+source /armx/run/utils
+
 declare -a ids qemus machines cpus dtbs mems kernels qemuopts drives bootargs nics nets customs descs
 declare -A qmachine qdrives qbootargs qnics qnet qcustoms
 
 DEVICES="/armx/devices"
 QEMUOPTS="/armx/qemuopts"
 DEFAULT_NET="tap,ifname=tap0,script=no,downscript=no"
+
+log "[+] Parsing ${QEMUOPTS}"
 
 while IFS=',' read QMACHINE QDRIVE QBOOTCMD QNIC QNET QCUSTOM
 do
@@ -23,10 +27,12 @@ do
       fi
       qnet[$QMACHINE]=$QNET
       qcustoms[$QMACHINE]=$QCUSTOM
-      # Uncomment - for debugging purposes only
-      # echo "$QMACHINE|${qbootargs[$QMACHINE]}|${qdrives[$QMACHINE]}|${qbootargs[$QMACHINE]}|${qnics[$QMACHINE]}|${qnet[$QMACHINE]}|${qcustoms[$QMACHINE]}"
+
+      log "$QMACHINE|${qbootargs[$QMACHINE]}|${qdrives[$QMACHINE]}|${qbootargs[$QMACHINE]}|${qnics[$QMACHINE]}|${qnet[$QMACHINE]}|${qcustoms[$QMACHINE]}"
    fi
 done <<< "$(cat "${QEMUOPTS}" | sed -e 's/#.*//g')"
+
+log "[+] Parsing ${DEVICES}"
 
 count=0
 while IFS=',' read ID QEMU MACHINE CPU DTB MEM KERNEL QOPTS DESC
@@ -46,8 +52,9 @@ do
       nets[$count]=${qnet[$QOPTS]}
       descs[$count]=$DESC
       customs[$count]=${qcustoms[$QOPTS]}
-      # Uncomment - for debugging purposes only
-      # echo "${ids[$count]}|${qemus[$count]}|${machines[$count]}|${cpus[$count]}|${dtbs[$count]}|${mems[$count]}|${kernels[$count]}|${drives[$count]}|${bootargs[$count]}|${nics[$count]}|${nets[$count]}|${descs[$count]}"
+
+      log "${ids[$count]}|${qemus[$count]}|${machines[$count]}|${cpus[$count]}|${dtbs[$count]}|${mems[$count]}|${kernels[$count]}|${drives[$count]}|${bootargs[$count]}|${nics[$count]}|${nets[$count]}|${descs[$count]}"
+
       count=$((count + 1))
    fi
 done <<< "$(cat "${DEVICES}" | sed -e 's/#.*//g')"

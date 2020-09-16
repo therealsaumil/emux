@@ -5,6 +5,9 @@ css
 overlay
 publish.sh
 gethostfs.sh
+armxattackbox.sh
+armxvm.sh
+makehtml.sh
 full_version
 full_version/
 

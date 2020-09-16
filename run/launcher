@@ -7,6 +7,10 @@
 #
 # requires dialog to be installed
 
+source /armx/run/utils
+check_if_logging_required
+new_log
+
 source /armx/run/parsedevices
 
 hostfs=/armx/hostfs/hostfs.ext2
@@ -58,5 +62,9 @@ cp /armx/run/run-binsh-template /armx/${ids[$x]}/run-binsh
 
 echo ${ids[$x]} > /tmp/armxrunning
 
-eval "$qemucmd"
-
+if [ "$CONSOLELOGFILE" ]
+then
+   script -a -f -c "${qemucmd}" ${CONSOLELOGFILE}
+else
+   eval "$qemucmd"
+fi

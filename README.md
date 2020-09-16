@@ -4,11 +4,18 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-June 2020
+September 2020
 
 ![ARMX](docs/img/armx-banner.png "ARM-X")
 
 The ARM-X Firmware Emulation Framework is a collection of scripts, kernels and filesystems to be used with [QEMU][qemu] to emulate ARM/Linux IoT devices.  ARM-X is aimed to facilitate IoT research by virtualising as much of the physical device as possible. It is the closest we can get to an actual IoT VM.
+
+![ARM-X Launcher](docs/img/01-armx-launcher.png "ARM-X Launcher")
+
+> ### Shut up and give me the g00diez
+>
+> - VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
+> - Github: https://github.com/therealsaumil/armx
 
 [qemu]: https://www.qemu.org/
 
@@ -21,6 +28,7 @@ Devices successfully emulated with ARM-X so far:
 * Cisco RV130 Wi-Fi Router
 * Auerswald Comfortel 1200 VoIP Phone
 * [NEW! Tenda AC15 Wi-Fi Router][emulatingtenda]
+* NEW! Archer C9 Wi-Fi Router
 
 Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armfirmwarelab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
 
@@ -121,6 +129,16 @@ The following sample kernels are provided with the template.
 
 However, it is encouraged to build a compatible kernel from source.
 
+### The ARM-X Activity Log File
+
+The September 2020 release of ARM-X comes with a feature to enable activity logs. This comes in very handy in troubleshooting errors when adding a new device to ARM-X. To enable logging, run:
+
+```
+touch /armx/run/debug
+```
+
+Activity logs shall be placed in `/armx/run/logs/`
+
 ### ARM-X Presentations
 
 Presentation at [Countermeasure 2019][cmeasurecon] on 7 November 2019.
@@ -152,17 +170,18 @@ VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
 
 The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files of 200MB each, because several cloud hosting providers impose a maximum limit. To extract the VM, use the 7z command line utility:
 
-`7z e armx-june2020.7z.001`
+`7z e armx-september2020.7z.001`
 
 SHA 256 Checksums:
 
 ```
-714bddb26b19591f425b3465177ae98b347cbfb2a4b4e3343c39dc9c2438308d  armx-june2020.7z.001
-9f0d619aa597d5c8bc9285bd3d00ed170c65f059c644aed57762ccfab932f8ef  armx-june2020.7z.002
+65fbaf94ff55b8116e356e641416c22e292001b9b0c44d5895fece9943ef6045  armx-september2020.7z.001
+88f6f2a75fa4b9bae31f476ee388bee086f0abdea05bd296101151b2bb3b27a5  armx-september2020.7z.002
 
-719ea86fd0e7e826d201100296b8fe978cdb316fe480eca84a065e2e7a8c65ca  armx-june2020.vmx
-a18560126846bda69550866cb1c2abbc3e6f14dc608617bd3c6f29700ddbd44f  armx-s001.vmdk
-21d0566c06df51150b483458ab275ed564d9dd0673d2efd9d5b905a0b4f42993  armx.vmdk
+748710fe51b45b7b189e54151af104e40ae247aa9cce72d7e41bc1a454910e86  armx-september2020.vmx
+16281f6f7c13011c7794df1894d6526a3694c6ce4d3552fced6f0eef9e22526a  armx-s001.vmdk
+30555f66d296c8d8485b941eca5471f9547adf17f6d4e5e9e26d4f35d99c5ecb  armx-s002.vmdk
+aed1e528a53b1222c2d9ae56221ebe93103477d879d0b7e01f0687a6e9750b4b  armx.vmdk
 ```
 
 VirtualBox VM: (coming soon, but don't hold your breath)
@@ -191,3 +210,4 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v1.2  05-May-2020
 - v1.2  20-May-2020 (minor update)
 - v1.3  02-June-2020
+- v1.4  11-September-2020

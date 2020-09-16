@@ -4,36 +4,47 @@
 # variables of importance. Could write this
 # in a much better manner.
 
+source /armx/run/utils
+
 if [ "$1" = "" ]
 then
    echo "Usage: $0 <ini file>"
    exit
 fi
 
+log "[+] Parsing INI file $1"
+
 while IFS='=' read key value
 do
    case ${key} in
       id)
          ID="${value}"
+         log "ID=${ID}"
          ;;
       nvram)
          NVRAM="${value}"
+         log "NVRAM=${NVRAM}"
          ;;
       randomize_va_space)
          RANDOMIZE_VA_SPACE="${value}"
+         log "RANDOMIZE_VA_SPACE=${RANDOMIZE_VA_SPACE}"
          ;;
       legacy_va_layout)
          LEGACY_VA_LAYOUT="${value}"
+         log "LEGACY_VA_LAYOUT=${LEGACY_VA_LAYOUT}"
          ;;
       rootfs)
          ROOTFS="${value}"
+         log "ROOTFS=${ROOTFS}"
          ;;
       mount_dev_tree)
          MOUNTDEVTREE="${value}"
-	 ;;
+         log "MOUNTDEVTREE=${MOUNTDEVTREE}"
+      	;;
       ld_preload)
          PRELOADDIR="${value}"
-	 ;;
+         log "PRELOADDIR=${PRELOADDIR}"
+      	;;
       initcommands)
          if [ "${value}" = "" ]
          then
@@ -41,6 +52,7 @@ do
          else
             INITCOMMANDS="${value}"
          fi
+         log "INITCOMMANDS=${INITCOMMANDS}"
          ;;
    esac
 done <<< "$(cat "$1" | sed -e 's/#.*//g')"
