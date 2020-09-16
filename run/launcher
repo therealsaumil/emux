@@ -62,4 +62,9 @@ cp /armx/run/run-binsh-template /armx/${ids[$x]}/run-binsh
 
 echo ${ids[$x]} > /tmp/armxrunning
 
-eval "$qemucmd"
+if [ "$CONSOLELOGFILE" ]
+then
+   script -a -f -c "${qemucmd}" ${CONSOLELOGFILE}
+else
+   eval "$qemucmd"
+fi

@@ -3,6 +3,7 @@
 # Support functions for ARMX
 
 LOGFILENAME="/armx/run/logs/armxdebug.log"
+CONSOLELOG="/armx/run/logs/qemuconsole.log"
 
 log () {
    if [ "$ARMXLOGFILE" ]
@@ -15,6 +16,7 @@ check_if_logging_required () {
    if [ -f /armx/run/debug ]
    then
       export ARMXLOGFILE="$LOGFILENAME"
+      export CONSOLELOGFILE="$CONSOLELOG"
    fi
 }
 
@@ -23,5 +25,11 @@ new_log () {
    then
       rm -f "$LOGFILENAME"
       touch "$LOGFILENAME"
+   fi
+
+   if [ -f "$CONSOLELOG" ]
+   then
+      rm -f "$CONSOLELOG"
+      touch "$CONSOLELOG"
    fi
 }
