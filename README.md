@@ -27,7 +27,7 @@ Devices successfully emulated with ARM-X so far:
 * Trivision NC227WF Wireless IP Camera
 * Cisco RV130 Wi-Fi Router
 * Auerswald Comfortel 1200 VoIP Phone
-* [NEW! Tenda AC15 Wi-Fi Router][emulatingtenda]
+* [NEW! Tenda AC15 Wi-Fi Router][emulatingtenda] [(Github Docs)][md-emulatingtenda]
 * NEW! Archer C9 Wi-Fi Router
 
 Precursors of ARM-X have been used in Saumil Shah's popular [ARM IoT Exploit Laboratory][armfirmwarelab] training classes where students have found four 0-day vulnerabilities in various ARM/Linux IoT devices.
@@ -192,13 +192,17 @@ Github: https://github.com/therealsaumil/armx/
 
 ### ARM-X Documentation
 
-- Tutorial: [Debugging With ARM-X][debuggingwitharmx]
-- Case Study: [Emulating the Tenda AC15 Router][emulatingtenda]
-- Case Study: [Extracting the Tenda AC15 Firmware][fw-extraction]
+- Tutorial: [Debugging With ARM-X][debuggingwitharmx] [(Github Doc)][md-debuggingwitharmx]
+- Case Study: [Emulating the Tenda AC15 Router][emulatingtenda] [(Github Doc)][md-emulatingtenda]
+- Case Study: [Extracting the Tenda AC15 Firmware][fw-extraction] [(Github Doc)][md-fw-extraction]
 
 [debuggingwitharmx]: docs/debugging-with-armx.html
 [emulatingtenda]: docs/emulating-tenda-ac15.html
 [fw-extraction]: docs/extracting-tenda-ac15-firmware.html
+
+[md-debuggingwitharmx]: docs/debugging-with-armx.md
+[md-emulatingtenda]: docs/emulating-tenda-ac15.md
+[md-fw-extraction]: docs/extracting-tenda-ac15-firmware.md
 
 ### END
 
