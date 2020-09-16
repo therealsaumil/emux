@@ -56,6 +56,8 @@ fi
 append=${bootargs[$x]}
 
 qemucmd="/armx/run/${qemus[$x]} -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /armx/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} -append \"$append\" -net ${nics[$x]} -net tap,ifname=tap0,script=no,downscript=no -nographic"
+log "[+] QEMU Launch Command"
+log "${qemucmd}"
 
 cp /armx/run/run-init-template /armx/${ids[$x]}/run-init
 cp /armx/run/run-binsh-template /armx/${ids[$x]}/run-binsh
