@@ -432,6 +432,11 @@ back in its original location on the circuit board. We ended up damaging our
 circuit board in the process and for now, we have a bricked Tenda AC15 on our
 hands!
 
+**UPDATE** We managed to unbrick the Tenda AC15. We had a friend solder the
+SPI Flash Memory on the board and rig wires to the correct points on the PCB.
+
+![Chip Resurrected](img/tenda_spi_resurrected.jpg)
+
 ## 5. Credits
 
 I would like to thank my colleague [Jatan Raval][jatan] for working with me on

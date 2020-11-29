@@ -1,0 +1,49 @@
+# 16MiB, 512 bytes page
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0x33
+
+# 32MiB, 512 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0x35
+
+# 64MiB, 512 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0x36
+
+# 128MiB, 512 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0x78
+
+# 256MiB, 512 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0x71
+
+# 64MiB, 2048 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0xa2
+#nandsim.third_id_byte=0x00
+#nandsim.fourth_id_byte=0x15
+
+# 128MiB, 2048 bytes page;
+#nandsim.first_id_byte=0xec
+#nandsim.second_id_byte=0xa1
+#nandsim.third_id_byte=0x00
+#nandsim.fourth_id_byte=0x15
+
+# 256MiB, 2048 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0xaa
+#nandsim.third_id_byte=0x00
+#nandsim.fourth_id_byte=0x15
+
+# 512MiB, 2048 bytes page;
+#nandsim.first_id_byte=0x20
+#nandsim.second_id_byte=0xac
+#nandsim.third_id_byte=0x00
+#nandsim.fourth_id_byte=0x15
+
+# 1GiB, 2048 bytes page;
+#nandsim.first_id_byte=0xec
+#nandsim.second_id_byte=0xd3
+#nandsim.third_id_byte=0x51
+#nandsim.fourth_id_byte=0x95

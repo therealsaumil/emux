@@ -4,11 +4,12 @@
 
 source /armx/run/utils
 
-declare -a ids qemus machines cpus dtbs mems kernels qemuopts drives bootargs nics nets customs descs
+declare -a ids qemus machines cpus dtbs mems kernels qemuopts mtdparts drives bootargs nics nets customs descs
 declare -A qmachine qdrives qbootargs qnics qnet qcustoms
 
-DEVICES="/armx/devices"
-QEMUOPTS="/armx/qemuopts"
+ARMXROOT="/armx"
+DEVICES="${ARMXROOT}/devices"
+QEMUOPTS="${ARMXROOT}/qemuopts"
 DEFAULT_NET="tap,ifname=tap0,script=no,downscript=no"
 
 log "[+] Parsing ${QEMUOPTS}"
@@ -47,7 +48,14 @@ do
       mems[$count]=$MEM
       kernels[$count]=$KERNEL
       drives[$count]=${qdrives[$QOPTS]}
-      bootargs[$count]="${qbootargs[$QOPTS]} ARMX=$ID"
+      mtdfile="${ARMXROOT}/${ID}/mtdparts"
+      if [ -r "${mtdfile}" ]
+      then
+         mtdparts[$count]="$(cat ${mtdfile} | grep -v '#' | tr -s '\n' ' ')"
+         bootargs[$count]="${qbootargs[$QOPTS]} ${mtdparts[$count]} ARMX=$ID"
+      else
+         bootargs[$count]="${qbootargs[$QOPTS]} ARMX=$ID"
+      fi
       nics[$count]=${qnics[$QOPTS]}
       nets[$count]=${qnet[$QOPTS]}
       descs[$count]=$DESC
