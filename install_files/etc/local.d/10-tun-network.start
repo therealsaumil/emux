@@ -1,0 +1,20 @@
+
+
+#!/bin/sh
+chown root:kali /dev/net/tun
+chmod g+rw /dev/net/tun
+tunctl -t tap0 -u kali
+ifconfig tap0 192.168.100.1 up
+tunctl -t tap1 -u kali
+ifconfig tap1 192.168.200.1 up
+tunctl -t tap2 -u kali
+ifconfig tap2 192.168.250.1 up
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -I FORWARD 1 -i tap0 -j ACCEPT
+iptables -I FORWARD 1 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -I FORWARD 1 -i tap1 -j ACCEPT
+iptables -I FORWARD 1 -o tap1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -I FORWARD 1 -i tap2 -j ACCEPT
+iptables -I FORWARD 1 -o tap2 -m state --state RELATED,ESTABLISHED -j ACCEPT
+
