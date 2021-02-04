@@ -195,12 +195,11 @@ Github: https://github.com/therealsaumil/armx/
 - Tutorial: [Debugging With ARM-X][debuggingwitharmx] [(Github Doc)][md-debuggingwitharmx]
 - Case Study: [Emulating the Tenda AC15 Router][emulatingtenda] [(Github Doc)][md-emulatingtenda]
 - Case Study: [Extracting the Tenda AC15 Firmware][fw-extraction] [(Github Doc)][md-fw-extraction]
-- Install guide: [Installing ARMX on Kali][install-kali] [(Github Doc)][md-install-kali]
+- Install guide: [Installing ARMX on Kali] [md-install-kali]
 
 [debuggingwitharmx]: docs/debugging-with-armx.html
 [emulatingtenda]: docs/emulating-tenda-ac15.html
 [fw-extraction]: docs/extracting-tenda-ac15-firmware.html
-[install-kali]: docs/install-armx-kali.html
 
 [md-debuggingwitharmx]: docs/debugging-with-armx.md
 [md-emulatingtenda]: docs/emulating-tenda-ac15.md
