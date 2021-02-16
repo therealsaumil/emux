@@ -1,0 +1,6 @@
+#!/bin/sh
+# ugly fix for restarting all the three tap interfaces
+# after VM is resumed from suspension
+ifconfig tap0 192.168.100.1 up
+ifconfig tap1 192.168.200.1 up
+ifconfig tap2 192.168.250.1 up
