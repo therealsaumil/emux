@@ -8,6 +8,7 @@
 # requires dialog to be installed
 
 source /armx/run/utils
+uncompress_qemu_roms
 check_if_logging_required
 new_log
 

@@ -33,3 +33,12 @@ new_log () {
       touch "$CONSOLELOG"
    fi
 }
+
+uncompress_qemu_roms () {
+   # uncompress /armx/share/qemu.zip
+   # when we are running for the first time
+   if [ ! -d /armx/share/qemu/ ]
+   then
+      unzip /armx/share/qemu.zip -d /armx/share/
+   fi
+}
