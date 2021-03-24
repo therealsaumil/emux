@@ -4,7 +4,7 @@
 
 source /armx/run/utils
 
-declare -a ids qemus machines cpus dtbs mems kernels qemuopts mtdparts drives bootargs nics nets customs descs
+declare -a ids qemus machines cpus dtbs mems kernels qemuopts mtdparts flashfile flashargs drives bootargs nics nets customs descs
 declare -A qmachine qdrives qbootargs qnics qnet qcustoms
 
 ARMXROOT="/armx"
@@ -48,10 +48,19 @@ do
       mems[$count]=$MEM
       kernels[$count]=$KERNEL
       drives[$count]=${qdrives[$QOPTS]}
+
+      # check if the device has an mtdparts file, in which case
+      # we will need to set up QEMU options for enabling VEXPRESS' NOR flash memory
+      #
+      # two files will be designated, to hold 64MB of contents each:
+      # /armx/DEVICE/flash0.bin
+      # /armx/DEVICE/flash1.bin
       mtdfile="${ARMXROOT}/${ID}/mtdparts"
       if [ -r "${mtdfile}" ]
       then
          mtdparts[$count]="$(cat ${mtdfile} | grep -v '#' | tr -s '\n' ' ')"
+         flashfile[$count]="${ARMXROOT}/${ID}/flashmem/flash"
+         flashargs[$count]="-drive file=${flashfile[$count]}0.bin,if=pflash -drive file=${flashfile[$count]}1.bin,if=pflash"
          bootargs[$count]="${qbootargs[$QOPTS]} ${mtdparts[$count]} ARMX=$ID"
       else
          bootargs[$count]="${qbootargs[$QOPTS]} ARMX=$ID"
@@ -61,7 +70,7 @@ do
       descs[$count]=$DESC
       customs[$count]=${qcustoms[$QOPTS]}
 
-      log "${ids[$count]}|${qemus[$count]}|${machines[$count]}|${cpus[$count]}|${dtbs[$count]}|${mems[$count]}|${kernels[$count]}|${drives[$count]}|${bootargs[$count]}|${nics[$count]}|${nets[$count]}|${descs[$count]}"
+      log "${ids[$count]}|${qemus[$count]}|${machines[$count]}|${cpus[$count]}|${dtbs[$count]}|${mems[$count]}|${kernels[$count]}|${drives[$count]}|${bootargs[$count]}|${flashargs[$count]}|${nics[$count]}|${nets[$count]}|${descs[$count]}"
 
       count=$((count + 1))
    fi

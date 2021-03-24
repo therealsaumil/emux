@@ -1,0 +1,60 @@
+#!/bin/bash
+#
+# Utility script to process the output of /proc/mtd
+# and join any mtdblocks found into a contiguous flash bin file
+
+if [ "$1" = "" ]
+then
+   echo "Usage: $0 <output_of_proc_mtd>"
+   exit
+fi
+
+total_bytes=0
+output="flashmem.bin"
+rm -f ${output}
+
+while IFS=' ' read MTD SIZE ERASEBLOCK NAME
+do
+   id=$(echo $MTD | sed -e 's/mtd//' | tr -d ':')
+   size=$(( 16#${SIZE} ))
+   remainder=$(( ${size} % 4096 ))
+   name=$(echo $NAME | tr -d '"')
+
+   if [ ${remainder} -eq 0 ]
+   then
+      total_bytes=$(( ${total_bytes} + ${size} ))
+      echo "mtd${id} $name $size"
+
+      if [ -f mtd${id} ]
+      then
+         cat mtd${id} >> ${output}
+      fi
+
+      if [ -f mtdblock${id} ]
+      then
+         cat mtdblock${id} >> ${output}
+      fi
+   else
+      echo "[-] mtd${id} $name $size (offset)"
+   fi
+done <<< "$(cat $1 | grep -v '#' | grep 'mtd')"
+echo "Total bytes: ${total_bytes}"
+
+if [ ${total_bytes} -le 134217728 ]
+then
+   difference=$(( 134217728 - ${total_bytes} ))
+   pad_blocks=$(( $difference / 4096 ))
+   echo "Appending ${difference} bytes as padding"
+   dd if=/dev/zero of=padding bs=4096 count=${pad_blocks}
+   cat padding >> ${output}
+   rm -f padding
+fi
+
+echo "Creating 2 x 64MB flash memory files"
+split -a 1 -b 64m ${output} flash
+mv flasha flash0.bin
+mv flashb flash1.bin
+rm -f ${output}
+echo "Done"
+ls -s flash*.bin
+

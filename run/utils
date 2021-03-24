@@ -37,8 +37,19 @@ new_log () {
 uncompress_qemu_roms () {
    # uncompress /armx/share/qemu.zip
    # when we are running for the first time
+   echo "Uncompressing ROMs"
    if [ ! -d /armx/share/qemu/ ]
    then
       unzip /armx/share/qemu.zip -d /armx/share/
+   fi
+}
+
+uncompress_hostfs () {
+   # uncompress /armx/hostfs/hostfs.ext2.zip
+   # when we are running for the first time
+   echo "Uncompressing hostfs"
+   if [ ! -f /armx/hostfs/hostfs.ext2 ]
+   then
+      unzip /armx/hostfs/hostfs.ext2.zip -d /armx/hostfs/
    fi
 }
