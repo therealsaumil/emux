@@ -34,6 +34,16 @@ do
       then
          cat mtdblock${id} >> ${output}
       fi
+
+      if [ -f mtd${id}.bin ]
+      then
+         cat mtd${id}.bin >> ${output}
+      fi
+
+      if [ -f mtdblock${id}.bin ]
+      then
+         cat mtdblock${id}.bin >> ${output}
+      fi
    else
       echo "[-] mtd${id} $name $size (offset)"
    fi

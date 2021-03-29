@@ -65,16 +65,24 @@ log "${qemucmd}"
 # they need to be created, otherwise QEMU won't run
 
 log "[+] Checking if flash memory files need to be created for ${ids[$x]}"
-flashfile0="${flashfile[$x]}0.bin"
-flashfile1="${flashfile[$x]}1.bin"
-if [ ! -f ${flashfile0} ] || [ ! -f  ${flashfile1} ]
+if [ "${flashfile[$x]}" != "" ]
 then
-   log "[+] flash memory files not found"
-   log "Creating ${flashfile0}"
-   mkdir -p $(dirname ${flashfile0})
-   dd if=/dev/zero of=${flashfile0} bs=1M count=64
-   log "Creating ${flashfile1}"
-   dd if=/dev/zero of=${flashfile1} bs=1M count=64
+   flashfile0="${flashfile[$x]}0.bin"
+   flashfile1="${flashfile[$x]}1.bin"
+   if [ ! -f ${flashfile0} ] || [ ! -f  ${flashfile1} ]
+   then
+      log "[+] flash memory files not found"
+      log "Creating ${flashfile0}"
+      mkdir -p $(dirname ${flashfile0})
+      dd if=/dev/zero of=${flashfile0} bs=1M count=64
+      log "Creating ${flashfile1}"
+      dd if=/dev/zero of=${flashfile1} bs=1M count=64
+   else
+      log "[+] ${flashfile0} exists"
+      log "[+] ${flashfile1} exists"
+   fi
+else
+   log "[+] mtdparts not present"
 fi
 
 cp /armx/run/run-init-template /armx/${ids[$x]}/run-init
