@@ -34,7 +34,8 @@ overlay
 *.jar
 *.rar
 *.tar
-#*.zip
+*.zip
+*.ova
 
 # Logs and databases #
 ######################
@@ -51,3 +52,7 @@ overlay
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# vbox conversion #
+######################
+vbox_conversion/*images/*
