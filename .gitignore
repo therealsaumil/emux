@@ -3,6 +3,8 @@ notes.txt
 images
 *.html
 *.sh
+!build-armx-docker.sh
+!run-armx-docker.sh
 css
 overlay
 
