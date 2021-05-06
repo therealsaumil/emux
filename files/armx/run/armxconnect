@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tmux -u new-window -n "ARM-X SSH" ssh root@192.168.100.2

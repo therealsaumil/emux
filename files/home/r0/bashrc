@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Ignore case during tab completion.
+bind 'set completion-ignore-case on'
+
+export PS1="\u@armx-docker:\w\\$ "
+export PATH="$PATH:/armx/run"

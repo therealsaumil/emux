@@ -1,0 +1,11 @@
+#!/bin/bash
+
+armxdir=$(dirname $0)
+source ${armxdir}/../run/utils
+check_if_logging_required
+
+log "[+] ${ARMX} parseini config"
+source ${armxdir}/../run/parseini config
+
+log "[+] ${ARMX} run-chroot shell"
+source ${armxdir}/../run/run-chroot shell

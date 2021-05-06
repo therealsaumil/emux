@@ -1,0 +1,5 @@
+#!/bin/bash
+
+tmux -u new-session -s "ARM-X" -d
+tmux -u new-window -n "ARM-X Launcher" /armx/run/launcher
+tmux -u -2 attach-session -d
