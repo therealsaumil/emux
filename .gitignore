@@ -5,6 +5,8 @@ images
 *.sh
 !build-armx-docker.sh
 !run-armx-docker.sh
+!clean-armx-files.sh
+!docker-entrypoint.sh
 css
 overlay
 
