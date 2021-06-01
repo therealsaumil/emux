@@ -14,6 +14,12 @@ fi
 
 log "[+] Parsing INI file $1"
 
+# change to the directory containing the ini file
+# and then perform all the actions
+
+CWD=$(pwd)
+cd $(dirname "$1")
+
 while IFS='=' read key value
 do
    case ${key} in
@@ -69,3 +75,5 @@ do
          ;;
    esac
 done <<< "$(cat "$1" | sed -e 's/#.*//g')"
+
+cd ${CWD}

@@ -5,7 +5,7 @@
 #
 # Requires a parameter - pid or process name
 
-gdb="arm-linux-gnueabi-gdb"
+gdb="gdb-multiarch"
 
 if [ "$1" = "" ]
 then

@@ -3,12 +3,20 @@ notes.txt
 images
 *.html
 *.sh
-!build-armx-docker.sh
-!run-armx-docker.sh
-!clean-armx-files.sh
 !docker-entrypoint.sh
 css
 overlay
+
+# ARM-X Images only for private distribution #
+##############################################
+files/armx/[A-Z0-9]*
+files/armx/devices-extra
+!files/armx/run
+!files/armx/*.TXT
+!files/armx/AC15
+!files/armx/ARCHERC9
+!files/armx/DVAR
+!files/armx/TRI227WF
 
 *.swp
 *.psd

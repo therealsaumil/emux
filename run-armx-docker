@@ -1,0 +1,34 @@
+#!/bin/bash
+
+OWNERNAME="therealsaumil"
+IMAGENAME="armx"
+TAGNAME="04-2021"
+VOL="armxvol"
+PORTSTRING=""
+
+if [ "${PORTFWD}" = "" ]
+then
+   PORTFWD="20080:80,20443:443,28080:8080"
+fi
+
+PORTFWD=$(echo ${PORTFWD} | tr -cd [0-9,:])
+
+IFS=',' read -ra PORTLIST <<< "${PORTFWD}"
+for PORTPAIR in "${PORTLIST[@]}"
+do
+   SPORT=$(echo ${PORTPAIR} | cut -d':' -f1)
+   PORTSTRING="${PORTSTRING} -p ${SPORT}:${SPORT}"
+done
+
+docker run \
+	-it \
+	${PORTSTRING} \
+	-e PORTFWD="${PORTFWD}" \
+	--rm \
+	--cap-add=NET_ADMIN \
+	--cap-add=SYS_ADMIN \
+	--device=/dev/net/tun \
+	--name armx-docker \
+	--mount "type=volume,src=${VOL},dst=/armx" \
+	--mount "type=bind,src=$(pwd)/workspace,dst=/home/r0/workspace" \
+	$OWNERNAME/$IMAGENAME:$TAGNAME $*

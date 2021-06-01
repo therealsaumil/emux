@@ -1,0 +1,29 @@
+#!/bin/sh
+
+VOL="armxvol"
+SRC="files/armx"
+DEST="/armx"
+
+# remove volumes if they exist
+echo "Removing ${VOL}"
+docker volume rm ${VOL}
+
+echo "Removing null image"
+docker rmi null
+
+echo "Creating ${VOL} afresh"
+docker volume create --name ${VOL}
+
+echo "Making a new null image"
+docker build -t null -f Dockerfile-null .
+docker container create --name empty -v ${VOL}:${DEST} null
+
+echo "Copying from ${SRC} to ${DEST}"
+for s in ${SRC}/*
+do
+   echo "$s -> ${DEST}"
+   docker cp $s empty:${DEST}
+done
+
+echo "Done..cleaning up containers"
+docker rm empty

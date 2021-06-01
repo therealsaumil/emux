@@ -1,3 +1,0 @@
-#!/bin/bash
-
-tmux -u kill-session -t ARM-X

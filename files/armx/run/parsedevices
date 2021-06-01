@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 # Parses the devices file
+# If devices-extra is present, it is appended to
+# the devices file.
 
 source /armx/run/utils
 
@@ -9,6 +11,18 @@ declare -A qmachine qdrives qbootargs qnics qnet qcustoms
 
 ARMXROOT="/armx"
 DEVICES="${ARMXROOT}/devices"
+
+if [ ! -f ${DEVICES} ]
+then
+   fatalerror "${DEVICES} not present. Cannot continue"
+fi
+
+DEVICESEXTRA=""
+if [ -f "${ARMXROOT}/devices-extra" ]
+then
+   log "[+] devices-extra found"
+   DEVICESEXTRA="${ARMXROOT}/devices-extra"
+fi
 QEMUOPTS="${ARMXROOT}/qemuopts"
 DEFAULT_NET="tap,ifname=tap0,script=no,downscript=no"
 
@@ -50,7 +64,7 @@ do
       drives[$count]=${qdrives[$QOPTS]}
 
       # check if the device has an mtdparts file, in which case
-      # we will need to set up QEMU options for enabling VEXPRESS' NOR flash memory
+      # we need to set up QEMU options for enabling VEXPRESS' NOR flash memory
       #
       # two files will be designated, to hold 64MB of contents each:
       # /armx/DEVICE/flash0.bin
@@ -74,4 +88,4 @@ do
 
       count=$((count + 1))
    fi
-done <<< "$(cat "${DEVICES}" | sed -e 's/#.*//g')"
+done <<< "$(cat ${DEVICES} ${DEVICESEXTRA} | sed -e 's/#.*//g')"

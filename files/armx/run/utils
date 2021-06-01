@@ -44,6 +44,14 @@ new_log () {
    fi
 }
 
+check_armx_volume_permissions() {
+   if [ "$(stat -c '%U:%G' /armx/devices)" != "r0:r0" ]
+   then
+      echo "Setting permissions for /armx"
+      sudo chown -R r0:r0 /armx
+   fi
+}
+
 uncompress_qemu_roms () {
    # uncompress /armx/share/qemu.tar.bz2
    # when we are running for the first time
