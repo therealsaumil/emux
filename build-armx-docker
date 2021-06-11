@@ -3,7 +3,7 @@
 OWNERNAME="therealsaumil"
 IMAGENAME="armx"
 TAGNAME="04-2021"
-VOL="armxvol"
+VOL="harambe"
 
 # check if the volume exists, otherwise refuse to build. It doesn't
 # matter really, but nice to ensure that the volume is built, to prevent

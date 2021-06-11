@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VOL="armxvol"
+VOL="harambe"
 SRC="files/armx"
 DEST="/armx"
 
