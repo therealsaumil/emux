@@ -6,6 +6,8 @@ images
 !docker-entrypoint.sh
 css
 overlay
+workspace/*
+!workspace/WORKSPACE_README.TXT
 
 # ARM-X Images only for private distribution #
 ##############################################
