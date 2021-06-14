@@ -1,0 +1,142 @@
+[context]
+clear_screen = False
+enable = True
+grow_stack_down = False
+ignore_registers = 
+layout = regs stack code args source memory threads trace extra
+libc_args = False
+libc_args_path = 
+nb_lines_backtrace = 10
+nb_lines_code = 6
+nb_lines_code_prev = 3
+nb_lines_stack = 8
+nb_lines_threads = -1
+peek_calls = True
+peek_ret = True
+redirect = 
+show_opcodes_size = 0
+show_registers_raw = False
+show_source_code_variable_values = True
+show_stack_raw = False
+use_capstone = False
+
+[dereference]
+max_recursion = 7
+
+[entry-break]
+entrypoint_symbols = main _main __libc_start_main __uClibc_main start _start
+
+[gef-remote]
+clean_on_exit = False
+
+[gef]
+autosave_breakpoints_file = 
+debug = False
+disable_color = False
+extra_plugins_dir = 
+follow_child = True
+readline_compat = False
+tempdir = /tmp/gef
+
+[got]
+function_not_resolved = yellow
+function_resolved = green
+
+[heap-analysis-helper]
+check_double_free = True
+check_free_null = False
+check_heap_overlap = True
+check_uaf = True
+check_weird_free = True
+
+[heap-chunks]
+peek_nb_byte = 16
+
+[hexdump]
+always_show_ascii = False
+
+[highlight]
+regex = False
+
+[ida-interact]
+host = 127.0.0.1
+port = 1337
+sync_cursor = False
+
+[pattern]
+length = 1024
+
+[pcustom]
+max_depth = 4
+struct_path = /tmp/gef/structs
+structure_name = bold blue
+structure_size = green
+structure_type = bold red
+
+[process-search]
+ps_command = /bin/ps auxww
+
+[syscall-args]
+path = /tmp/gef/syscall-tables
+
+[theme]
+address_code = red
+address_heap = green
+address_stack = pink
+context_title_line = gray
+context_title_message = cyan
+default_title_line = gray
+default_title_message = cyan
+dereference_base_address = cyan
+dereference_code = gray
+dereference_register_value = bold blue
+dereference_string = yellow
+disassemble_current_instruction = green
+old_context = gray
+registers_register_name = blue
+registers_value_changed = bold red
+source_current_line = green
+table_heading = blue
+
+[trace-run]
+max_tracing_recursion = 1
+tracefile_prefix = ./gef-trace-
+
+[unicorn-emulate]
+show_disassembly = False
+verbose = False
+
+[aliases]
+pf = print-format
+status = process-status
+binaryninja-interact = ida-interact
+bn = ida-interact
+binja = ida-interact
+lookup = scan
+grep = search-pattern
+xref = search-pattern
+flags = edit-flags
+emulate = unicorn-emulate
+cs-dis = capstone-disassemble
+sc-search = shellcode search
+sc-get = shellcode get
+ps = process-search
+start = entry-break
+nb = name-break
+ctx = context
+telescope = dereference
+pattern offset = pattern search
+hl = highlight
+highlight ls = highlight list
+hll = highlight list
+hlc = highlight clear
+highlight set = highlight add
+hla = highlight add
+highlight delete = highlight remove
+highlight del = highlight remove
+highlight unset = highlight remove
+highlight rm = highlight remove
+hlr = highlight remove
+fmtstr-helper = format-string-helper
+screen-setup = tmux-setup
+

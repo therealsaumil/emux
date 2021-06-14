@@ -1,0 +1,5 @@
+set follow-fork-mode child
+set input-radix 0x10
+set output-radix 0x10
+set remotetimeout 100
+source ~/.gdbinit-gef.py
