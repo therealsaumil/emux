@@ -2,8 +2,8 @@
 #
 # Support functions for ARMX
 
-LOGFILENAME="/armx/run/logs/armxdebug.log"
-CONSOLELOG="/armx/run/logs/qemuconsole.log"
+ARMXDEBUGLOG="armxdebug.log"
+QEMUCONSOLELOG="qemuconsole.log"
 
 log () {
    if [ "$ARMXLOGFILE" ]
@@ -25,22 +25,27 @@ fatalerror () {
 check_if_logging_required () {
    if [ -f /armx/run/debug ]
    then
-      export ARMXLOGFILE="$LOGFILENAME"
-      export CONSOLELOGFILE="$CONSOLELOG"
+      LOGPATH=$(cat /armx/run/debug | head -1)
+      if [ ! -d ${LOGPATH} ]
+      then
+         LOGPATH="/armx/run/logs"
+      fi
+      export ARMXLOGFILE="${LOGPATH}/${ARMXDEBUGLOG}"
+      export CONSOLELOGFILE="${LOGPATH}/${QEMUCONSOLELOG}"
    fi
 }
 
 new_log () {
-   if [ -f "$LOGFILENAME" ]
+   if [ -f "${ARMXLOGFILE}" ]
    then
-      rm -f "$LOGFILENAME"
-      touch "$LOGFILENAME"
+      rm -f "${ARMXLOGFILE}"
+      touch "${ARMXLOGFILE}"
    fi
 
-   if [ -f "$CONSOLELOG" ]
+   if [ -f "${CONSOLELOGFILE}" ]
    then
-      rm -f "$CONSOLELOG"
-      touch "$CONSOLELOG"
+      rm -f "${CONSOLELOGFILE}"
+      touch "${CONSOLELOGFILE}"
    fi
 }
 
