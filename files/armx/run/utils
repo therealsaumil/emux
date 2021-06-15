@@ -4,11 +4,14 @@
 
 ARMXDEBUGLOG="armxdebug.log"
 QEMUCONSOLELOG="qemuconsole.log"
+DEBUGINDICATOR="/armx/debuglogs"
 
 log () {
    if [ "$ARMXLOGFILE" ]
    then
       echo "$*" >> $ARMXLOGFILE
+   else
+      echo "$*"
    fi
 }
 
@@ -23,15 +26,24 @@ fatalerror () {
 }
 
 check_if_logging_required () {
-   if [ -f /armx/run/debug ]
+   if [ -f ${DEBUGINDICATOR} ]
    then
-      LOGPATH=$(cat /armx/run/debug | head -1)
-      if [ ! -d ${LOGPATH} ]
+      DEBUGLOGS=$(cat ${DEBUGINDICATOR} | grep '=' | grep -v '#' | head -1 \
+                                        | sed -e 's/^ *//' -e 's/ *$//' -e 's/ *= */=/' -e 's/\/$//')
+      if [ "${DEBUGLOGS}" != "" ]
       then
-         LOGPATH="/armx/run/logs"
+         echo "[+] Logging enabled"
+         LOGPATH=$(echo ${DEBUGLOGS} | cut -d'=' -f2)
+         if [ ! -d ${LOGPATH} ]
+         then
+            echo "[+] Creating log directory ${LOGPATH}"
+            mkdir -p "${LOGPATH}"
+         fi
+         export ARMXLOGFILE="${LOGPATH}/${ARMXDEBUGLOG}"
+         export CONSOLELOGFILE="${LOGPATH}/${QEMUCONSOLELOG}"
+         echo "[+] ARMX Debug log - ${ARMXLOGFILE}"
+         echo "[+] QEMU Console log - ${QEMUCONSOLELOG}"
       fi
-      export ARMXLOGFILE="${LOGPATH}/${ARMXDEBUGLOG}"
-      export CONSOLELOGFILE="${LOGPATH}/${QEMUCONSOLELOG}"
    fi
 }
 

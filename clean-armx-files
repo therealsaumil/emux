@@ -5,10 +5,10 @@ echo "Cleaning files/armx/share/qemu"
 rm -Rf armx/share/qemu
 echo "Cleaning files/armx/hostfs/hostfs.ext2"
 rm -f armx/hostfs/hostfs.ext2
-echo "Cleaning files/armx/run/debug"
-rm -f armx/run/debug
-echo "Cleaning files/armx/run/logs/*.log"
-rm -f armx/run/logs/*.log
+echo "Cleaning files/armx/debuglogs"
+rm -f armx/debuglogs
+echo "Cleaning files/armx/logs/*.log"
+rm -f armx/logs/*.log
 echo "Cleaning up flash[01].bin files"
 find . -name "flash[01].bin" -print -exec rm {} \;
 echo "Cleaning up run-binsh/run-init files"

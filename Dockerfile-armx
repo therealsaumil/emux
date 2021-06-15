@@ -1,3 +1,6 @@
+# Dockerfile for ARMX-Docker
+# by Saumil Shah
+
 FROM alpine:latest
 
 # Install packages
@@ -17,6 +20,7 @@ RUN apk add \
 	nfs-utils squashfs-tools cramfs \
 	tinyproxy \
 	socat \
+	busybox-extras \
 	--no-cache
 
 # Install Python packages
@@ -77,4 +81,3 @@ USER r0
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]
-

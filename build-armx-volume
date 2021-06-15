@@ -15,7 +15,7 @@ echo "Creating ${VOL} afresh"
 docker volume create --name ${VOL}
 
 echo "Making a new null image"
-docker build -t null -f Dockerfile-null .
+docker build -t null -f Dockerfile-vol .
 docker container create --name empty -v ${VOL}:${DEST} null
 
 echo "Copying from ${SRC} to ${DEST}"
