@@ -11,7 +11,7 @@ fi
 
 if [ "$1" = "" ]
 then
-   docker exec -it ${CNAME} /bin/bash
+   docker exec -e ARMXDOCKERSHELL=1 -it ${CNAME} /bin/bash
 else
    docker exec -it ${CNAME} $@
 fi

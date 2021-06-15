@@ -35,6 +35,9 @@ echo '  / _ \  / |\/) )  (   @therealsaumil | armx.exploitlab.net'
 echo ' /_/ \_\_\_| /_/_/\_\'
 echo
 
-export PS1="\u@armx-docker:\w\\$ "
+if [ "$ARMXDOCKERSHELL" = "" ]
+then
+   export PS1="\[\033[97;105m\][\u@armx-docker:\w\$]\[\033[0m\] "
+fi
 
 exec "$@"

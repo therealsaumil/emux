@@ -3,5 +3,8 @@
 # Ignore case during tab completion.
 bind 'set completion-ignore-case on'
 
-export PS1="\u@armx-docker:\w\\$ "
+if [ "${ARMXDOCKERSHELL}" = "1" ]
+then
+   export PS1="\[\033[97;44m\][\u@armx-docker shell:\w\$]\[\033[0m\] "
+fi
 export PATH="$PATH:/armx/run"
