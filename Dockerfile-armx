@@ -10,7 +10,7 @@ RUN apk add \
 	util-linux \
 	iputils iproute2 \
 	build-base \
-	python3 python3-dev py3-pip \
+	python3 python3-dev py3-pip python2 \
 	openssh-client openssl openssl-dev \
 	libffi-dev \
 	xz-dev \
@@ -20,6 +20,7 @@ RUN apk add \
 	nfs-utils squashfs-tools cramfs \
 	tinyproxy \
 	socat \
+	netcat-openbsd \
 	busybox-extras \
 	--no-cache
 

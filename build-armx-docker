@@ -2,7 +2,7 @@
 
 OWNERNAME="therealsaumil"
 IMAGENAME="armx"
-TAGNAME="04-2021"
+TAGNAME="06-2021"
 VOL="harambe"
 
 # check if the volume exists, otherwise refuse to build. It doesn't
