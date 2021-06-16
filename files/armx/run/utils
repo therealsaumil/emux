@@ -10,8 +10,6 @@ log () {
    if [ "$ARMXLOGFILE" ]
    then
       echo "$*" >> $ARMXLOGFILE
-   else
-      echo "$*"
    fi
 }
 
