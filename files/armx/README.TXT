@@ -18,3 +18,6 @@ v1.2	May 2020
 v1.3	June 2020
 
 v1.4	September 2020
+
+v2.0	ARMX on Docker
+	June 2021

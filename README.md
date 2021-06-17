@@ -4,18 +4,77 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-February 2021
+June 2021
+
+## NEW RELEASE: ARM-X ON DOCKER
+
+![ARMX Docker](docs/img/armx-docker-whale2.jpg)
+
+A brand new Docker container running ARMX. Going ahead, all official ARMX releases shall be released as Docker images. Lightweight, Compact, Easy.
+
+> ### Shut up and give me the g00diez
+>
+> Github: https://github.com/therealsaumil/armx
+>
+> A brand new ARM-X Docker image is ready for use! The old "Preview VM" is now discontinued in favour of the Docker image.
+
+### QUICK INSTALL STEPS
+
+#### Step 1 - Clone this repository
+
+```
+git clone --depth 1 --single-branch  https://github.com/therealsaumil/armx.git
+```
+
+#### Step 2 - Build the docker volume and image
+
+```
+cd armx
+./build-armx-volume
+./build-armx-docker
+```
+
+#### Step 3 - Run ARMX!
+
+Open a terminal, and start the `armx-docker` container:
+
+```
+./run-armx-docker
+```
+
+You will be greeted with a purple shell prompt. After a while, it is common to have many terminals attached to the container. Coloured shell prompts makes it easy to remember where you are.
+
+Next, start the ARMX `launcher`:
+
+```
+launcher
+```
+
+and select any emulated device that you wish to run.
+
+#### Step 4 - Launch the emulated device's userland processes.
+
+Next, open a new terminal and attach to the running `armx-docker` container:
+
+```
+./armx-docker-shell
+```
+
+All attached container shells have a blue shell prompt. Invoke the `userspace` command to bring up the userland processes of the emulated target:
+
+```
+userspace
+```
+
+Read the documentation for more details.
+
+## INTRODUCING
 
 ![ARMX](docs/img/armx-banner.png "ARM-X")
 
 The ARM-X Firmware Emulation Framework is a collection of scripts, kernels and filesystems to be used with [QEMU][qemu] to emulate ARM/Linux IoT devices.  ARM-X is aimed to facilitate IoT research by virtualising as much of the physical device as possible. It is the closest we can get to an actual IoT VM.
 
 ![ARM-X Launcher](docs/img/01-armx-launcher.png "ARM-X Launcher")
-
-> ### Shut up and give me the g00diez
->
-> - VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
-> - Github: https://github.com/therealsaumil/armx
 
 [qemu]: https://www.qemu.org/
 
@@ -131,7 +190,7 @@ However, it is encouraged to build a compatible kernel from source.
 
 ### The ARM-X Activity Log File
 
-The September 2020 release of ARM-X comes with a feature to enable activity logs. This comes in very handy in troubleshooting errors when adding a new device to ARM-X. To enable logging, run:
+The June 2021 release of ARM-X comes with a feature to enable activity logs. This comes in very handy in troubleshooting errors when adding a new device to ARM-X. To enable logging, run:
 
 ```
 touch /armx/run/debug
@@ -141,52 +200,34 @@ Activity logs shall be placed in `/armx/run/logs/`
 
 ### ARM-X Presentations
 
-Presentation at [Countermeasure 2019][cmeasurecon] on 7 November 2019.
+#### Presentation at [Countermeasure 2019][cmeasurecon] on 7 November 2019. 👇
 
 [cmeasurecon]: https://www.countermeasure.ca/speaker/saumil-udayan-shah/
 
 <iframe src="https://www.slideshare.net/slideshow/embed_code/key/6P5quK19YMwYQ5" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/inside-armx-countermeasure-2019" title="INSIDE ARM-X - Countermeasure 2019" target="_blank">INSIDE ARM-X - Countermeasure 2019</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
-Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019.
+#### Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019. 👇
 
 [HITB]: https://cyberweek.ae/speaker/saumil-shah/
 
 <iframe src="https://www.slideshare.net/slideshow/embed_code/key/9FqUwLVZaoLaxO" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/introducing-armx" title="Introducing ARM-X" target="_blank">Introducing ARM-X</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
+#### Announcing ARMX Docker on 15 June 2021. 👇
+
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/dMzOpTu1gfAriw" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/announcing-armx-docker-dc11332" title="Announcing ARMX Docker - DC11332" target="_blank">Announcing ARMX Docker - DC11332</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+
 ### The ARM IoT Firmware Laboratory - NEW TRAINING
 
 > An all new class where the ARM IoT EXPLOIT LABORATORY leaves off. The ARM IoT Firmware Laboratory dives into analysis, extraction and emulation of IoT device firmware, using a variety of techniques. Students shall be given ample hands on practice in emulating a variety of IoT devices. Lab exercises feature firmware extraction directly from the hardware, building a custom kernel and buildroot environment, extracting contents of nvram and emulating the device under ARM-X. The class also goes on to fuzzing and exploit development exercises for the emulated devices.
 
-
 #### Upcoming classes:
 
-**Ringzer0 August 2020, Online Remote Training: (4 day class)**
+**Ringzer0 #VirtualVegas August 2021, Online Remote Training: (4 day class)**
 https://ringzer0.training/arm-iot-firmwarelab.html
 
 ### Downloads
-#### Pre-built VM with ARM-X installed
 
-VMware VM: https://app.box.com/s/3iyi5f6vpakngh8ti3ir2zzukgdu0j2q
-
-The ARM-X VM is compressed using 7-Zip. The archive is split into multiple files of 200MB each, because several cloud hosting providers impose a maximum limit. To extract the VM, use the 7z command line utility:
-
-`7z e armx-september2020.7z.001`
-
-SHA 256 Checksums:
-
-```
-65fbaf94ff55b8116e356e641416c22e292001b9b0c44d5895fece9943ef6045  armx-september2020.7z.001
-88f6f2a75fa4b9bae31f476ee388bee086f0abdea05bd296101151b2bb3b27a5  armx-september2020.7z.002
-
-748710fe51b45b7b189e54151af104e40ae247aa9cce72d7e41bc1a454910e86  armx-september2020.vmx
-16281f6f7c13011c7794df1894d6526a3694c6ce4d3552fced6f0eef9e22526a  armx-s001.vmdk
-30555f66d296c8d8485b941eca5471f9547adf17f6d4e5e9e26d4f35d99c5ecb  armx-s002.vmdk
-aed1e528a53b1222c2d9ae56221ebe93103477d879d0b7e01f0687a6e9750b4b  armx.vmdk
-```
-
-VirtualBox VM: (coming soon, but don't hold your breath)
-
-**NOTE:** not official vbox image, but there is a conversion script in [vbox_conversion](/vbox_conversion/) folder to convert the current vmware image to a vbox ova. Checkout the folders [README](/vbox_conversion/README.md) for more details.
+> The pre-built ARM-X PREVIEW VM is now discontinued. You are encouraged to use **ARMX on Docker**
 
 #### ARM-X Code
 
@@ -220,3 +261,5 @@ ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v1.2  20-May-2020 (minor update)
 - v1.3  02-June-2020
 - v1.4  11-September-2020
+- v2.0  17-June-2021
+
