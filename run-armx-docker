@@ -27,6 +27,7 @@ docker run \
 	--rm \
 	--cap-add=NET_ADMIN \
 	--cap-add=SYS_ADMIN \
+	--security-opt apparmor=unconfined \
 	--device=/dev/net/tun \
 	--name armx-docker \
 	--mount "type=volume,src=${VOL},dst=/armx" \
