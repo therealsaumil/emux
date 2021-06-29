@@ -9,4 +9,4 @@ then
    exit
 fi
 
-docker exec -it ${CNAME} ssh root@192.168.100.2
+docker exec -it ${CNAME} /armx/run/userspace

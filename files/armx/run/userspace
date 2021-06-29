@@ -1,3 +1,9 @@
 #!/bin/bash
 
-ssh root@192.168.100.2
+if [ -f /tmp/armxrunning ]
+then
+   ssh root@192.168.100.2
+else
+   echo "ARMX doesn't seem to be running. Have you run the 'launcher' yet?"
+fi
+
