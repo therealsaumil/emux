@@ -28,8 +28,13 @@ RUN apk add \
 RUN pip install --upgrade pip
 RUN pip install wheel
 RUN pip install cstruct
-RUN pip install pwntools
 RUN pip install ropper
+
+# Uncomment if you want to install pwntools
+# NOTE: *** It will take a very long time to build ***
+#       *** but it works ***
+#
+#RUN pip install pwntools
 
 # Install packages/repos from Github
 WORKDIR /tmp
@@ -72,7 +77,7 @@ COPY --chown=root files/home/r0/bash_profile /root/.bash_profile
 COPY --chown=root files/home/r0/tmux.conf /root/.tmux.conf
 COPY --chown=root files/home/r0/ssh /root/.ssh
 
-RUN chmod 600 /home/r0/.ssh/id_rsa
+RUN chmod 600 /home/r0/.ssh/id_rsa /home/r0/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
 
 # Set up the docker entrypoint script
