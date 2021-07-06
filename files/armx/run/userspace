@@ -2,7 +2,7 @@
 
 if [ -f /tmp/armxrunning ]
 then
-   ssh root@192.168.100.2
+   ssh -p 22222 root@192.168.100.2
 else
    echo "ARMX doesn't seem to be running. Have you run the 'launcher' yet?"
 fi

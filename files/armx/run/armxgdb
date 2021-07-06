@@ -27,6 +27,6 @@ source /armx/run/parseini /armx/$ARMXDEVICE/config
 ROOTFSPATH="/armx/$ARMXDEVICE/$ROOTFS"
 
 $gdb -q \
-   -ex="target remote | ssh -T root@192.168.100.2 gdbserver - $attach" \
+   -ex="target remote | ssh -p 22222 -T root@192.168.100.2 gdbserver - $attach" \
    -ex="set sysroot target:$ROOTFSPATH"
 

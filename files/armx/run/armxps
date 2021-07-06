@@ -5,5 +5,5 @@
 # check if we can access the remote system
 
 source /armx/run/checkarmx
-ssh -T root@192.168.100.2 "ps ax"
+ssh -p 22222 -T root@192.168.100.2 "ps ax"
 

@@ -3,5 +3,5 @@
 # Script to run netstat
 
 source /armx/run/checkarmx
-ssh -T root@192.168.100.2 "netstat -n $@"
+ssh -p 22222 -T root@192.168.100.2 "netstat -n $@"
 

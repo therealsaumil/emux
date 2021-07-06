@@ -19,5 +19,5 @@ else
 fi
 
 source /armx/run/checkarmx
-ssh -T root@192.168.100.2 "cat /proc/${pid}/maps"
+ssh -p 22222 -T root@192.168.100.2 "cat /proc/${pid}/maps"
 
