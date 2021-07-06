@@ -7,4 +7,6 @@ if [ "${ARMXDOCKERSHELL}" = "1" ]
 then
    export PS1="\[\033[97;44m\][\u@armx-docker shell 🐚:\w\\$]\[\033[0m\] "
 fi
-export PATH="$PATH:/armx/run"
+alias ls="ls -F --color=auto"
+eval $(dircolors -b ~/.dircolors/dircolors.256dark)
+export PATH="$PATH:/armx/run:/armx/run/qemu-bin"

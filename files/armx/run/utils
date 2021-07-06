@@ -68,12 +68,12 @@ check_armx_volume_permissions() {
 }
 
 uncompress_qemu_roms () {
-   # uncompress /armx/share/qemu.tar.bz2
+   # uncompress /armx/run/share/qemu.tar.bz2
    # when we are running for the first time
    echo "Uncompressing ROMs"
-   if [ ! -d /armx/share/qemu/ ]
+   if [ ! -d /armx/run/share/qemu/ ]
    then
-      tar -C /armx/share -jxvf /armx/share/qemu.tar.bz2
+      tar -C /armx/run/share -jxvf /armx/run/share/qemu.tar.bz2
    fi
 }
 

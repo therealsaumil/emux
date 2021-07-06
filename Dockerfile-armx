@@ -7,7 +7,7 @@ FROM alpine:latest
 RUN apk update
 RUN apk add \
 	bash sudo tar vim dialog iptables curl wget tmux git \
-	util-linux \
+	coreutils util-linux \
 	iputils iproute2 \
 	build-base \
 	python3 python3-dev py3-pip python2 \
@@ -68,6 +68,7 @@ COPY --chown=r0 files/home/r0/bashrc .bashrc
 COPY --chown=r0 files/home/r0/bash_profile .bash_profile
 COPY --chown=r0 files/home/r0/tmux.conf .tmux.conf
 COPY --chown=r0 files/home/r0/ssh .ssh
+COPY --chown=r0 files/home/r0/dircolors .dircolors
 COPY --chown=r0 files/home/r0/gdbinit .gdbinit
 COPY --chown=r0 files/home/r0/gdbinit-gef.py .gdbinit-gef.py
 COPY --chown=r0 files/home/r0/gef.rc .gef.rc
@@ -76,6 +77,7 @@ COPY --chown=root files/home/r0/bashrc /root/.bashrc
 COPY --chown=root files/home/r0/bash_profile /root/.bash_profile
 COPY --chown=root files/home/r0/tmux.conf /root/.tmux.conf
 COPY --chown=root files/home/r0/ssh /root/.ssh
+COPY --chown=root files/home/r0/dircolors /root/.dircolors
 
 RUN chmod 600 /home/r0/.ssh/id_rsa /home/r0/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
@@ -84,6 +86,11 @@ RUN chmod 600 /root/.ssh/id_rsa
 COPY ./docker-entrypoint.sh /usr/local/bin
 
 USER r0
+
+ENV TERM xterm-256color
+ENV LANG C.UTF-8
+ENV CHARSET UTF-8
+ENV LC_COLLATE C
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["/bin/bash"]

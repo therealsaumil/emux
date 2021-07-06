@@ -1,0 +1,93 @@
+#
+# Heavily customized version of Sebastian Tramp's dircolors-solarized
+# https://github.com/seebi/dircolors-solarized
+#
+
+# Below, there should be one TERM entry for each termtype that is colorizable
+TERM ansi
+TERM color_xterm
+TERM color-xterm
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM Eterm
+TERM eterm-color
+TERM gnome
+TERM gnome-256color
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mach-color
+TERM mlterm
+TERM nxterm
+TERM putty
+TERM rxvt
+TERM rxvt-256color
+TERM rxvt-cygwin
+TERM rxvt-cygwin-native
+TERM rxvt-unicode
+TERM rxvt-unicode256
+TERM rxvt-unicode-256color
+TERM screen
+TERM screen-256color
+TERM screen-256color-bce
+TERM screen-256color-s
+TERM screen-bce
+TERM screen-w
+TERM screen.linux
+TERM screen.xterm-new
+TERM vt100
+TERM xterm
+TERM xterm-new
+TERM xterm-16color
+TERM xterm-256color
+TERM xterm-88color
+TERM xterm-color
+TERM xterm-debian
+
+# EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
+EIGHTBIT 1
+
+###### By file type
+
+# global default
+NORMAL 00
+
+# normal file
+FILE 00
+
+# directory
+DIR 34
+
+# symbolic link
+LINK 01;36
+
+# pipe, socket, block device, character device (blue bg)
+FIFO 30;44
+SOCK 35;44
+BLK  33;44
+CHR  37;44
+
+###### By file attributes
+
+# Orphaned symlinks (blinking white on red)
+ORPHAN  05;37;41
+
+# The files that orphaned symlinks point to (blinking white on red)
+MISSING 05;37;41
+
+# Files with execute permission
+EXEC 32  # Unix
