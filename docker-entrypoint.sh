@@ -35,9 +35,4 @@ echo '  / _ \  / |\/) )  (   @therealsaumil | armx.exploitlab.net'
 echo ' /_/ \_\_\_| /_/_/\_\'
 echo
 
-if [ "$ARMXDOCKERSHELL" = "" ]
-then
-   export PS1="\[\033[97;105m\][\u@ARMX-DOCKER 🐳:\w\\$]\[\033[0m\] "
-fi
-
 exec "$@"
