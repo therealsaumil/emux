@@ -6,16 +6,39 @@
 
 source /armx/run/utils
 
-declare -a ids qemus machines cpus dtbs mems kernels qemuopts mtdparts flashfile flashargs drives bootargs nics nets customs descs
-declare -A qmachine qdrives qbootargs qnics qnet qcustoms
+declare -a ids qemus machines cpus dtbs mems kernels qemuopts mtdparts flashfile flashargs drives bootargs nics nets customs descs arch_endian arch endian gdb gdb_extra hostfs
+declare -A qmachine qdrives qbootargs qnics qnet qcustoms qarch_endian qarch qendian qgdb qgdb_extra qhostfs
+declare -A aarch_endian aarch aendian agdb agdb_extra ahostfs
 
 ARMXROOT="/armx"
 DEVICES="${ARMXROOT}/devices"
+QEMUOPTS="${ARMXROOT}/qemuopts"
+ARCHOPTS="${ARMXROOT}/archopts"
+DEFAULT_NET="tap,ifname=tap0,script=no,downscript=no"
 
 if [ ! -f ${DEVICES} ]
 then
    fatalerror "${DEVICES} not present. Cannot continue"
 fi
+
+log "[+] Parsing ${ARCHOPTS}"
+
+
+while IFS=',' read ARCH_ENDIAN ARCH ENDIAN GDB GDB_EXTRA HOSTFS
+do
+   if [ "$ARCH_ENDIAN" != "" ]
+   then
+      aarch_endian[$ARCH_ENDIAN]=$ARCH_ENDIAN
+      aarch[$ARCH_ENDIAN]=$ARCH
+      aendian[$ARCH_ENDIAN]=$ENDIAN
+      agdb[$ARCH_ENDIAN]=$GDB
+      agdb_extra[$ARCH_ENDIAN]=$GDB_EXTRA
+      ahostfs[$ARCH_ENDIAN]=$HOSTFS
+
+      log "$ARCH_ENDIAN|${aarch_endian[$ARCH_ENDIAN]}|${aarch[$ARCH_ENDIAN]}|${aendian[$ARCH_ENDIAN]}|${agdb[$ARCH_ENDIAN]}|${agdb_extra[$ARCH_ENDIAN]}|${ahostfs[$ARCH_ENDIAN]}"
+
+   fi
+done <<< "$(cat "${ARCHOPTS}" | sed -e 's/#.*//g')"
 
 DEVICESEXTRA=""
 if [ -f "${ARMXROOT}/devices-extra" ]
@@ -28,7 +51,7 @@ DEFAULT_NET="tap,ifname=tap0,script=no,downscript=no"
 
 log "[+] Parsing ${QEMUOPTS}"
 
-while IFS=',' read QMACHINE QDRIVE QBOOTCMD QNIC QNET QCUSTOM
+while IFS=',' read QMACHINE QDRIVE QBOOTCMD QNIC QNET QCUSTOM QARCH_ENDIAN
 do
    if [ "$QMACHINE" != "" ]
    then
@@ -42,15 +65,22 @@ do
       fi
       qnet[$QMACHINE]=$QNET
       qcustoms[$QMACHINE]=$QCUSTOM
-
+      qarch_endian[$QMACHINE]=$QARCH_ENDIAN
+      qarch[$QMACHINE]=${aarch[$QARCH_ENDIAN]}
+      qendian[$QMACHINE]=${aendian[$QARCH_ENDIAN]}
+      qgdb[$QMACHINE]=${agdb[$QARCH_ENDIAN]}
+      qgdb_extra[$QMACHINE]=${agdb_extra[$QARCH_ENDIAN]}
+      qhostfs[$QMACHINE]=${ahostfs[$QARCH_ENDIAN]}
       log "$QMACHINE|${qbootargs[$QMACHINE]}|${qdrives[$QMACHINE]}|${qbootargs[$QMACHINE]}|${qnics[$QMACHINE]}|${qnet[$QMACHINE]}|${qcustoms[$QMACHINE]}"
+      log "${qarch_endian[$QMACHINE]}| ${qarch[$QMACHINE]}| ${qendian[$QMACHINE]}| ${qgdb[$QMACHINE]}| ${qgdb_extra[$QMACHINE]}| ${qhostfs[$QMACHINE]}"
+      log ""
    fi
 done <<< "$(cat "${QEMUOPTS}" | sed -e 's/#.*//g')"
 
 log "[+] Parsing ${DEVICES}"
 
 count=0
-while IFS=',' read ID QEMU MACHINE CPU DTB MEM KERNEL QOPTS DESC
+while IFS=',' read ID QEMU MACHINE CPU DTB MEM KERNEL QOPTS DESC 
 do
    if [ "$ID" != "" ]
    then
@@ -83,9 +113,15 @@ do
       nets[$count]=${qnet[$QOPTS]}
       descs[$count]=$DESC
       customs[$count]=${qcustoms[$QOPTS]}
-
+      arch_endian[$count]=${qarch_endian[$QOPTS]}
+      arch[$count]=${qarch[$QOPTS]}
+      endian[$count]=${qendian[$QOPTS]}
+      gdb[$count]=${qgdb[$QOPTS]}
+      gdb_extra[$count]=${qgdb_extra[$QOPTS]}
+      hostfs[$count]=${qhostfs[$QOPTS]}
       log "${ids[$count]}|${qemus[$count]}|${machines[$count]}|${cpus[$count]}|${dtbs[$count]}|${mems[$count]}|${kernels[$count]}|${drives[$count]}|${bootargs[$count]}|${flashargs[$count]}|${nics[$count]}|${nets[$count]}|${descs[$count]}"
-
+log "${customs[$count]}| ${arch_endian[$count]}| ${arch[$count]}| ${endian[$count]}| ${gdb[$count]}| ${gdb_extra[$count]}| ${hostfs[$count]}"
+      log ""
       count=$((count + 1))
    fi
 done <<< "$(cat ${DEVICES} ${DEVICESEXTRA} | sed -e 's/#.*//g')"
