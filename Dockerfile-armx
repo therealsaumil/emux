@@ -82,6 +82,10 @@ COPY --chown=root files/home/r0/dircolors /root/.dircolors
 RUN chmod 600 /home/r0/.ssh/id_rsa /home/r0/.ssh/config
 RUN chmod 600 /root/.ssh/id_rsa
 
+#Ugly QEMU fix
+RUN mkdir -p /work/dst/qemu-linux-x86_64-5.1.0/share
+RUN ln -s /armx/run/share/qemu /work/dst/qemu-linux-x86_64-5.1.0/share/qemu-firmware
+
 # Set up the docker entrypoint script
 COPY ./docker-entrypoint.sh /usr/local/bin
 
