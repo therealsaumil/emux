@@ -52,7 +52,8 @@ do
                fatalerror "${ROOTFSTAR} not present. Cannot continue"
             fi
             log "Extracting ${ROOTFSTAR}"
-            tar -jxvf ${ROOTFSTAR}
+            echo "First run ... extracting ${ROOTFSTAR}"
+            pv ${ROOTFSTAR} | tar -jxf -
             log "Done"
          fi
          ;;

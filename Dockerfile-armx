@@ -6,7 +6,7 @@ FROM alpine:latest
 # Install packages
 RUN apk update
 RUN apk add \
-	bash sudo tar vim dialog iptables curl wget tmux git \
+	bash sudo pv tar vim dialog iptables curl wget tmux git \
 	coreutils util-linux \
 	iputils iproute2 \
 	build-base \

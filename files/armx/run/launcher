@@ -83,7 +83,7 @@ then
       then
          flashdir=$(dirname ${flashtar})
          log "[+] extracting ${flashtar}"
-         tar -C ${flashdir} -jxvf ${flashtar}
+         pv ${flashtar} | tar -C ${flashdir} -jxf -
       else
          log "Creating empty ${flashfile0}"
          mkdir -p $(dirname ${flashfile0})
