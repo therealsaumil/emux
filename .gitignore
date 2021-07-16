@@ -19,6 +19,9 @@ files/armx/devices-extra
 !files/armx/ARCHERC9
 !files/armx/DVAR
 !files/armx/TRI227WF
+!files/armx/debuglogs
+!files/armx/logs
+!files/armx/dtb
 
 *.swp
 *.psd
