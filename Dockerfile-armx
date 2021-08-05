@@ -52,7 +52,10 @@ RUN python3 setup.py install
 COPY files/etc/local.d/* /etc/local.d/
 COPY files/etc/exports /etc/exports
 COPY files/etc/tinyproxy/* /etc/tinyproxy/
-RUN chmod 755 /etc/local.d/*.start
+COPY files/sbin/* /sbin/
+
+# Transplanting cramfsck because the one in the package is broken
+RUN chmod 755 /etc/local.d/*.start /sbin/cramfsck
 
 # Create an r0 user for all userland work
 RUN adduser --disabled-password --gecos "" r0
