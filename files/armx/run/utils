@@ -73,7 +73,7 @@ uncompress_qemu_roms () {
    echo "Uncompressing ROMs"
    if [ ! -d /armx/run/share/qemu/ ]
    then
-      tar -C /armx/run/share -jxvf /armx/run/share/qemu.tar.bz2
+      pv /armx/run/share/qemu.tar.bz2 | tar -C /armx/run/share -jxf -
    fi
 }
 
@@ -83,7 +83,7 @@ uncompress_hostfs () {
    echo "Uncompressing hostfs"
    if [ ! -f /armx/hostfs/hostfs.ext2 ]
    then
-      bzip2 -dk /armx/hostfs/hostfs.ext2.bz2
+      pv /armx/hostfs/hostfs.ext2.bz2 | bunzip2 > /armx/hostfs/hostfs.ext2
    fi
       if [ ! -f /armx/hostfs/hostfs.mipsbe32.ext2 ]
    then

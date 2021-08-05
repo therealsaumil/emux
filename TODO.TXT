@@ -1,0 +1,3 @@
+* Migrate hostfs from ext2 image to a file system served over NFS, and booted with root=/dev/nfs from within QEMU
+* Mute socat errors from flooding the ARMX DOCKER console
+
