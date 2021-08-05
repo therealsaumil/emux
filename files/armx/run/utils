@@ -85,4 +85,13 @@ uncompress_hostfs () {
    then
       bzip2 -dk /armx/hostfs/hostfs.ext2.bz2
    fi
+      if [ ! -f /armx/hostfs/hostfs.mipsbe32.ext2 ]
+   then
+      bzip2 -dk /armx/hostfs/hostfs.mipsbe32.ext2.bz2
+   fi
+     if [ ! -f /armx/hostfs/hostfs.mipsle32.ext2 ]
+   then
+      bzip2 -dk /armx/hostfs/hostfs.mipsle32.ext2.bz2
+   fi
+
 }

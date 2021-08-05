@@ -29,6 +29,7 @@ do
    socat TCP-LISTEN:${SPORT},fork,reuseaddr TCP:192.168.100.2:${DPORT} &
 done
 
+echo ''
 echo '    _ ___ __  ___  __'
 echo '   / \ _ \  \/ \ \/ /  by Saumil Shah | The ARM Exploit Laboratory'
 echo '  / _ \  / |\/) )  (   @therealsaumil | armx.exploitlab.net'
