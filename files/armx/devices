@@ -3,6 +3,6 @@ DVAR,qemu-system-arm-2.7.0,vexpress-a9,arm11mpcore,,128M,zImage-3.16.57-vexpress
 TRI227WF,qemu-system-arm-4.1.0,versatilepb,,,128M,zImage-2.6.28-versatile-nothumb,VERSATILEPB,Trivision NC-227-WF IP Camera
 AC15,qemu-system-arm-4.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Tenda AC15 Wi-Fi Router
 ARCHERC9,qemu-system-arm-4.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Archer C9 Wi-Fi Router
-MIPSEL,qemu-system-mipsel,malta,mips32r6-generic,,128M,vmlinux-5.10.7-mipsle32,MALTAEL,MIPSEL test template
-MIPSEB,qemu-system-mips-5.1.0,malta,mips32r6-generic,,128M,vmlinux-5.10.7-mipsbe32,MALTAEB,MIPSEB test template
+MIPSLE,qemu-system-mipsel,malta,mips32r6-generic,,128M,vmlinux-5.10.7-mipsle32,MALTAEL,MIPSLE test template
+MIPSBE,qemu-system-mips-5.1.0,malta,mips32r6-generic,,128M,vmlinux-5.10.7-mipsbe32,MALTAEB,MIPSBE test template
 

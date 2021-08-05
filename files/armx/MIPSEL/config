@@ -1,9 +1,0 @@
-# Sample device configuration file
-#
-id=EMINENT
-#nvram=nvram.ini
-legacy_va_layout=0
-rootfs=rootfs
-randomize_va_space=0
-#ld_preload=preload
-initcommands="/etc/rcS;touch /dev/gpio;/bin/sh"

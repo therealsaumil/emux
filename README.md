@@ -342,3 +342,4 @@ ARMX is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v1.4  11-September-2020
 - v2.0  17-June-2021
 
+MIPS-X created by Patrick Ross @VillageIDIOTLab and Zoltan Balazs @zh4ck
