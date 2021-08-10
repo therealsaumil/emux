@@ -7,7 +7,7 @@ FROM alpine:latest
 RUN apk update
 RUN apk add \
 	bash sudo pv tar dialog iptables curl wget tmux git \
-	vim nano \
+	vim nano asciinema \
 	coreutils util-linux \
 	iputils iproute2 \
 	build-base \
