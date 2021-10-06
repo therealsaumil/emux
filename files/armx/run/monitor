@@ -1,2 +1,0 @@
-#!/bin/bash
-socat -,echo=0,icanon=0 TCP:127.0.0.1:55555

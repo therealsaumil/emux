@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -f /tmp/emuxrunning ]
+then
+   ssh -p 22222 root@192.168.100.2
+   # Sometimes the terminal goes insane
+   stty sane
+else
+   echo "EMUX doesn't seem to be running. Have you run the 'launcher' yet?"
+fi
+

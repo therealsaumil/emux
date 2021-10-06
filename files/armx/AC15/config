@@ -1,8 +1,0 @@
-# Tenda AC15 ARM-X config file
-#
-id=AC15
-nvram=nvram_AC15.ini
-rootfs=squashfs-root
-randomize_va_space=0
-ld_preload=preload
-initcommands="/etc_ro/init.d/rcS;/bin/sh"

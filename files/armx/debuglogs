@@ -1,6 +1,0 @@
-# Uncomment logpath= to enable ARMX and QEMU console output logging.
-# Only one logpath= should be uncommented.
-#
-#logpath=/home/r0/workspace/logs/
-#logpath=/armx/logs/
-#

@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Script to run netstat
+
+source /emux/run/checkemux
+ssh -p 22222 -T root@192.168.100.2 "netstat -n $@"
+

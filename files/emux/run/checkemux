@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Script to check if we can access the EMUX instance
+#
+# include in other scripts using "source /emux/run/checkemux"
+
+ping -W 1 -c 1 192.168.100.2 > /dev/null
+if [ $? -ne 0 ]
+then
+   echo "EMUX instance not running / reachable"
+   exit
+fi

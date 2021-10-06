@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Script to shutdown the running EMUX instance
+
+source /emux/run/checkemux
+rm -f /tmp/emuxrunning
+ssh -p 22222 -T root@192.168.100.2 "/usr/sbin/emuxhalt"
+echo "Waiting for 10 seconds"
+sleep 10
+echo "q" | socat - TCP:127.0.0.1:55555
+killall -9 ssh

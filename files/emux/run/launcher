@@ -1,0 +1,120 @@
+#!/bin/bash
+#
+# EMUX QEMU Launcher
+#
+# By Saumil Shah
+# The Exploit Laboratory
+#
+# requires dialog to be installed
+
+EXTRAQEMUOPTS="-nographic -monitor tcp:127.0.0.1:55555,server,nowait"
+
+source /emux/run/utils
+check_emux_volume_permissions
+uncompress_qemu_roms
+uncompress_hostfs
+check_if_logging_required
+new_log
+
+source /emux/run/parsedevices
+
+hostfs_prefix=/emux/hostfs/hostfs
+
+fundialog=${fundialog=dialog}
+
+declare -a choices
+
+j=0
+
+for i in $(seq 0 $((count - 1)))
+do
+   choices[$j]=$i
+   choices[$((j + 1))]=${descs[$i]}
+   j=$((j + 2))
+done
+
+x=`$fundialog --stdout --clear --cancel-label "Quit" \
+   --backtitle "EMUX - The Versatile IoT Device Emulator" \
+   --menu "EMUX Launcher" 0 0 0 "${choices[@]}"`
+
+status=$?
+clear
+
+if [ $status -ne 0 ]
+then
+   exit
+fi
+
+cpu=""
+dtb=""
+
+if [ "${cpus[$x]}" != "" ]
+then
+   cpu="-cpu ${cpus[$x]}"
+fi
+
+if [ "${dtbs[$x]}" != "" ]
+then
+   dtb="-dtb /emux/dtb/${dtbs[$x]}"
+fi
+
+append=${bootargs[$x]}
+hostfs=${hostfs_prefix}-${archs[$x]}.ext2
+
+qemucmd="/emux/run/qemu-bin/${qemus[$x]} -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /emux/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} ${flashargs[$x]} -append \"$append\" -net ${nics[$x]} -net tap,ifname=tap0,script=no,downscript=no -no-reboot ${customs[$x]} ${EXTRAQEMUOPTS}"
+log "[+] QEMU Launch Command"
+log "${qemucmd}"
+
+# if the emulated device uses flash memory files and they don't exist,
+# check for the presence of a compressed .tar.bz2 file which contains them.
+# If the .tar.bz2 doesn't exist, the flash memory files need to be created,
+# otherwise QEMU won't run
+
+log "[+] Checking if flash memory files need to be created for ${ids[$x]}"
+if [ "${flashfile[$x]}" != "" ]
+then
+   flashfile0="${flashfile[$x]}0.bin"
+   flashfile1="${flashfile[$x]}1.bin"
+   if [ ! -f ${flashfile0} ] || [ ! -f  ${flashfile1} ]
+   then
+      log "[+] flash memory files not found"
+      log "[+] checking for compressed flash memory files"
+      flashtar="${flashfile[$x]}.tar.bz2"
+      if [ -f ${flashtar} ]
+      then
+         flashdir=$(dirname ${flashtar})
+         log "[+] extracting ${flashtar}"
+         pv ${flashtar} | tar -C ${flashdir} -jxf -
+      else
+         log "Creating empty ${flashfile0}"
+         mkdir -p $(dirname ${flashfile0})
+         dd if=/dev/zero of=${flashfile0} bs=1M count=64
+         log "Creating empty ${flashfile1}"
+         dd if=/dev/zero of=${flashfile1} bs=1M count=64
+      fi
+   else
+      log "[+] ${flashfile0} found"
+      log "[+] ${flashfile1} found"
+   fi
+else
+   log "[+] mtdparts not present"
+fi
+
+# Ensure that the permissions on /emux/ID are set properly
+if [ "$(stat -c '%U:%G' /emux/${ids[$x]})" != "r0:r0" ]
+then
+   echo "Setting permissions for /emux/${ids[$x]}"
+   sudo chown -R r0:r0 /emux/${ids[$x]}
+fi
+
+cp /emux/run/run-init-template /emux/${ids[$x]}/run-init
+cp /emux/run/run-binsh-template /emux/${ids[$x]}/run-binsh
+
+echo ${ids[$x]} > /tmp/emuxrunning
+
+if [ "$CONSOLELOGFILE" ]
+then
+   script -a -f -c "${qemucmd}" ${CONSOLELOGFILE}
+else
+   eval "$qemucmd"
+fi

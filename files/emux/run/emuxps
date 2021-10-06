@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Script to dump remote processes from a running EMUX instance
+
+# check if we can access the remote system
+
+source /emux/run/checkemux
+ssh -p 22222 -T root@192.168.100.2 "ps ax"
+

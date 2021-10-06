@@ -1,0 +1,92 @@
+#!/bin/bash
+#
+# Support functions for EMUX
+
+EMUXDEBUGLOG="emuxdebug.log"
+QEMUCONSOLELOG="qemuconsole.log"
+DEBUGINDICATOR="/emux/debuglogs"
+
+log () {
+   if [ "$EMUXLOGFILE" ]
+   then
+      echo "$*" >> $EMUXLOGFILE
+   fi
+}
+
+fatalerror () {
+   echo "Fatal Error: $*"
+   if [ "$EMUXLOGFILE" ]
+   then
+      echo "Fatal Error: $*"
+   fi
+   /emux/run/emuxhalt
+   exit
+}
+
+check_if_logging_required () {
+   if [ -f ${DEBUGINDICATOR} ]
+   then
+      DEBUGLOGS=$(cat ${DEBUGINDICATOR} | grep '=' | grep -v '#' | head -1 \
+                                        | sed -e 's/^ *//' -e 's/ *$//' -e 's/ *= */=/' -e 's/\/$//')
+      if [ "${DEBUGLOGS}" != "" ]
+      then
+         echo "[+] Logging enabled"
+         LOGPATH=$(echo ${DEBUGLOGS} | cut -d'=' -f2)
+         if [ ! -d ${LOGPATH} ]
+         then
+            echo "[+] Creating log directory ${LOGPATH}"
+            mkdir -p "${LOGPATH}"
+         fi
+         export EMUXLOGFILE="${LOGPATH}/${EMUXDEBUGLOG}"
+         export CONSOLELOGFILE="${LOGPATH}/${QEMUCONSOLELOG}"
+         echo "[+] EMUX Debug log - ${EMUXLOGFILE}"
+         echo "[+] QEMU Console log - ${QEMUCONSOLELOG}"
+      fi
+   fi
+}
+
+new_log () {
+   if [ -f "${EMUXLOGFILE}" ]
+   then
+      rm -f "${EMUXLOGFILE}"
+      touch "${EMUXLOGFILE}"
+   fi
+
+   if [ -f "${CONSOLELOGFILE}" ]
+   then
+      rm -f "${CONSOLELOGFILE}"
+      touch "${CONSOLELOGFILE}"
+   fi
+}
+
+check_emux_volume_permissions() {
+   if [ "$(stat -c '%U:%G' /emux/devices)" != "r0:r0" ]
+   then
+      echo "Setting permissions for /emux"
+      sudo chown -R r0:r0 /emux
+   fi
+}
+
+uncompress_qemu_roms () {
+   # uncompress /emux/run/share/qemu.tar.bz2
+   # when we are running for the first time
+   echo "Uncompressing ROMs"
+   if [ ! -d /emux/run/share/qemu/ ]
+   then
+      pv /emux/run/share/qemu.tar.bz2 | tar -C /emux/run/share -jxf -
+   fi
+}
+
+uncompress_hostfs () {
+   # uncompress /emux/hostfs/hostfs-<arch>.ext2.bz2
+   # when we are running for the first time
+   for hostfs in /emux/hostfs/hostfs-*.ext2.bz2
+   do
+      ext2file="$(basename ${hostfs} | cut -d'.' -f1,2)"
+      if [ ! -f /emux/hostfs/${ext2file} ]
+      then
+         echo "Uncompressing ${hostfs}"
+         pv ${hostfs} | bunzip2 > /emux/hostfs/${ext2file}
+      fi
+   done
+}

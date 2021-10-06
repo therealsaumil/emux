@@ -5,23 +5,27 @@ images
 *.sh
 !docker-entrypoint.sh
 css
-overlay
+overlay*
 workspace/*
 !workspace/WORKSPACE_README.TXT
 
-# ARM-X Images only for private distribution #
+# EMUX Images only for private distribution #
 ##############################################
-files/armx/[A-Z0-9]*
-files/armx/devices-extra
-!files/armx/run
-!files/armx/*.TXT
-!files/armx/AC15
-!files/armx/ARCHERC9
-!files/armx/DVAR
-!files/armx/TRI227WF
-!files/armx/debuglogs
-!files/armx/logs
-!files/armx/dtb
+files/emux/[A-Z0-9]*
+files/emux/devices-extra
+!files/emux/devices
+!files/emux/qemuopts
+!files/emux/run
+!files/emux/template
+!files/emux/hostfs
+!files/emux/*.TXT
+!files/emux/AC15
+!files/emux/ARCHERC9
+!files/emux/DVAR
+!files/emux/TRI227WF
+!files/emux/debuglogs
+!files/emux/logs
+!files/emux/dtb
 
 *.swp
 *.psd

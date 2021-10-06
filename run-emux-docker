@@ -1,0 +1,35 @@
+#!/bin/bash
+
+OWNERNAME="therealsaumil"
+IMAGENAME="emux"
+TAGNAME="10-2021"
+VOL="harambe"
+PORTSTRING=""
+
+if [ "${PORTFWD}" = "" ]
+then
+   PORTFWD="20080:80,20443:443,28080:8080"
+fi
+
+PORTFWD=$(echo ${PORTFWD} | tr -cd [0-9,:])
+
+IFS=',' read -ra PORTLIST <<< "${PORTFWD}"
+for PORTPAIR in "${PORTLIST[@]}"
+do
+   SPORT=$(echo ${PORTPAIR} | cut -d':' -f1)
+   PORTSTRING="${PORTSTRING} -p ${SPORT}:${SPORT}"
+done
+
+docker run \
+	-it \
+	${PORTSTRING} \
+	-e PORTFWD="${PORTFWD}" \
+	--rm \
+	--cap-add=NET_ADMIN \
+	--cap-add=SYS_ADMIN \
+	--security-opt apparmor=unconfined \
+	--device=/dev/net/tun \
+	--name emux-docker \
+	--mount "type=volume,src=${VOL},dst=/emux" \
+	--mount "type=bind,src=$(pwd)/workspace,dst=/home/r0/workspace" \
+	$OWNERNAME/$IMAGENAME:$TAGNAME $*

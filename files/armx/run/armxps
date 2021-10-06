@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# Script to dump remote processes from a running ARM-X instance
-
-# check if we can access the remote system
-
-source /armx/run/checkarmx
-ssh -p 22222 -T root@192.168.100.2 "ps ax"
-

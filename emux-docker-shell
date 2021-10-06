@@ -1,0 +1,17 @@
+#!/bin/sh
+CNAME="emux-docker"
+
+# check if container is running
+RUNNING=$(docker ps --format '{{.Names}}' | grep ${CNAME})
+if [ "${RUNNING}" != "${CNAME}" ]
+then
+   echo "${CNAME}: container not running"
+   exit
+fi
+
+if [ "$1" = "" ]
+then
+   docker exec -e EMUXDOCKERSHELL=1 -it ${CNAME} /bin/bash
+else
+   docker exec -it ${CNAME} $@
+fi

@@ -283,17 +283,17 @@ It is recommended to use `/home/r0/workspace/logs` since the `workspace` directo
 
 [cmeasurecon]: https://www.countermeasure.ca/speaker/saumil-udayan-shah/
 
-<iframe src="https://www.slideshare.net/slideshow/embed_code/key/6P5quK19YMwYQ5" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/inside-armx-countermeasure-2019" title="INSIDE ARMX - Countermeasure 2019" target="_blank">INSIDE ARMX - Countermeasure 2019</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/6P5quK19YMwYQ5" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" > </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/inside-armx-countermeasure-2019" title="INSIDE ARMX - Countermeasure 2019" target="_blank">INSIDE ARMX - Countermeasure 2019</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
 #### Release presentation at [HITB+Cyberweek][HITB] on 16 October 2019. 👇
 
 [HITB]: https://cyberweek.ae/speaker/saumil-shah/
 
-<iframe src="https://www.slideshare.net/slideshow/embed_code/key/9FqUwLVZaoLaxO" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/introducing-armx" title="Introducing ARMX" target="_blank">Introducing ARMX</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/9FqUwLVZaoLaxO" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" > </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/introducing-armx" title="Introducing ARMX" target="_blank">Introducing ARMX</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
 #### Announcing ARMX Docker on 15 June 2021. 👇
 
-<iframe src="https://www.slideshare.net/slideshow/embed_code/key/dMzOpTu1gfAriw" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/announcing-armx-docker-dc11332" title="Announcing ARMX Docker - DC11332" target="_blank">Announcing ARMX Docker - DC11332</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/dMzOpTu1gfAriw" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" > </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/saumilshah/announcing-armx-docker-dc11332" title="Announcing ARMX Docker - DC11332" target="_blank">Announcing ARMX Docker - DC11332</a> </strong> from <strong><a href="https://www.slideshare.net/saumilshah" target="_blank">Saumil Shah</a></strong> </div>
 
 ### The ARM IoT Firmware Laboratory - NEW TRAINING
 

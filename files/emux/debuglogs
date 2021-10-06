@@ -1,0 +1,6 @@
+# Uncomment logpath= to enable EMUX and QEMU console output logging.
+# Only one logpath= should be uncommented.
+#
+#logpath=/home/r0/workspace/logs/
+#logpath=/emux/logs/
+#

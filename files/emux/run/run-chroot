@@ -1,0 +1,92 @@
+#!/bin/bash
+#
+# Starts up the chroot'ed environment after mount binding
+# /proc, /sys and /dev
+
+echo ${RANDOMIZE_VA_SPACE} > /proc/sys/kernel/randomize_va_space
+
+if [ "$LEGACY_VA_LAYOUT" != "" ]
+then
+   echo ${LEGACY_VA_LAYOUT} > /proc/sys/vm/legacy_va_layout
+fi
+
+if [ "$ID" = "" ]
+then
+   echo "Environment variables not set"
+   exit
+fi
+
+NEWROOT="/emux/${ID}/${ROOTFS}"
+
+mount --bind /proc ${NEWROOT}/proc
+mount --bind /sys ${NEWROOT}/sys
+
+# Mount the /dev tree only if the
+# flag mount_dev_tree=1 is set
+if [ "$MOUNTDEVTREE" = "1" ]
+then
+   mount --bind /dev ${NEWROOT}/dev
+fi
+
+# copy the libs to be LD_PRELOADed into ${NEWROOT}/.emux
+
+DOTEMUX="${NEWROOT}/.emux"
+
+if [ ! -x ${DOTEMUX} ]
+then
+   mkdir -p ${DOTEMUX}
+   chmod 755 ${DOTEMUX}
+fi
+rm -f ${DOTEMUX}/*.so
+
+if [ "$PRELOADDIR" != "" ]
+then
+   PRELOADLIBS=""
+   for lib in ${PRELOADDIR}/*.so
+   do
+      cp ${lib} ${DOTEMUX}
+      libfile=$(basename ${lib})
+      PRELOADLIBS="/.emux/${libfile}:${PRELOADLIBS}"
+   done
+fi
+
+# if invoked as a shell, don't overwrite
+# /.emux/emuxinit. instead use /.emux/emuxshell
+
+if [ "$1" != "shell" ]
+then
+   INITPATH="/.emux/emuxinit"
+else
+   INITPATH="/.emux/emuxshell"
+fi
+
+# If run-chroot is invoked with "shell" as a command line argument
+# then simply drop to /bin/sh after chroot. Don't run the initcommands
+
+echo "#!/bin/sh" > ${NEWROOT}${INITPATH}
+if [ "$PRELOADDIR" != "" ]
+then
+   echo "export LD_PRELOAD=${PRELOADLIBS}" >> ${NEWROOT}${INITPATH}
+fi
+
+if [ "$1" != "shell" ]
+then
+   echo "${INITCOMMANDS}" | sed -e 's/^"//' -e 's/"$//' -e 's/;/\n/g' >> ${NEWROOT}${INITPATH}
+   echo ">>> Starting ${ID}"
+   log ">>> Starting ${ID}"
+else
+   echo "/bin/sh" >> ${NEWROOT}${INITPATH}
+fi
+
+chmod 755 ${NEWROOT}${INITPATH}
+log "[+] Contents of $INITPATH\n$(cat ${NEWROOT}${INITPATH})"
+
+echo "[+] chroot $NEWROOT $INITPATH"
+log "[+] chroot $NEWROOT $INITPATH"
+
+if [ "$EMUXLOGFILE" ]
+then
+   script -a -f -c "chroot ${NEWROOT} ${INITPATH}" ${EMUXLOGFILE}
+else
+   chroot ${NEWROOT} ${INITPATH}
+fi

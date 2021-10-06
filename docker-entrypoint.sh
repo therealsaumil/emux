@@ -29,10 +29,10 @@ do
    socat TCP-LISTEN:${SPORT},fork,reuseaddr TCP:192.168.100.2:${DPORT} &
 done
 
-echo '    _ ___ __  ___  __'
-echo '   / \ _ \  \/ \ \/ /  by Saumil Shah | The ARM Exploit Laboratory'
-echo '  / _ \  / |\/) )  (   @therealsaumil | armx.exploitlab.net'
-echo ' /_/ \_\_\_| /_/_/\_\'
+echo '  ___ __  __ _   __  __'
+echo ' / __|  \/  | | |\ \/ /   by Saumil Shah | The Exploit Laboratory'
+echo ' | __| |\/| | |_| )  (    @therealsaumil | emux.exploitlab.net'
+echo ' \___|_|  |__\___/_/\_\'
 echo
 
 exec "$@"

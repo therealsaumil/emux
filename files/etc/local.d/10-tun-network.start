@@ -6,3 +6,4 @@ ifconfig tap0 192.168.100.1 up
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables -I FORWARD 1 -i tap0 -j ACCEPT
 iptables -I FORWARD 1 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+dnsmasq
