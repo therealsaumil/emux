@@ -3,7 +3,7 @@
 by Saumil Shah [@therealsaumil][saumil]\
 with hardware support from Jatan Raval [@jatankraval][jatan]
 
-June 2020
+June 2020 (revised October 2021)
 
 ## Summary
 
@@ -14,7 +14,7 @@ clip and an EEPROM programmer did not work, as the device locked the SPI flash
 chip after powering on.
 
 The only solution was to unsolder the SPI flash and extract the firmware
-thereafter. This firmware was then used to [emulate the AC15 in ARM-X](https://armx.exploitlab.net/docs/emulating-tenda-ac15.html).
+thereafter. This firmware was then used to [emulate the AC15 in EMUX](https://armx.exploitlab.net/docs/emulating-tenda-ac15.html).
 
 ![Tenda SPI Flash Memory Chip](img/tenda_spi_chip.jpg)
 
@@ -451,19 +451,19 @@ tips on firmware extraction and for making the incredibly awesome
 This article was intended to familiarise you with what it takes to extract
 firmware directly from an SPI Flash Memory chip.
 
-This article is an addition to ["Emulating the Tenda AC15 Wi-Fi Router with ARM-X"](emulating-tenda-ac15.html)
+This article is an addition to ["Emulating the Tenda AC15 Wi-Fi Router with EMUX"](emulating-tenda-ac15.html)
 
-A fully emulated Tenda AC15 is available in the [ARM-X Preview VM][PreviewVM].
+A fully emulated Tenda AC15 is available in the [EMUX Docker image][docker].
 I encourage all readers to download it and try it out.
 
-Follow me on Twitter *[@therealsaumil][saumil]* for updates on [ARM-X][armx],
+Follow me on Twitter *[@therealsaumil][saumil]* for updates on [EMUX][armx],
 new articles, talks and [trainings][R0ARM]!
 
 ### BX LR
 
 [R0ARM]: https://ringzer0.training/arm-iot-firmwarelab.html
 [armx]: https://armx.exploitlab.net/
-[PreviewVM]: https://armx.exploitlab.net/#downloads
+[docker]: https://github.com/therealsaumil/emux
 [saumil]: https://twitter.com/therealsaumil
 [jatan]: https://twitter.com/jatankraval
 [xwings]: https://twitter.com/sgniwx

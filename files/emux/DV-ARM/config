@@ -1,0 +1,9 @@
+# Tinysploit ARM
+#
+id=DV-ARM
+nvram=
+rootfs=rootfs-arm
+randomize_va_space=0
+legacy_va_layout=1
+mount_dev_tree=1
+initcommands="/etc/rc.local;/bin/sh"

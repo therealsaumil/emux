@@ -1,10 +1,10 @@
-# Emulating the Tenda AC15 Wi-Fi Router with ARM-X
+# Emulating the Tenda AC15 Wi-Fi Router with EMUX
 
 by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-June 2020
+June 2020 (revised October 2021)
 
 ## TL;DR:
 
@@ -27,7 +27,7 @@ reverse engineering to figure out which functions we need to shim using
 
 Eventually, the labour bore fruit.
 
-![ARM-X Main Menu](img/armx-tenda-launcher.png)
+![EMUX Main Menu](img/emux-tenda-launcher.png)
 ![Tenda AC15 Emulation](img/armx-tenda-emulation.png)
 
 The emulation process was an great learning experience for me, which I present
@@ -36,14 +36,13 @@ here. Read on!
 ## g00diez where?
 
 The emulated Tenda AC15 is included in the
-[June 2020 ARM-X Preview VM](https://armx.exploitlab.net/#downloads). You're
-welcome.
+[EMUX Docker Image][docker]. You're welcome.
 
 ## Introduction
 
-The COVID-19 lockdown saw me working hard at [ARM-X][armx], fixing bugs and
+The COVID-19 lockdown saw me working hard at [EMUX][emux], fixing bugs and
 adding new features for my upcoming [ARM IoT Firmware Laboratory][R0ARM]
-training. I wanted to show off ARM-X's `nvram` handling capabilities and also to
+training. I wanted to show off EMUX's `nvram` handling capabilities and also to
 emulate a "popular" ARM IoT device that readers can easily get hardware access
 to.
 
@@ -69,7 +68,7 @@ I subsequently intend to publish two more articles
   - [2.3](#23-copy-the-root-file-system) Copy the root file system
   - [2.4](#24-nvramini) nvram.ini
   - [2.5](#25-edit-the-config-file) Edit the config file
-  - [2.6](#26-create-a-record-in-armxdevices) Create a record in /armx/devices
+  - [2.6](#26-create-a-record-in-emuxdevices) Create a record in /emux/devices
   - [2.7](#27-starting-the-tenda-ac15-attempt-1) Starting the Tenda AC15, attempt #1
 - [Section 3](#section-3---reverse-engineering-with-ghidra) - Reverse Engineering with Ghidra
   - [3.1](#31-code-snippets-from-reversed-functions---part-1) Code snippets from reversed functions - part 1
@@ -244,32 +243,32 @@ The startup process is summarised in the diagram below:
 
 ## Section 2 - Emulation attempt #1
 
-To create a new ARM-X device, follow these steps:
+To create a new EMUX device, follow these steps:
 
-![Creating a device in ARM-X](img/armx-newdevice.png)
+![Creating a device in EMUX](img/emux-newdevice.png)
 
-1. Create a device directory in ARM-X for the Tenda AC15.
+1. Create a device directory in EMUX for the Tenda AC15.
 2. Choose a kernel.
 3. Copy the root file system into the device directory.
 4. We shall leave `nvram.ini` untouched for now, since we don't have the nvram
 contents.
 5. Edit the device `config` file.
-6. Create the Tenda record in `/armx/devices`
+6. Create the Tenda record in `/emux/devices`
 
 ### 2.1 Creating the Tenda device directory
 
-We will use the ID `TENDA` for Create a new device directory under `/armx` by
-copying the `/armx/template` directory as `/armx/TENDA`:
+We will use the ID `TENDA` for Create a new device directory under `/emux` by
+copying the `/emux/template` directory as `/emux/TENDA`:
 
 ```
-$ cd /armx/
+$ cd /emux/
 $ cp -r template TENDA
 ```
 
 ### 2.2 Choosing a kernel
 
 I will choose kernel 2.6.39.4 as the base kernel for emulating the Tenda AC15.
-This kernel is already included with the ARM-X release. I will describe how to
+This kernel is already included with the EMUX release. I will describe how to
 compile your own kernel (specifically version 2.6.36.4 to match the version
 running on the router) in a separate article.
 
@@ -278,7 +277,7 @@ The kernel is present as `zImage-2.6.39.4-vexpress`.
 ### 2.3 Copy the root file system
 
 Move the `squashfs-root` directory extracted by `binwalk` ([Section 1.2](#12-binwalk-the-firmware)) into
-`/armx/TENDA/squashfs-root`.
+`/emux/TENDA/squashfs-root`.
 
 ### 2.4 nvram.ini
 
@@ -288,34 +287,30 @@ startup process.
 
 ### 2.5 Edit the config file
 
-Contents of `/armx/TENDA/config`:
+Contents of `/emux/TENDA/config`:
 
 ```
-# Tenda AC15 ARM-X configuration
+# Tenda AC15 EMUX configuration
 #
 id=TENDA
 nvram=nvram.ini
 rootfs=squashfs-root
 randomize_va_space=0
 initcommands="/etc_ro/init.d/rcS;/bin/sh"
-initpath=/etc_ro/armxinit
 ```
-Note that the `initpath` has to be set to `/etc_ro/armxinit` instead of the
-default `/etc/armxinit` because the `/etc` directory is a broken symlink when
-the device starts up.
 
-### 2.6 Create a record in /armx/devices
+### 2.6 Create a record in /emux/devices
 
 ```
-TENDA,qemu-system-arm-4.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Tenda AC15 Wi-Fi Router
+TENDA,qemu-system-arm-6.0.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Tenda AC15 Wi-Fi Router
 ```
 
 ### 2.7 Starting the Tenda AC15, attempt #1
 
-The `/armx/TENDA` directory looks like:
+The `/emux/TENDA` directory looks like:
 
 ```
-/armx/TENDA
+/emux/TENDA
        |
        |--- config
        |--- kernel
@@ -326,13 +321,13 @@ The `/armx/TENDA` directory looks like:
        `--- squashfs-root
 ```
 
-Start the ARM-X Launcher with the Tenda AC15 kernel
+Start the EMUX Launcher with the Tenda AC15 kernel
 
-![ARM-X Launcher for Tenda AC15](img/armx-tenda-launcher.png)
+![EMUX Launcher for Tenda AC15](img/emux-tenda-launcher.png)
 
-From the ARM-X Terminal, start the Tenda AC15 init scripts
+From the EMUX Docker shell, start the Tenda AC15 init scripts
 
-![Start the Tenda AC15 init scripts](img/armx-tenda-start.png)
+![Start the Tenda AC15 init scripts](img/emux-tenda-start.png)
 
 Output: (few errors have been removed)
 
@@ -344,7 +339,7 @@ nv_get_config_data: Can't get config data
 :      :
 key10='value10'
 >>> Starting TENDA
-[+] chroot /armx/TENDA/squashfs-root /etc_ro/armxinit
+[+] chroot /emux/TENDA/squashfs-root /.emux/emuxinit
 mkdir: can't create directory '/var/run': File exists
 init_core_dump 1816: rlim_cur = 0, rlim_max = 0
 init_core_dump 1825: open core dump success
@@ -676,17 +671,16 @@ https://github.com/therealsaumil/custom_nvram/
 To use these hooks, we need to `LD_PRELOAD` them before invoking
 `/etc_ro/init.d/rcS`
 
-The contents of `/armx/TENDA/config` are now as follows:
+The contents of `/emux/TENDA/config` are now as follows:
 
 ```
-# Tenda AC15 ARM-X configuration
+# Tenda AC15 EMUX configuration
 #
 id=TENDA
 nvram=
 rootfs=squashfs-root
 randomize_va_space=0
 initcommands="export LD_PRELOAD=/lib/libnvram-armx.so:/lib/tenda_hooks_verbose.so;/etc_ro/init.d/rcS;/bin/sh"
-initpath=/etc_ro/armxinit
 ```
 
 ### 4.3 Preparing for a limited emulation
@@ -720,15 +714,15 @@ logserver &
 
 ### 4.4 Starting the Tenda AC15, attempt #2
 
-1. Start the ARM-X Launcher with the Tenda AC15 kernel
-2. From the ARM-X Terminal, start the Tenda AC15 init scripts
+1. Start the EMUX Launcher with the Tenda AC15 kernel
+2. From the EMUX Docker shell, start the Tenda AC15 init scripts
 
 The startup output is as follows: (similar lines have been truncated)
 ```
 Starting Tenda AC15 Wi-Fi Router
 Syntax: ./run-init <ini file>
 >>> Starting TENDA
-[+] chroot /armx/TENDA/squashfs-root /etc_ro/armxinit
+[+] chroot /emux/TENDA/squashfs-root /.emux/emuxinit
 mkdir: can't create directory '/var/run': File exists
 *** cfmd started *** init_core_dump 1816: rlim_cur = 0, rlim_max = 0
 init_core_dump 1825: open core dump success
@@ -805,11 +799,11 @@ meaningful values.
 
 ### 4.5 Creating nvram_AC15.ini
 
-To grab the nvram contents populated by `RestoreNvram`, open the ARM-X
-HOSTFS Shell from the ARM-X terminal, and run the following:
+To grab the nvram contents populated by `RestoreNvram`, open the EMUX
+HOSTFS Shell from the EMUX terminal, and run the following:
 
 ```
-ARM-X HOSTFS [TENDA]:~> nvram show > /armx/TENDA/nvram_AC15.ini
+EMUX HOSTFS [TENDA]:~> nvram show > /emux/TENDA/nvram_AC15.ini
 ```
 As an aside, the `/cfg` directory is still empty. At some point, it will get
 populated with `mib.cfg` as observed in
@@ -825,23 +819,22 @@ to their original versions.
 
 ### 5.1 Starting the Tenda AC15, attempt #3
 
-Set the `nvram=` parameter in `/armx/TENDA/config` as follows:
+Set the `nvram=` parameter in `/emux/TENDA/config` as follows:
 
 ```
-# Tenda AC15 ARM-X configuration
+# Tenda AC15 EMUX configuration
 #
 id=TENDA
 nvram=nvram_AC15.ini
 rootfs=squashfs-root
 randomize_va_space=0
 initcommands="export LD_PRELOAD=/lib/libnvram-armx.so:/lib/tenda_hooks_verbose.so;/etc_ro/init.d/rcS;/bin/sh"
-initpath=/etc_ro/armxinit
 ```
 
 Start the emulation once again as follows:
 
-1. Start the ARM-X Launcher with the Tenda AC15 kernel
-2. From the ARM-X Terminal, start the Tenda AC15 init scripts
+1. Start the EMUX Launcher with the Tenda AC15 kernel
+2. From the EMUX Docker shell, start the Tenda AC15 init scripts
 
 The startup process continues past `cfmd`. The system does not reboot. A
 condensed version of the output (with only the relevant parts) is shown below:
@@ -863,7 +856,7 @@ default_nvram='default_nvram'
 vlan2ports='0  5'
 vlan1ports='1  2  3  4	5*'
 >>> Starting TENDA
-[+] chroot /armx/TENDA/squashfs-root /etc_ro/armxinit
+[+] chroot /emux/TENDA/squashfs-root /.emux/emuxinit
 mkdir: can't create directory '/var/run': File exists
 init_core_dump 1816: rlim_cur = 0, rlim_max = 0
 init_core_dump 1825: open core dump success
@@ -909,10 +902,10 @@ goahead: 4: websOpen----233
 The system starts up. Looking at some of the `system()` commands from the output
 above, we observe that a Bridge Interface `br0` has been created and assigned
 the IP address `192.168.0.1`. We can inspect the network interfaces and
-listening ports from the ARM-X HOSTFS Shell:
+listening ports from the EMUX HOSTFS Shell:
 
 ```
-ARM-X HOSTFS [TENDA]:~> ifconfig -a
+EMUX HOSTFS [TENDA]:~> ifconfig -a
 :         :
 br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
           inet addr:192.168.0.1  Bcast:192.168.0.255  Mask:255.255.255.0
@@ -939,7 +932,7 @@ eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56
 ```
 Listening ports:
 ```
-ARM-X HOSTFS [TENDA]:~> netstat -nat
+EMUX HOSTFS [TENDA]:~> netstat -nat
 Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       
 tcp        0      0 0.0.0.0:9000            0.0.0.0:*               LISTEN      
@@ -964,7 +957,7 @@ tcp        0      0 :::23                   :::*                    LISTEN
 ```
 Running processes:
 ```
-ARM-X HOSTFS [TENDA]:~> ps ax
+EMUX HOSTFS [TENDA]:~> ps ax
 :    :        :
 1880 root     cfmd
 1881 root     cfmd
@@ -1001,12 +994,12 @@ lan.ip=192.168.0.1
 We also notice files `/cfg/mib.cfg` and `/cfg/mib_backup.cfg` are freshly
 created.
 
-To change the default IP address to `192.168.100.2` as hardcoded in ARM-X,
+To change the default IP address to `192.168.100.2` as hardcoded in EMUX,
 I edited the `/webroot_ro/default.cfg` file:
 
 ```
-lan.ip=192.168.100.2^M
-lan.mask=255.255.255.0^M
+lan.ip=192.168.100.2
+lan.mask=255.255.255.0
 ```
 
 I also erased `/cfg/mib.cfg` and `/cfg/mib_backup.cfg`.
@@ -1018,29 +1011,28 @@ to `tenda_hooks`, to avoid excessive output. All we want to verify is the IP
 address should be set to `192.168.100.2` and that the web server should be
 accessible from a browser.
 
-Edit `/armx/TENDA/config`:
+Edit `/emux/TENDA/config`:
 
 ```
-# Tenda AC15 ARM-X configuration
+# Tenda AC15 EMUX configuration
 #
 id=TENDA
 nvram=nvram_AC15.ini
 rootfs=squashfs-root
 randomize_va_space=0
 initcommands="export LD_PRELOAD=/lib/libnvram-armx.so:/lib/tenda_hooks.so;/etc_ro/init.d/rcS;/bin/sh"
-initpath=/etc_ro/armxinit
 ```
 
 Start the emulation once again as follows:
 
-1. Start the ARM-X Launcher with the Tenda AC15 kernel
-2. From the ARM-X Terminal, start the Tenda AC15 init scripts
+1. Start the EMUX Launcher with the Tenda AC15 kernel
+2. From the EMUX Docker shell, start the Tenda AC15 init scripts
 
 One by one all the services and daemons start up.
 
 Checking the IP address of `br0`:
 ```
-ARM-X HOSTFS [TENDA]:~> ifconfig br0
+EMUX HOSTFS [TENDA]:~> ifconfig br0
 br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
          inet addr:192.168.100.2  Bcast:192.168.100.255  Mask:255.255.255.0
          inet6 addr: fe80::1/64 Scope:Link
@@ -1052,7 +1044,7 @@ br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56
 ```
 Checking the listening ports:
 ```
-ARM-X HOSTFS [TENDA]:~> netstat -nat
+EMUX HOSTFS [TENDA]:~> netstat -nat
 Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       
 tcp        0      0 0.0.0.0:9000            0.0.0.0:*               LISTEN      
@@ -1078,7 +1070,7 @@ tcp        0      0 :::23                   :::*                    LISTEN
 
 ### 5.4 Process Memory Layout
 
-One of the goals of ARM-X is to create an emulated process memory layout
+One of the goals of EMUX is to create an emulated process memory layout
 identical to that on the actual hardware. This allows us to guarantee that
 memory corruption exploits created on the emulated environment work as-is when
 targeting the actual hardware.
@@ -1086,77 +1078,77 @@ targeting the actual hardware.
 Presented below is a comparision of the memory layout of the `httpd` process:
 
 ```
-attackbox:~$ armxmaps httpd
-00008000-000f7000 r-xp 00000000 00:0f 278680     /armx/TENDA/squashfs-root/bin/httpd
-000ff000-00102000 rw-p 000ef000 00:0f 278680     /armx/TENDA/squashfs-root/bin/httpd
+attackbox:~$ emuxmaps httpd
+00008000-000f7000 r-xp 00000000 00:0f 278680     /emux/TENDA/squashfs-root/bin/httpd
+000ff000-00102000 rw-p 000ef000 00:0f 278680     /emux/TENDA/squashfs-root/bin/httpd
 00102000-00124000 rw-p 00000000 00:00 0          [heap]
-40000000-40005000 r-xp 00000000 00:0f 278830     /armx/TENDA/squashfs-root/lib/ld-uClibc.so.0
+40000000-40005000 r-xp 00000000 00:0f 278830     /emux/TENDA/squashfs-root/lib/ld-uClibc.so.0
 40005000-40006000 rw-p 00000000 00:00 0
 40007000-40008000 rw-p 00000000 00:00 0
-4000c000-4000d000 r--p 00004000 00:0f 278830     /armx/TENDA/squashfs-root/lib/ld-uClibc.so.0
-4000d000-4000e000 rw-p 00005000 00:0f 278830     /armx/TENDA/squashfs-root/lib/ld-uClibc.so.0
-4000e000-40015000 r-xp 00000000 00:0f 137945     /armx/TENDA/squashfs-root/lib/libnvram-armx.so
+4000c000-4000d000 r--p 00004000 00:0f 278830     /emux/TENDA/squashfs-root/lib/ld-uClibc.so.0
+4000d000-4000e000 rw-p 00005000 00:0f 278830     /emux/TENDA/squashfs-root/lib/ld-uClibc.so.0
+4000e000-40015000 r-xp 00000000 00:0f 137945     /emux/TENDA/squashfs-root/lib/libnvram-armx.so
 40015000-4001c000 ---p 00000000 00:00 0
-4001c000-4001d000 rw-p 00006000 00:0f 137945     /armx/TENDA/squashfs-root/lib/libnvram-armx.so
+4001c000-4001d000 rw-p 00006000 00:0f 137945     /emux/TENDA/squashfs-root/lib/libnvram-armx.so
 4001d000-40025000 rw-p 00000000 00:00 0
-40025000-40026000 r-xp 00000000 00:0f 137935     /armx/TENDA/squashfs-root/lib/tenda_hooks.so
+40025000-40026000 r-xp 00000000 00:0f 137935     /emux/TENDA/squashfs-root/lib/tenda_hooks.so
 40026000-4002d000 ---p 00000000 00:00 0
-4002d000-4002e000 rw-p 00000000 00:0f 137935     /armx/TENDA/squashfs-root/lib/tenda_hooks.so
-4002e000-4003d000 r-xp 00000000 00:0f 278831     /armx/TENDA/squashfs-root/lib/libCfm.so
+4002d000-4002e000 rw-p 00000000 00:0f 137935     /emux/TENDA/squashfs-root/lib/tenda_hooks.so
+4002e000-4003d000 r-xp 00000000 00:0f 278831     /emux/TENDA/squashfs-root/lib/libCfm.so
 4003d000-40045000 ---p 00000000 00:00 0
-40045000-40046000 rw-p 0000f000 00:0f 278831     /armx/TENDA/squashfs-root/lib/libCfm.so
+40045000-40046000 rw-p 0000f000 00:0f 278831     /emux/TENDA/squashfs-root/lib/libCfm.so
 40046000-40061000 rw-p 00000000 00:00 0
-40061000-40081000 r-xp 00000000 00:0f 278841     /armx/TENDA/squashfs-root/lib/libcommon.so
+40061000-40081000 r-xp 00000000 00:0f 278841     /emux/TENDA/squashfs-root/lib/libcommon.so
 40081000-40088000 ---p 00000000 00:00 0
-40088000-40089000 rw-p 0001f000 00:0f 278841     /armx/TENDA/squashfs-root/lib/libcommon.so
+40088000-40089000 rw-p 0001f000 00:0f 278841     /emux/TENDA/squashfs-root/lib/libcommon.so
 40089000-40091000 rw-p 00000000 00:00 0
-40091000-40099000 r-xp 00000000 00:0f 278832     /armx/TENDA/squashfs-root/lib/libChipApi.so
+40091000-40099000 r-xp 00000000 00:0f 278832     /emux/TENDA/squashfs-root/lib/libChipApi.so
 40099000-400a0000 ---p 00000000 00:00 0
-400a0000-400a1000 rw-p 00007000 00:0f 278832     /armx/TENDA/squashfs-root/lib/libChipApi.so
-400a1000-400a3000 r-xp 00000000 00:0f 278868     /armx/TENDA/squashfs-root/lib/libvos_util.so
+400a0000-400a1000 rw-p 00007000 00:0f 278832     /emux/TENDA/squashfs-root/lib/libChipApi.so
+400a1000-400a3000 r-xp 00000000 00:0f 278868     /emux/TENDA/squashfs-root/lib/libvos_util.so
 400a3000-400ab000 ---p 00000000 00:00 0
-400ab000-400ac000 rw-p 00002000 00:0f 278868     /armx/TENDA/squashfs-root/lib/libvos_util.so
-400ac000-400c0000 r-xp 00000000 00:0f 278869     /armx/TENDA/squashfs-root/lib/libz.so
+400ab000-400ac000 rw-p 00002000 00:0f 278868     /emux/TENDA/squashfs-root/lib/libvos_util.so
+400ac000-400c0000 r-xp 00000000 00:0f 278869     /emux/TENDA/squashfs-root/lib/libz.so
 400c0000-400c7000 ---p 00000000 00:00 0
-400c7000-400c9000 rw-p 00013000 00:0f 278869     /armx/TENDA/squashfs-root/lib/libz.so
-400c9000-400d4000 r-xp 00000000 00:0f 278858     /armx/TENDA/squashfs-root/lib/libpthread.so.0
+400c7000-400c9000 rw-p 00013000 00:0f 278869     /emux/TENDA/squashfs-root/lib/libz.so
+400c9000-400d4000 r-xp 00000000 00:0f 278858     /emux/TENDA/squashfs-root/lib/libpthread.so.0
 400d4000-400db000 ---p 00000000 00:00 0
-400db000-400dc000 r--p 0000a000 00:0f 278858     /armx/TENDA/squashfs-root/lib/libpthread.so.0
-400dc000-400e1000 rw-p 0000b000 00:0f 278858     /armx/TENDA/squashfs-root/lib/libpthread.so.0
+400db000-400dc000 r--p 0000a000 00:0f 278858     /emux/TENDA/squashfs-root/lib/libpthread.so.0
+400dc000-400e1000 rw-p 0000b000 00:0f 278858     /emux/TENDA/squashfs-root/lib/libpthread.so.0
 400e1000-400e3000 rw-p 00000000 00:00 0
-400e3000-400e4000 r-xp 00000000 00:0f 278855     /armx/TENDA/squashfs-root/lib/libnvram.so
+400e3000-400e4000 r-xp 00000000 00:0f 278855     /emux/TENDA/squashfs-root/lib/libnvram.so
 400e4000-400eb000 ---p 00000000 00:00 0
-400eb000-400ec000 rw-p 00000000 00:0f 278855     /armx/TENDA/squashfs-root/lib/libnvram.so
-400ec000-400f9000 r-xp 00000000 00:0f 278861     /armx/TENDA/squashfs-root/lib/libshared.so
+400eb000-400ec000 rw-p 00000000 00:0f 278855     /emux/TENDA/squashfs-root/lib/libnvram.so
+400ec000-400f9000 r-xp 00000000 00:0f 278861     /emux/TENDA/squashfs-root/lib/libshared.so
 400f9000-40101000 ---p 00000000 00:00 0
-40101000-40102000 rw-p 0000d000 00:0f 278861     /armx/TENDA/squashfs-root/lib/libshared.so
-40102000-40168000 r-xp 00000000 00:0f 278863     /armx/TENDA/squashfs-root/lib/libtpi.so
+40101000-40102000 rw-p 0000d000 00:0f 278861     /emux/TENDA/squashfs-root/lib/libshared.so
+40102000-40168000 r-xp 00000000 00:0f 278863     /emux/TENDA/squashfs-root/lib/libtpi.so
 40168000-4016f000 ---p 00000000 00:00 0
-4016f000-40170000 rw-p 00065000 00:0f 278863     /armx/TENDA/squashfs-root/lib/libtpi.so
+4016f000-40170000 rw-p 00065000 00:0f 278863     /emux/TENDA/squashfs-root/lib/libtpi.so
 40170000-401a2000 rw-p 00000000 00:00 0
-401a2000-401b1000 r-xp 00000000 00:0f 278852     /armx/TENDA/squashfs-root/lib/libm.so.0
+401a2000-401b1000 r-xp 00000000 00:0f 278852     /emux/TENDA/squashfs-root/lib/libm.so.0
 401b1000-401b9000 ---p 00000000 00:00 0
-401b9000-401ba000 r--p 0000f000 00:0f 278852     /armx/TENDA/squashfs-root/lib/libm.so.0
-401ba000-401bb000 rw-p 00010000 00:0f 278852     /armx/TENDA/squashfs-root/lib/libm.so.0
-401bb000-401e4000 r-xp 00000000 00:0f 278864     /armx/TENDA/squashfs-root/lib/libucapi.so
+401b9000-401ba000 r--p 0000f000 00:0f 278852     /emux/TENDA/squashfs-root/lib/libm.so.0
+401ba000-401bb000 rw-p 00010000 00:0f 278852     /emux/TENDA/squashfs-root/lib/libm.so.0
+401bb000-401e4000 r-xp 00000000 00:0f 278864     /emux/TENDA/squashfs-root/lib/libucapi.so
 401e4000-401ec000 ---p 00000000 00:00 0
-401ec000-401ed000 rw-p 00029000 00:0f 278864     /armx/TENDA/squashfs-root/lib/libucapi.so
+401ec000-401ed000 rw-p 00029000 00:0f 278864     /emux/TENDA/squashfs-root/lib/libucapi.so
 401ed000-401ef000 rw-p 00000000 00:00 0
-401ef000-401f9000 r-xp 00000000 00:0f 278849     /armx/TENDA/squashfs-root/lib/libgcc_s.so.1
+401ef000-401f9000 r-xp 00000000 00:0f 278849     /emux/TENDA/squashfs-root/lib/libgcc_s.so.1
 401f9000-40200000 ---p 00000000 00:00 0
-40200000-40201000 rw-p 00009000 00:0f 278849     /armx/TENDA/squashfs-root/lib/libgcc_s.so.1
-40201000-40266000 r-xp 00000000 00:0f 278839     /armx/TENDA/squashfs-root/lib/libc.so.0
+40200000-40201000 rw-p 00009000 00:0f 278849     /emux/TENDA/squashfs-root/lib/libgcc_s.so.1
+40201000-40266000 r-xp 00000000 00:0f 278839     /emux/TENDA/squashfs-root/lib/libc.so.0
 40266000-4026e000 ---p 00000000 00:00 0
-4026e000-4026f000 r--p 00065000 00:0f 278839     /armx/TENDA/squashfs-root/lib/libc.so.0
-4026f000-40270000 rw-p 00066000 00:0f 278839     /armx/TENDA/squashfs-root/lib/libc.so.0
+4026e000-4026f000 r--p 00065000 00:0f 278839     /emux/TENDA/squashfs-root/lib/libc.so.0
+4026f000-40270000 rw-p 00066000 00:0f 278839     /emux/TENDA/squashfs-root/lib/libc.so.0
 40270000-40275000 rw-p 00000000 00:00 0
-40275000-40277000 r-xp 00000000 00:0f 278845     /armx/TENDA/squashfs-root/lib/libdl.so.0
+40275000-40277000 r-xp 00000000 00:0f 278845     /emux/TENDA/squashfs-root/lib/libdl.so.0
 40277000-4027e000 ---p 00000000 00:00 0
-4027e000-4027f000 r--p 00001000 00:0f 278845     /armx/TENDA/squashfs-root/lib/libdl.so.0
+4027e000-4027f000 r--p 00001000 00:0f 278845     /emux/TENDA/squashfs-root/lib/libdl.so.0
 4027f000-40280000 rw-p 00000000 00:00 0
-40280000-40281000 r-xp 00000000 00:0f 278860     /armx/TENDA/squashfs-root/lib/librt.so.0
+40280000-40281000 r-xp 00000000 00:0f 278860     /emux/TENDA/squashfs-root/lib/librt.so.0
 40281000-40288000 ---p 00000000 00:00 0
-40288000-40289000 r--p 00000000 00:0f 278860     /armx/TENDA/squashfs-root/lib/librt.so.0
+40288000-40289000 r--p 00000000 00:0f 278860     /emux/TENDA/squashfs-root/lib/librt.so.0
 befdf000-bf000000 rw-p 00000000 00:00 0          [stack]
 ffff0000-ffff1000 r-xp 00000000 00:00 0          [vectors]
 ```
@@ -1225,7 +1217,7 @@ Comparing it with the process memory layout on the actual hardware
 4025d000-4025e000 r--p 00000000 1f:03 213        /lib/librt.so.0
 befdf000-bf000000 rw-p 00000000 00:00 0          [stack]
 ```
-The addresses of libraries such as `libc.so.0` and others in ARM-X are slightly
+The addresses of libraries such as `libc.so.0` and others in EMUX are slightly
 different when compared to those on the actual hardware. The reason is because
 of `/lib/libnvram-armx.so` and `tenda_hooks.so` being injected via `LD_PRELOAD`.
 
@@ -1243,7 +1235,7 @@ the Tenda Quick Setup Wizard
 ![Tenda Connect WAN cable](img/tenda_02_connect_wan.png)
 
 3. Set the login password. The password for the Tenda emulated instance on the
-[ARM-X Preview VM][PreviewVM] is `ringzer0`
+[EMUX Docker image][docker] is `ringzer0`
 
 ![Tenda Set Password](img/tenda_03_password.png)
 
@@ -1258,7 +1250,7 @@ the Tenda Quick Setup Wizard
 ## Concluding thoughts
 
 This article was intended to familiarise you with what it takes to emulate a
-new device from scratch. I urge you to download the [ARM-X Preview VM][PreviewVM]
+new device from scratch. I urge you to download the [EMUX Docker image][docker]
 and play with the emulated Tenda AC15.
 
 For those of you who want to learn about IoT exploitation, take this as a
@@ -1269,14 +1261,14 @@ existing CVE's against the emulated AC15, or find 0-days on your own!
 - [Extracting the Tenda AC15's firmware directly from its SPI Flash chip][fw-extraction], and
 - Exploiting the vast array of vulnerabilities present in the AC15.
 
-Follow me on Twitter *[@therealsaumil][saumil]* for updates on [ARM-X][armx],
+Follow me on Twitter *[@therealsaumil][saumil]* for updates on [EMUX][emux],
 new articles, talks and trainings!
 
 ### BX LR
 
 [R0ARM]: https://ringzer0.training/arm-iot-firmwarelab.html
 [nvram_r6250]: https://github.com/therealsaumil/custom_nvram/blob/master/custom_nvram_r6250.c
-[armx]: https://armx.exploitlab.net/
-[PreviewVM]: https://armx.exploitlab.net/#downloads
+[emux]: https://armx.exploitlab.net/
 [saumil]: https://twitter.com/therealsaumil
+[docker]: https://github.com/therealsaumil/emux
 [fw-extraction]: extracting-tenda-ac15-firmware.html

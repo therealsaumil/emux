@@ -22,7 +22,7 @@ files/emux/devices-extra
 !files/emux/*.TXT
 !files/emux/AC15
 !files/emux/ARCHERC9
-!files/emux/DVAR
+!files/emux/DV-ARM
 !files/emux/TRI227WF
 !files/emux/debuglogs
 !files/emux/logs

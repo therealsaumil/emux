@@ -1,10 +1,10 @@
-ARM-X Firmware Emulation Framework
-----------------------------------
+EMUX Firmware Emulation Framework
+---------------------------------
 
-ARM-X is licensed under the Mozilla Public License v2.0 (MPLv2).
+EMUX is licensed under the Mozilla Public License v2.0 (MPLv2).
 
 (c) Saumil Shah @therealsaumil
-https://armx.exploitlab.net/
+https://emux.exploitlab.net/
 
 v0.9	Preview Release
 	16 October 2019
@@ -21,3 +21,6 @@ v1.4	September 2020
 
 v2.0	ARMX on Docker
 	June 2021
+
+v2.1	EMUX on Docker
+	October 2021
