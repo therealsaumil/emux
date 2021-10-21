@@ -23,6 +23,8 @@ files/emux/devices-extra
 !files/emux/AC15
 !files/emux/ARCHERC9
 !files/emux/DV-ARM
+!files/emux/DV-MIPSEB
+!files/emux/DV-MIPSEL
 !files/emux/TRI227WF
 !files/emux/debuglogs
 !files/emux/logs
