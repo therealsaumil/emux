@@ -1,6 +1,6 @@
 #MACHINE,drive,bootcmd,nic,net,custom
-VEXPRESS1,if=sd\,format=raw\,index=0,console=ttyAMA0 rw root=/dev/mmcblk0,nic
+VEXPRESS1,if=sd\,format=raw\,index=0,console=ttyAMA0 rw rootwait root=/dev/mmcblk0,nic
 VEXPRESS2,if=sd\,format=raw,pty.legacy_count=16 console=ttyAMA0 rw root=/dev/mmcblk0 rootwait rootfstype=ext2,nic\,model=lan9118
-REALVIEW-EB,if=sd\,format=raw,root=/dev/mmcblk0 rw console=ttyAMA0,nic
-VERSATILEPB,if=scsi,root=/dev/sda rw console=ttyAMA0\,115200,nic
-MALTA,format=raw,root=/dev/sda rw console=ttyS0\,115200,nic\,model=pcnet,,-object rng-random\,filename=/dev/urandom\,id=rng0 -device virtio-rng-pci\,rng=rng0
+REALVIEW-EB,if=sd\,format=raw,root=/dev/mmcblk0 rw rootwait console=ttyAMA0,nic
+VERSATILEPB,if=scsi,root=/dev/sda rw rootwait console=ttyAMA0\,115200,nic
+MALTA,format=raw,root=/dev/sda rw rootwait console=ttyS0\,115200,nic\,model=pcnet,,-object rng-random\,filename=/dev/urandom\,id=rng0 -device virtio-rng-pci\,rng=rng0
