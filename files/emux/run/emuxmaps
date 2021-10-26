@@ -4,6 +4,13 @@
 #
 # Requires a parameter - pid or process name
 
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# EMUX (formerly ARMX) by Saumil Shah
+# https://emux.exploitlab.net/
+
 if [ "$1" = "" ]
 then
    echo "Usage: $0 remote <pid>|<process name>"

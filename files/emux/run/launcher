@@ -7,6 +7,13 @@
 #
 # requires dialog to be installed
 
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# EMUX (formerly ARMX) by Saumil Shah
+# https://emux.exploitlab.net/
+
 EXTRAQEMUOPTS="-no-reboot -nographic -serial mon:stdio -monitor tcp:127.0.0.1:55555,server,nowait"
 
 source /emux/run/utils
@@ -98,6 +105,24 @@ then
    fi
 else
    log "[+] mtdparts not present"
+fi
+
+log "[+] Checking if rootfs needs to be extracted for ${ids[$x]}"
+rootfs=$(cat /emux/${ids[$x]}/config | grep 'rootfs=' | cut -d'=' -f2)
+rootfsprefix="/emux/${ids[$x]}"
+rootfsdir="${rootfsprefix}/${rootfs}"
+if [ ! -d ${rootfsdir} ]
+then
+   rootfstar="${rootfsdir}.tar.bz2"
+   if [ ! -f ${rootfstar} ]
+   then
+      fatalerror "${rootfstar} not present. Cannot continue."
+   fi
+   log "[+] Extracting ${rootfstar}"
+   echo "First run ... extracting ${rootfstar}"
+   mkdir -p ${rootfsdir}
+   pv ${rootfstar} | sudo tar -C ${rootfsprefix} -jxf -
+   log "[+] Done extracting"
 fi
 
 # Ensure that the permissions on /emux/ID are set properly

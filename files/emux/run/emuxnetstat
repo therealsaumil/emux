@@ -2,6 +2,13 @@
 #
 # Script to run netstat
 
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# EMUX (formerly ARMX) by Saumil Shah
+# https://emux.exploitlab.net/
+
 source /emux/run/checkemux
 ssh -p 22222 -T root@192.168.100.2 "netstat -n $@"
 

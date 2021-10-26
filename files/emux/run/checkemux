@@ -4,6 +4,13 @@
 #
 # include in other scripts using "source /emux/run/checkemux"
 
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# EMUX (formerly ARMX) by Saumil Shah
+# https://emux.exploitlab.net/
+
 ping -W 1 -c 1 192.168.100.2 > /dev/null
 if [ $? -ne 0 ]
 then

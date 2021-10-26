@@ -3,6 +3,13 @@
 # Starts up the chroot'ed environment after mount binding
 # /proc, /sys and /dev
 
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# EMUX (formerly ARMX) by Saumil Shah
+# https://emux.exploitlab.net/
+
 echo ${RANDOMIZE_VA_SPACE} > /proc/sys/kernel/randomize_va_space
 
 if [ "$LEGACY_VA_LAYOUT" != "" ]
