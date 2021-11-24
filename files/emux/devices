@@ -1,7 +1,7 @@
 #ID,qemu-binary,machine-type,cpu-type,dtb,memory,kernel-image,qemuopts,description
 DV-ARM,qemu-system-arm-6.1.0,realview-eb-mpcore,,,256M,zImage-3.18.109-realview,REALVIEW-EB,Damn Vulnerable ARM Router
-DV-MIPSEL,qemu-system-mipsel-6.1.0,malta,,,128M,vmlinux-3.18.109-malta-le,MALTA,Damn Vulnerable MIPS Router (Little Endian)
-DV-MIPSEB,qemu-system-mips-6.1.0,malta,,,128M,vmlinux-3.18.109-malta-be,MALTA,Damn Vulnerable MIPS Router (Big Endian)
+DV-MIPSEL,qemu-system-mipsel-6.1.0,malta,,,128M,vmlinux-3.18.109-malta-le,MALTA3,Damn Vulnerable MIPS Router (Little Endian)
+DV-MIPSEB,qemu-system-mips-6.1.0,malta,,,128M,vmlinux-3.18.109-malta-be,MALTA3,Damn Vulnerable MIPS Router (Big Endian)
 TRI227WF,qemu-system-arm-6.1.0,versatilepb,,,128M,zImage-2.6.28-versatile-nothumb,VERSATILEPB,Trivision NC-227-WF IP Camera
 AC15,qemu-system-arm-6.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Tenda AC15 Wi-Fi Router
 ARCHERC9,qemu-system-arm-6.1.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Archer C9 Wi-Fi Router

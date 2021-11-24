@@ -63,7 +63,9 @@ COPY files/etc/tinyproxy/* /etc/tinyproxy/
 COPY files/sbin/* /sbin/
 
 # Transplanting cramfsck because the one in the package is broken
-RUN chmod 755 /etc/local.d/*.start /sbin/cramfsck
+# Transplanting unsquashfs (static binary) because the existing one
+#   doesn't have LZMA support. This one is specially compiled with it.
+RUN chmod 755 /etc/local.d/*.start /sbin/cramfsck /sbin/unsquashfs
 
 # Create an r0 user for all userland work
 RUN adduser --disabled-password --gecos "" r0

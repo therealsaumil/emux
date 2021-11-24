@@ -24,4 +24,5 @@ then
    exit
 fi
 
-docker build -t $OWNERNAME/$IMAGENAME:$TAGNAME -f Dockerfile-emux .
+DOCKER_BUILDKIT=1 docker build -t $OWNERNAME/$IMAGENAME:$TAGNAME \
+                               -f Dockerfile-emux .

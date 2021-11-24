@@ -1,0 +1,8 @@
+workspace
+removed-files
+overlay-*
+docs
+images
+extras
+hostutils
+*.txt
