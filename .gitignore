@@ -25,6 +25,7 @@ files/emux/devices-extra
 !files/emux/DV-ARM
 !files/emux/DV-MIPSEB
 !files/emux/DV-MIPSEL
+!files/emux/PH0WNCTF
 !files/emux/TRI227WF
 !files/emux/debuglogs
 !files/emux/logs
