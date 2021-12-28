@@ -1,0 +1,7 @@
+# DLink DIR-615C
+#
+id=DIR615C
+rootfs=squashfs-root
+randomize_va_space=0
+initcommands="/etc/rc.d/rcS;/bin/sh"
+
