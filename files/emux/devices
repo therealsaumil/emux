@@ -7,3 +7,4 @@ TRI227WF,qemu-system-arm-7.0.0,versatilepb,,,128M,zImage-2.6.28-versatile-nothum
 AC15,qemu-system-arm-7.0.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Tenda AC15 Wi-Fi Router
 ARCHERC9,qemu-system-arm-7.0.0,vexpress-a9,,,256M,zImage-2.6.39.4-vexpress,VEXPRESS2,Archer C9 Wi-Fi Router
 DIR615C,qemu-system-mips-7.0.0,malta,,,128M,vmlinux-2.6.30.9-malta-be,MALTA2,D-Link DIR615C Wi-Fi Router
+DCS935L,qemu-system-mips-7.0.0,malta,,,128M,vmlinux-2.6.30.9-malta-be,MALTA2,D-Link DCS-935L Camera

@@ -13,6 +13,7 @@
 # https://emux.exploitlab.net/
 
 gdb="gdb-multiarch"
+pscmd="pgrep -x"
 
 if [ "$1" = "" ]
 then
@@ -25,7 +26,7 @@ if [[ "$1" =~ ^[0-9]+$ ]]
 then
    attach="--attach $1"
 else
-   attach="--attach \\\`pidof $1\\\`"
+   attach="--attach \\\`${pscmd} $1\\\`"
 fi
 
 source /emux/run/checkemux
