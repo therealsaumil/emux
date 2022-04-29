@@ -24,3 +24,5 @@ v2.0	ARMX on Docker
 
 v2.1	ARMX + MIPS = EMUX
 	October 2021
+
+v2.2	April 2022

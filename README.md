@@ -4,7 +4,7 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-October 2021
+April 2022
 ![ARMX-EMUX](docs/img/ARMX-EMUX.png)
 
 ## Welcome, MIPS!
@@ -326,10 +326,12 @@ https://ringzer0.training/arm-iot-exploitlab.html
 - Tutorial: [Debugging With EMUX][debuggingwithemux] [(Github Doc)][md-debuggingwithemux]
 - Case Study: [Emulating the Tenda AC15 Router][emulatingtenda] [(Github Doc)][md-emulatingtenda]
 - Case Study: [Extracting the Tenda AC15 Firmware][fw-extraction] [(Github Doc)][md-fw-extraction]
+- **NEW!** Tutorial: [Emulating the D-Link DCS-935L WiFi Camera - MIPS][emulatingdcs935] [(Github Doc)][md-emulatingdcs935]
 - **NEW!** Install guide: [Installing EMUX on Kali][install-kali] [(Github Doc)][md-install-kali]
 
 [debuggingwithemux]: docs/debugging-with-emux.html
 [emulatingtenda]: docs/emulating-tenda-ac15.html
+[emulatingdcs935]: docs/emulating-dlink-dcs935.html
 [fw-extraction]: docs/extracting-tenda-ac15-firmware.html
 [install-kali]: docs/install-armx-kali.html
 [docker]: https://github.com/therealsaumil/emux/
@@ -337,6 +339,7 @@ https://ringzer0.training/arm-iot-exploitlab.html
 [md-emulatingtenda]: docs/emulating-tenda-ac15.md
 [md-fw-extraction]: docs/extracting-tenda-ac15-firmware.md
 [md-install-kali]: docs/install-armx-kali.md
+[md-emulatingdcs935]: docs/emulating-dlink-dcs935.md
 
 ### END
 
@@ -351,3 +354,4 @@ EMUX is licensed under the Mozilla Public License v2.0 (MPLv2).
 - v1.4  11-September-2020
 - v2.0  17-June-2021
 - v2.1  21-October-2021 Welcome, MIPS! ARMX -> EMUX
+- v2.2  29-April-2022
