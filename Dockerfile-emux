@@ -8,7 +8,11 @@
 # EMUX (formerly ARMX) by Saumil Shah
 # https://emux.exploitlab.net/
 
-FROM alpine:latest
+#FROM alpine:latest
+
+# Temporarily freezing the Alpine version to 3.15.4 until I can figure
+# out the Python2 replacement situation
+FROM alpine:3.15.4
 
 # Install packages
 RUN apk update
