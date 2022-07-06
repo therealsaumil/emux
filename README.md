@@ -24,18 +24,43 @@ A brand new Docker container running EMUX. Going ahead, all official EMUX releas
 
 ### QUICK INSTALL STEPS
 
-#### Step 1 - Clone this repository
+#### Step 0 - Ensure that Docker is installed and running!
+
+Test if Docker is working by running `hello-world`
+
+```
+docker run hello-world
+```
+
+**Note:** Ubuntu (and other Linux distros) users, ensure that your current user has privileges to run Docker as an administrator:
+
+```
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+sudo usermod -aG docker $USER
+```
+
+#### Step 1 - Clone the EMUX repository
 
 ```
 git clone --depth 1 --single-branch  https://github.com/therealsaumil/emux.git
 ```
 
-#### Step 2 - Build the docker volume and image
+#### Step 2 - Build the EMUX docker volume and image
 
 ```
 cd emux
 ./build-emux-volume
 ./build-emux-docker
+```
+
+**Note:** If `build-emux-docker` fails, try and run it again by disabling `DOCKER_BUILDKIT`
+
+```
+- DOCKER_BUILDKIT=1 docker build -t $OWNERNAME/$IMAGENAME:$TAGNAME \
+                                 -f Dockerfile-emux .
++ DOCKER_BUILDKIT=0 docker build -t $OWNERNAME/$IMAGENAME:$TAGNAME \
+                                 -f Dockerfile-emux .
 ```
 
 #### Step 3 - Run EMUX!
