@@ -67,8 +67,9 @@ fi
 
 append=${bootargs[$x]}
 hostfs=${hostfs_prefix}-${archs[$x]}.ext2
+SYSTEMARCH=$(uname -m)
 
-qemucmd="/emux/run/qemu-bin/${qemus[$x]} -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /emux/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} ${flashargs[$x]} -append \"$append\" -net ${nics[$x]} -net ${nets[$x]} ${customs[$x]} ${EXTRAQEMUOPTS}"
+qemucmd="/emux/run/qemu-bin-${SYSTEMARCH}/${qemus[$x]} -M ${machines[$x]} ${cpu} -m ${mems[$x]} -kernel /emux/${ids[$x]}/kernel/${kernels[$x]} ${dtb} -drive file=${hostfs},${drives[$x]} ${flashargs[$x]} -append \"$append\" -net ${nics[$x]} -net ${nets[$x]} ${customs[$x]} ${EXTRAQEMUOPTS}"
 log "[+] QEMU Launch Command"
 log "${qemucmd}"
 
