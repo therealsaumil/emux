@@ -9,6 +9,7 @@ overlay*
 workspace/*
 removed-files
 !workspace/WORKSPACE_README.TXT
+.gitignore-*
 
 # EMUX Images only for private distribution #
 ##############################################
