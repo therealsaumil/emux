@@ -40,6 +40,8 @@ RUN pip install --upgrade pip
 RUN pip install wheel
 RUN pip install cstruct
 RUN pip install ropper
+RUN pip install jefferson
+RUN pip install ubi_reader
 
 # Uncomment if you want to install pwntools
 # NOTE: *** It will take a very long time to build ***
@@ -49,11 +51,11 @@ RUN pip install ropper
 
 # Install packages/repos from Github
 WORKDIR /tmp
-RUN git clone --depth 1 https://github.com/sviehb/jefferson.git
+#RUN git clone --depth 1 https://github.com/sviehb/jefferson.git
 RUN git clone --depth 1 https://github.com/ReFirmLabs/binwalk.git
 
-WORKDIR /tmp/jefferson
-RUN python3 setup.py install
+#WORKDIR /tmp/jefferson
+#RUN python3 setup.py install
 
 WORKDIR /tmp/binwalk
 RUN python3 setup.py install
