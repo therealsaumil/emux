@@ -33,6 +33,7 @@ RUN apk add \
 	socat \
 	netcat-openbsd \
 	busybox-extras \
+	cmake \
 	--no-cache
 
 # Install Python packages
