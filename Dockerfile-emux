@@ -53,7 +53,7 @@ RUN pip install ubi_reader
 # Install packages/repos from Github
 WORKDIR /tmp
 #RUN git clone --depth 1 https://github.com/sviehb/jefferson.git
-RUN git clone --depth 1 https://github.com/ReFirmLabs/binwalk.git
+RUN git clone --depth 1 --branch v2.3.3 https://github.com/ReFirmLabs/binwalk.git
 
 #WORKDIR /tmp/jefferson
 #RUN python3 setup.py install
