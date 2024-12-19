@@ -15,6 +15,10 @@ FROM alpine:3.15.4
 # Install packages
 RUN apk update
 RUN apk add \
+    qemu-system-arm \
+    qemu-system-mips \
+    qemu-system-mipsel \
+    qemu-system-aarch64 \
 	bash sudo pv tar dialog iptables curl wget tmux git \
 	vim nano asciinema \
 	coreutils util-linux \
@@ -27,7 +31,7 @@ RUN apk add \
 	cargo \
 	openrc \
 	gdb-multiarch \
-	nfs-utils squashfs-tools cramfs \
+	nfs-utils squashfs-tools lzo cramfs \
 	dnsmasq \
 	tinyproxy \
 	socat \

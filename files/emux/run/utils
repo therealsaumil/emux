@@ -77,6 +77,9 @@ check_emux_volume_permissions() {
 uncompress_qemu_roms () {
    # uncompress /emux/run/share/qemu.tar.bz2
    # when we are running for the first time
+   #
+   # This function will become useless after
+   # finalising the move to Alpine's QEMU packages
    echo "Uncompressing ROMs"
    if [ ! -d /emux/run/share/qemu/ ]
    then

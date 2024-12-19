@@ -69,7 +69,11 @@ do
       mems[$count]=$MEM
       kernels[$count]=$KERNEL
       drives[$count]=${qdrives[$QOPTS]}
-      archs[$count]=$(echo $QEMU | sed 's/qemu-system-\([a-z]*\)-.*/\1/')
+
+      # After moving to Alpine's own QEMU packages, we don't need to include
+      # the QEMU version number in /emux/devices
+      #archs[$count]=$(echo $QEMU | sed 's/qemu-system-\([a-z]*\)-.*/\1/')
+      archs[$count]=$(echo $QEMU | sed 's/qemu-system-\([a-z]*\)/\1/')
 
       # check if the device has an mtdparts file, in which case
       # we need to set up QEMU options for enabling VEXPRESS' NOR flash memory
