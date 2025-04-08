@@ -4,8 +4,17 @@ by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
-April 2022
+April 2025
 ![ARMX-EMUX](docs/img/ARMX-EMUX.png)
+
+## A streamlined Docker image that runs on Intel and Apple Silicon
+The latest version of EMUX has jettisoned all external utilities and instead focuses primarily on portability across Intel and Apple Silicon platforms running Docker.
+
+Currently, the following emulation platforms are supported:
+* ARM32
+* ARM64
+* MIPS Little endian
+* MIPS Big endian
 
 ## Welcome, MIPS!
 

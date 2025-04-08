@@ -26,3 +26,6 @@ v2.1	ARMX + MIPS = EMUX
 	October 2021
 
 v2.2	April 2022
+
+Abandoned the vx.x versioning system and moved entirely to Docker.
+Latest version is 04-2025
