@@ -8,9 +8,9 @@
 # EMUX (formerly ARMX) by Saumil Shah
 # https://emux.exploitlab.net/
 
-#FROM alpine:latest
+FROM alpine:latest
 #FROM alpine:3.17.2
-FROM alpine:3.15.4
+#FROM alpine:3.15.4
 
 # Install packages
 RUN apk update
@@ -41,12 +41,11 @@ RUN apk add \
 	--no-cache
 
 # Install Python packages
+ENV PIP_BREAK_SYSTEM_PACKAGES=1     # oddly satisfying
 RUN pip install --upgrade pip
 RUN pip install wheel
 RUN pip install cstruct
 RUN pip install ropper
-RUN pip install jefferson
-RUN pip install ubi_reader
 
 # Uncomment if you want to install pwntools
 # NOTE: *** It will take a very long time to build ***
@@ -56,29 +55,11 @@ RUN pip install ubi_reader
 
 # Install packages/repos from Github
 WORKDIR /tmp
-#RUN git clone --depth 1 https://github.com/sviehb/jefferson.git
-#RUN git clone --depth 1 https://github.com/ReFirmLabs/binwalk.git
-
-# Force old version of binwalk until I get the time to figure out
-# the new Rust version
-RUN git clone --depth 1 --branch v2.3.3 https://github.com/ReFirmLabs/binwalk.git
-
-#WORKDIR /tmp/jefferson
-#RUN python3 setup.py install
-
-WORKDIR /tmp/binwalk
-RUN python3 setup.py install
 
 # Copy network tunnel startup script, NFS exports, tinyproxy config and tinyproxy startup script
 COPY files/etc/local.d/* /etc/local.d/
 COPY files/etc/exports /etc/exports
 COPY files/etc/tinyproxy/* /etc/tinyproxy/
-COPY files/sbin/* /sbin/
-
-# Transplanting cramfsck because the one in the package is broken
-# Transplanting unsquashfs (static binary) because the existing one
-#   doesn't have LZMA support. This one is specially compiled with it.
-RUN chmod 755 /etc/local.d/*.start /sbin/cramfsck /sbin/unsquashfs
 
 # Create an r0 user for all userland work
 RUN adduser --disabled-password --gecos "" r0
