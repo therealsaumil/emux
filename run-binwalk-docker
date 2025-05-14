@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+# EMUX (formerly ARMX) by Saumil Shah
+# https://emux.exploitlab.net/
+
+VOL="harambe"
+
+docker run \
+	-it \
+	--name binwalk-emux \
+	-h binwalk-emux \
+	--rm \
+	--user root \
+	--cap-add=NET_ADMIN \
+	--cap-add=SYS_ADMIN \
+	--security-opt apparmor=unconfined \
+	--mount "type=volume,src=${VOL},dst=/analysis" \
+	--mount "type=bind,src=$(pwd)/workspace,dst=/root/workspace" \
+	--entrypoint "/bin/bash" \
+	binwalkv3
