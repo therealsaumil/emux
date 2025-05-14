@@ -1,11 +1,11 @@
-# EMUX (formerly ARMX) Firmware Emulation Framework
+# EMUX Firmware Emulation Framework
 
 by Saumil Shah [@therealsaumil][saumil]
 
 [saumil]: https://twitter.com/therealsaumil
 
 April 2025
-![ARMX-EMUX](docs/img/ARMX-EMUX.png)
+![EMUX Docker](docs/img/emux-docker-whale2.jpg)
 
 ## A streamlined Docker image that runs on Intel and Apple Silicon
 The latest version of EMUX has jettisoned all external utilities and instead focuses primarily on portability across Intel and Apple Silicon platforms running Docker.
@@ -16,20 +16,15 @@ Currently, the following emulation platforms are supported:
 * MIPS Little endian
 * MIPS Big endian
 
-## Welcome, MIPS!
-
-With the addition of MIPS, ARMX has changed its name to EMUX! Try out the **Damn Vulnerable MIPS Router** exercises included with the new [EMUX Docker image][docker].
-
-![EMUX Docker](docs/img/emux-docker-whale2.jpg)
 ![EMUX Launcher](docs/img/01-emux-launcher.png "EMUX Launcher")
 
-A brand new Docker container running EMUX. Going ahead, all official EMUX releases shall be released as Docker images. Lightweight, Compact, Easy.
+A brand new Docker container running EMUX. Lightweight, Compact, Accurate.
 
 > ### Shut up and give me the g00diez
 >
 > Github: https://github.com/therealsaumil/emux
 >
-> A brand new EMUX Docker image is ready for use! The old "Preview VM" is now discontinued in favour of the Docker image.
+> A brand new EMUX Docker image is ready for use!
 
 ### QUICK INSTALL STEPS
 
@@ -140,9 +135,9 @@ Precursors of EMUX have been used in Saumil Shah's popular [ARM IoT Exploit Labo
 
 ## EMUX Architecture
 
-EMUX is a collection of scripts, kernels and filesystems residing in the `/emux` directory. It uses `qemu-system-arm`, `qemu-system-mips` and `qemu-system-mipsel` to boot up virtual ARM and MIPS Linux environments. The `/emux` directory is exported over NFS to also make the contents available within the QEMU guest.
+EMUX is a collection of scripts, kernels and filesystems residing in the `/emux` directory. It uses `qemu-system-arm`, `qemu-system-aarch64`, `qemu-system-mips` and `qemu-system-mipsel` to boot up virtual ARM, ARM64 and MIPS Linux environments. The `/emux` directory is exported over NFS to also make the contents available within the QEMU guest.
 
-The host system running `qemu-system-arm|mips|mipsel` is assigned the IP address `192.168.100.1` and the QEMU guest is assigned `192.168.100.2` via `tap0` interface.
+The host system running `qemu-system-arm|aarch64|mips|mipsel` is assigned the IP address `192.168.100.1` and the QEMU guest is assigned `192.168.100.2` via `tap0` interface.
 
 ![Architecture](docs/img/emux-architecture.png "EMUX Architecture")
 
@@ -341,19 +336,6 @@ It is recommended to use `/home/r0/workspace/logs` since the `workspace` directo
 ### The ARM IoT Firmware Laboratory - NEW TRAINING
 
 > An all new class where the ARM IoT EXPLOIT LABORATORY leaves off. The ARM IoT Firmware Laboratory dives into analysis, extraction and emulation of IoT device firmware, using a variety of techniques. Students shall be given ample hands on practice in emulating a variety of IoT devices. Lab exercises feature firmware extraction directly from the hardware, building a custom kernel and buildroot environment, extracting contents of nvram and emulating the device under EMUX. The class also goes on to fuzzing and exploit development exercises for the emulated devices.
-
-#### Upcoming classes:
-
-**Ringzer0 #VirtualVegas August 2021, Online Remote Training: (4 day class)**
-https://ringzer0.training/arm-iot-exploitlab.html
-
-### Downloads
-
-> The pre-built EMUX PREVIEW VM is now discontinued. You are encouraged to use **EMUX on Docker**
->
-> #### EMUX Code
->
-> Github: https://github.com/therealsaumil/emux/
 
 ### EMUX Documentation
 
