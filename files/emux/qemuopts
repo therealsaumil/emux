@@ -5,3 +5,4 @@ REALVIEW-EB,if=sd\,format=raw,root=/dev/mmcblk0 rw rootwait console=ttyAMA0,nic
 VERSATILEPB,if=scsi,root=/dev/sda rw rootwait console=ttyAMA0\,115200,nic
 MALTA2,format=raw,root=/dev/hda rw rootwait console=ttyS0\,115200,nic\,model=pcnet,,-object rng-random\,filename=/dev/urandom\,id=rng0 -device virtio-rng-pci\,rng=rng0
 MALTA3,format=raw,root=/dev/sda rw rootwait console=ttyS0\,115200,nic\,model=pcnet,,-object rng-random\,filename=/dev/urandom\,id=rng0 -device virtio-rng-pci\,rng=rng0
+VIRTARM64,if=none\,format=raw\,id=hd0,rootwait root=/dev/vda console=ttyAMA0,nic,,-device virtio-blk-device\,drive=hd0 -object rng-random\,filename=/dev/urandom\,id=rng0 -device virtio-rng-pci\,rng=rng0
