@@ -1,4 +1,4 @@
-chown root.r0 /dev/net/tun
+chown root:r0 /dev/net/tun
 chmod g+rw /dev/net/tun
 tunctl -t tap0 -u r0
 ifconfig tap0 192.168.100.1 up
