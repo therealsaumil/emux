@@ -3,6 +3,7 @@ notes.txt
 images
 *.html
 *.sh
+!files/emux/run/*.sh
 !docker-entrypoint.sh
 css
 overlay*
@@ -13,26 +14,8 @@ removed-files
 
 # EMUX Images only for private distribution #
 ##############################################
-files/emux/[A-Z0-9]*
+files/emux/firmware-extra
 files/emux/devices-extra
-!files/emux/devices
-!files/emux/qemuopts
-!files/emux/run
-!files/emux/template
-!files/emux/hostfs
-!files/emux/*.TXT
-!files/emux/AC15
-!files/emux/ARCHERC9
-!files/emux/DV-ARM
-!files/emux/DV-MIPSEB
-!files/emux/DV-MIPSEL
-!files/emux/PH0WNCTF
-!files/emux/TRI227WF
-!files/emux/DIR615C
-!files/emux/DCS935L
-!files/emux/debuglogs
-!files/emux/logs
-!files/emux/dtb
 
 *.swp
 *.psd

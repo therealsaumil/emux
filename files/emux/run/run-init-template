@@ -8,16 +8,16 @@
 # https://emux.exploitlab.net/
 
 emuxdir=$(dirname $0)
-source ${emuxdir}/../run/utils
+source ${emuxdir}/../../run/utils
 check_if_logging_required
 
 echo $$ > /tmp/emuxstarted
 
 log "[+] ${EMUX} parseini config"
-source ${emuxdir}/../run/parseini config
+source ${emuxdir}/../../run/parseini config
 
 log "[+] ${EMUX} loadnvram $NVRAM"
-source ${emuxdir}/../run/loadnvram "$NVRAM"
+source ${emuxdir}/../../run/loadnvram "$NVRAM"
 
 log "[+] ${EMUX} run-chroot"
-source ${emuxdir}/../run/run-chroot
+source ${emuxdir}/../../run/run-chroot

@@ -1,6 +1,9 @@
 # Sample device configuration file
 #
-id=MYNEWDEVICE
+# The device ID should have a prefix of 'firmware/' or 'firmware-extra/'
+# depending upon which parent directory you wish to place the firmware into
+#
+id=firmware/MYNEWDEVICE
 nvram=nvram.ini
 rootfs=rootfs
 randomize_va_space=0

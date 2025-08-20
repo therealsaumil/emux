@@ -1,0 +1,7 @@
+# Trivision 227WF IP Camera EMUX config file
+
+id=firmware/TRI227WF
+nvram=
+rootfs=rootfs
+randomize_va_space=0
+initcommands="rm -f /dev/abs628;touch /dev/abs628;/etc/init.d/rc.sysinit;/etc/init.d/rc 3;/bin/sh"

@@ -1,7 +1,0 @@
-# DLink DCS-935L Camera
-# Contributed by blackh0l3z
-#
-id=DCS935L
-rootfs=squashfs-root
-randomize_va_space=0
-initcommands="/etc/rc.d/rcS;touch /tmp/.hnap_device_list_tmp.xml;/bin/sh"

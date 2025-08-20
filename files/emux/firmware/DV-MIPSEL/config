@@ -1,0 +1,9 @@
+# Tinysploit MIPSEL
+#
+id=firmware/DV-MIPSEL
+nvram=
+rootfs=rootfs-mipsel
+randomize_va_space=0
+legacy_va_layout=1
+mount_dev_tree=1
+initcommands="/etc/rc.local;/bin/sh"
