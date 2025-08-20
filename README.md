@@ -159,8 +159,8 @@ The `/emux` directory is organised as follows:
 
 ![Directory Structure](docs/img/emux-dirstructure.png "EMUX Directory Structure")
 
-* `devices`: This file contains device definitions, one per line.
-* `devices-extra`: Contains additional emulated devices not included in the general release. It is recommended that you add your own emulated devices to `devices-extra`.
+* `firmware/devices`: This file contains device definitions, one per line.
+* `firmware-extra/devices`: Contains additional emulated devices not included in the general release. It is recommended that you add your own emulated devices to `devices-extra`.
 * `qemuopts`: Abstracted QEMU options definitions for various types of QEMU Machines.
 * `run/`: This folder contains scripts necessary to parse the device configuration, preload nvram contents and eventually invoke the userland processes of the device being emulated.
 * `run/launcher`: The main script. `launcher` parses the `devices` file and displays a menu of registered devices. Selecting one of the devices will in turn invoke `qemu-system-arm` with the pre-defined QEMU options, corresponding Linux kernel and extracted root file system registered with the device.

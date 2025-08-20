@@ -67,7 +67,7 @@ new_log () {
 }
 
 check_emux_volume_permissions() {
-   if [ "$(stat -c '%U:%G' /emux/devices)" != "r0:r0" ]
+   if [ "$(stat -c '%U:%G' /emux/firmware/devices)" != "r0:r0" ]
    then
       echo "Setting permissions for /emux"
       sudo chown -R r0:r0 /emux

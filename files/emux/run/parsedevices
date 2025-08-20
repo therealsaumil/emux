@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Parses the devices file
-# If devices-extra is present, it is appended to
-# the devices file.
+# Parses the firmware/devices file
+# If firmware-extra/devices is present, it is appended to
+# the contents of firmware/devices
 
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -17,19 +17,15 @@ declare -a ids qemus machines cpus dtbs mems kernels qemuopts mtdparts flashfile
 declare -A qmachine qdrives qbootargs qnics qnet qcustoms
 
 EMUXROOT="/emux"
-DEVICES="${EMUXROOT}/devices"
+FIRMWARE_PREFIX="firmware"
+
+DEVICES="${EMUXROOT}/${FIRMWARE_PREFIX}/devices"
 
 if [ ! -f ${DEVICES} ]
 then
    fatalerror "${DEVICES} not present. Cannot continue"
 fi
 
-DEVICESEXTRA=""
-if [ -f "${EMUXROOT}/devices-extra" ]
-then
-   log "[+] devices-extra found"
-   DEVICESEXTRA="${EMUXROOT}/devices-extra"
-fi
 QEMUOPTS="${EMUXROOT}/qemuopts"
 DEFAULT_NET="tap,ifname=tap0,script=no,downscript=no"
 
@@ -100,4 +96,4 @@ do
 
       count=$((count + 1))
    fi
-done <<< "$(cat ${DEVICES} ${DEVICESEXTRA} | sed -e 's/#.*//g')"
+done <<< "$(cat ${EMUXROOT}/${FIRMWARE_PREFIX}*/devices | sed -e 's/#.*//g')"

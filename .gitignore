@@ -15,7 +15,6 @@ removed-files
 # EMUX Images only for private distribution #
 ##############################################
 files/emux/firmware-extra
-files/emux/devices-extra
 
 *.swp
 *.psd

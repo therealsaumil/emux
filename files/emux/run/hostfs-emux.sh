@@ -3,6 +3,9 @@
 # EMUX Device Launcher
 # This file is invoked by the hostfs
 #
+EMUXROOT="/emux"
+FIRMWARE_PREFIX="firmware"
+
 EMUX=$(cat /proc/cmdline | grep 'EMUX=' | sed 's/.*EMUX=\([A-Za-z0-9\-\/]*\).*/\1/g')
 if [ "$EMUX" = "" ]
 then
@@ -10,12 +13,8 @@ then
 fi
 export EMUX
 
-if [ -f "/emux/devices-extra" ]
-then
-   export EMUXDESC=$(cat /emux/devices /emux/devices-extra | grep -v '#' | grep $EMUX | sed 's/.*,\([^,]*\)$/\1/')
-else
-   export EMUXDESC=$(cat /emux/devices | grep -v '#' | grep $EMUX | sed 's/.*,\([^,]*\)$/\1/')
-fi
+export EMUXDESC=$(cat ${EMUXROOT}/${FIRMWARE_PREFIX}*/devices | grep -v '#' | grep $EMUX | sed 's/.*,\([^,]*\)$/\1/')
+
 export ROOTFS="/emux/${EMUX}/$(cat /emux/${EMUX}/config | grep -v '#' | grep rootfs | cut -d'=' -f2)"
 
 # Need to set xterm-color else dialog doesn't like it
