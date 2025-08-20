@@ -907,7 +907,7 @@ listening ports from the EMUX HOSTFS Shell:
 ```
 EMUX HOSTFS [TENDA]:~> ifconfig -a
 :         :
-br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56
           inet addr:192.168.0.1  Bcast:192.168.0.255  Mask:255.255.255.0
           inet6 addr: fe80::1/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -916,11 +916,11 @@ br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56
           collisions:0 txqueuelen:0
           RX bytes:0 (0.0 B)  TX bytes:3388 (3.3 KiB)
 
-br0:dname Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+br0:dname Link encap:Ethernet  HWaddr 52:54:00:12:34:56
           inet addr:172.17.245.103  Bcast:172.17.255.255  Mask:255.255.255.255
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
 
-eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+eth0      Link encap:Ethernet  HWaddr 52:54:00:12:34:56
           inet addr:192.168.100.2  Bcast:0.0.0.0  Mask:255.255.255.0
           inet6 addr: fe80::5054:ff:fe12:3456/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -934,17 +934,17 @@ Listening ports:
 ```
 EMUX HOSTFS [TENDA]:~> netstat -nat
 Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       
-tcp        0      0 0.0.0.0:9000            0.0.0.0:*               LISTEN      
-tcp        0      0 172.17.245.103:80       0.0.0.0:*               LISTEN      
-tcp        0      0 192.168.0.1:80          0.0.0.0:*               LISTEN      
-tcp        0      0 127.0.0.1:10002         0.0.0.0:*               LISTEN      
-tcp        0      0 127.0.0.1:10003         0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:10004           0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:8180            0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:5500            0.0.0.0:*               LISTEN      
-tcp        0      0 127.0.0.1:8188          0.0.0.0:*               LISTEN      
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:9000            0.0.0.0:*               LISTEN
+tcp        0      0 172.17.245.103:80       0.0.0.0:*               LISTEN
+tcp        0      0 192.168.0.1:80          0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:10002         0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:10003         0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:10004           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:8180            0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5500            0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:8188          0.0.0.0:*               LISTEN
 tcp        0      0 127.0.0.1:10004         127.0.0.1:45174         ESTABLISHED
 tcp        0      0 127.0.0.1:56915         127.0.0.1:10003         ESTABLISHED
 tcp        0      0 127.0.0.1:10003         127.0.0.1:56915         ESTABLISHED
@@ -952,7 +952,7 @@ tcp        0      0 192.168.100.2:838       192.168.100.1:2049      ESTABLISHED
 tcp        0      0 192.168.100.2:22        192.168.100.1:34216     ESTABLISHED
 tcp        0      0 127.0.0.1:45174         127.0.0.1:10004         ESTABLISHED
 tcp        0      0 192.168.100.2:22        192.168.100.1:34218     ESTABLISHED
-tcp        0      0 :::22                   :::*                    LISTEN      
+tcp        0      0 :::22                   :::*                    LISTEN
 tcp        0      0 :::23                   :::*                    LISTEN
 ```
 Running processes:
@@ -1033,7 +1033,7 @@ One by one all the services and daemons start up.
 Checking the IP address of `br0`:
 ```
 EMUX HOSTFS [TENDA]:~> ifconfig br0
-br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56  
+br0       Link encap:Ethernet  HWaddr 52:54:00:12:34:56
          inet addr:192.168.100.2  Bcast:192.168.100.255  Mask:255.255.255.0
          inet6 addr: fe80::1/64 Scope:Link
          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -1046,17 +1046,17 @@ Checking the listening ports:
 ```
 EMUX HOSTFS [TENDA]:~> netstat -nat
 Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       
-tcp        0      0 0.0.0.0:9000            0.0.0.0:*               LISTEN      
-tcp        0      0 172.17.245.103:80       0.0.0.0:*               LISTEN      
-tcp        0      0 192.168.100.2:80        0.0.0.0:*               LISTEN      
-tcp        0      0 127.0.0.1:10002         0.0.0.0:*               LISTEN      
-tcp        0      0 127.0.0.1:10003         0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:10004           0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:8180            0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
-tcp        0      0 0.0.0.0:5500            0.0.0.0:*               LISTEN      
-tcp        0      0 127.0.0.1:8188          0.0.0.0:*               LISTEN      
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:9000            0.0.0.0:*               LISTEN
+tcp        0      0 172.17.245.103:80       0.0.0.0:*               LISTEN
+tcp        0      0 192.168.100.2:80        0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:10002         0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:10003         0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:10004           0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:8180            0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN
+tcp        0      0 0.0.0.0:5500            0.0.0.0:*               LISTEN
+tcp        0      0 127.0.0.1:8188          0.0.0.0:*               LISTEN
 tcp        0      0 192.168.100.2:22        192.168.100.1:51948     ESTABLISHED
 tcp        0      0 127.0.0.1:10004         127.0.0.1:54956         ESTABLISHED
 tcp        0      0 127.0.0.1:52552         127.0.0.1:10003         ESTABLISHED
@@ -1064,7 +1064,7 @@ tcp        0      0 192.168.100.2:22        192.168.100.1:51952     ESTABLISHED
 tcp        0      0 192.168.100.2:988       192.168.100.1:2049      ESTABLISHED
 tcp        0      0 127.0.0.1:10003         127.0.0.1:52552         ESTABLISHED
 tcp        0      0 127.0.0.1:54956         127.0.0.1:10004         ESTABLISHED
-tcp        0      0 :::22                   :::*                    LISTEN      
+tcp        0      0 :::22                   :::*                    LISTEN
 tcp        0      0 :::23                   :::*                    LISTEN
 ```
 

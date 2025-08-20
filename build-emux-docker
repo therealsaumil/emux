@@ -9,7 +9,7 @@
 
 OWNERNAME="therealsaumil"
 IMAGENAME="emux"
-TAGNAME="04-2025"
+TAGNAME="08-2025"
 VOL="harambe"
 
 # check if the volume exists, otherwise refuse to build. It doesn't

@@ -251,7 +251,7 @@ The `vmlinux-2.6.30.9-malta-be` fits our bill perfectly. We shall use this one f
 
 ### Copy the `template` and make a new device
 
-We shall choose `DCS935L` as the EMUX device ID for the D-Link DCS-935L Camera. 
+We shall choose `DCS935L` as the EMUX device ID for the D-Link DCS-935L Camera.
 
 ```
 [emux-docker 🐚] ~$ cd /emux/
@@ -293,7 +293,7 @@ initcommands="/bin/sh"
 
 Explanation:
 
-* `id=DCS935L` - This should be the same as the directory name in `/emux/`. 
+* `id=DCS935L` - This should be the same as the directory name in `/emux/`.
 * `rootfs=squashfs-root` - directory that holds the `rootfs`. Ensure it is owned by `r0:r0`.
 * `randomize_va_space=0` - disable ASLR.
 * `initcommands="/bin/sh"` - Initially, only invoke `/bin/sh` after starting `userspace`.

@@ -456,13 +456,13 @@ This article is an addition to ["Emulating the Tenda AC15 Wi-Fi Router with EMUX
 A fully emulated Tenda AC15 is available in the [EMUX Docker image][docker].
 I encourage all readers to download it and try it out.
 
-Follow me on Twitter *[@therealsaumil][saumil]* for updates on [EMUX][armx],
+Follow me on Twitter *[@therealsaumil][saumil]* for updates on [EMUX][emux],
 new articles, talks and [trainings][R0ARM]!
 
 ### BX LR
 
 [R0ARM]: https://ringzer0.training/arm-iot-firmwarelab.html
-[armx]: https://armx.exploitlab.net/
+[emux]: https://emux.exploitlab.net/
 [docker]: https://github.com/therealsaumil/emux
 [saumil]: https://twitter.com/therealsaumil
 [jatan]: https://twitter.com/jatankraval
