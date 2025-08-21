@@ -6,7 +6,8 @@
 EMUXROOT="/emux"
 FIRMWARE_PREFIX="firmware"
 
-EMUX=$(cat /proc/cmdline | grep 'EMUX=' | sed 's/.*EMUX=\([A-Za-z0-9\-\/]*\).*/\1/g')
+# horrid regex
+EMUX=$(cat /proc/cmdline | grep 'EMUX=' | sed 's/.*EMUX=\([A-Za-z0-9\/-]*\).*/\1/g')
 if [ "$EMUX" = "" ]
 then
    EMUX="NULL"
