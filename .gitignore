@@ -11,6 +11,7 @@ workspace/*
 removed-files
 !workspace/WORKSPACE_README.TXT
 .gitignore-*
+.ropeproject
 
 # EMUX Images only for private distribution #
 ##############################################

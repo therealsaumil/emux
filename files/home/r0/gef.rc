@@ -1,142 +1,165 @@
+[capstone_disassemble]
+nb_lines_code_default = 50
+
 [context]
 clear_screen = False
+disable_auxv = False
+disable_vmmap = False
 enable = True
-grow_stack_down = False
-ignore_registers = 
-layout = regs stack code args source memory threads trace extra
-libc_args = False
-libc_args_path = 
-nb_lines_backtrace = 10
-nb_lines_code = 6
-nb_lines_code_prev = 3
-nb_lines_stack = 8
-nb_lines_threads = -1
-peek_calls = True
+enable_auto_switch_for_i8086 = True
+layout = legend regs stack code mem_access args source mem_watch threads trace extra
+nb_max_string_length = 64
+redirect = 
+smart_cpp_function_name = False
+
+[context_args]
+nb_guessed_arguments = 6
+redirect = 
+
+[context_code]
+nb_lines = 6
+nb_lines_prev = 3
+peek_call = True
+peek_conditional_branch = True
+peek_jump = True
 peek_ret = True
 redirect = 
-show_opcodes_size = 0
-show_registers_raw = False
-show_source_code_variable_values = True
-show_stack_raw = False
+show_opcodes_size = 8
+show_opcodes_size_x64_x86 = 10
 use_capstone = False
+use_native_x_command = False
+
+[context_extra]
+redirect = 
+
+[context_legend]
+redirect = 
+
+[context_mem_access]
+redirect = 
+
+[context_mem_watch]
+redirect = 
+
+[context_regs]
+ignore_registers = 
+redirect = 
+show_registers_raw = False
+
+[context_source]
+nb_lines = 6
+redirect = 
+show_source_code_variable_values = True
+
+[context_stack]
+nb_lines = 8
+redirect = 
+show_stack_raw = False
+
+[context_threads]
+nb_lines = 4
+redirect = 
+
+[context_trace]
+nb_lines = 10
+nb_lines_before = 2
+redirect = 
+
+[continue_for_qemu_user]
+use_fork = True
 
 [dereference]
-max_recursion = 7
+blacklist = []
+max_recursion = 4
+nb_lines = 64
+no_pager = False
 
-[entry-break]
-entrypoint_symbols = main _main __libc_start_main __uClibc_main start _start
+[diffo]
+colordiff_option = --left-column -y -W 200
 
-[gef-remote]
-clean_on_exit = False
+[entry_break]
+entrypoint_symbols = main __libc_start_main __uClibc_main _start __start 'main.main' 'start._start'
 
 [gef]
-autosave_breakpoints_file = 
-debug = False
+always_no_pager = True
 disable_color = False
-extra_plugins_dir = 
 follow_child = True
+keep_pager_result = False
+less_option = -Rf -j.5
+pager_min_lines = 11
+read_memory_work_around_for_aarch64_secure_memory = False
 readline_compat = False
-tempdir = /tmp/gef
 
 [got]
 function_not_resolved = yellow
 function_resolved = green
 
-[heap-analysis-helper]
-check_double_free = True
-check_free_null = False
-check_heap_overlap = True
-check_uaf = True
-check_weird_free = True
-
-[heap-chunks]
-peek_nb_byte = 16
-
-[hexdump]
-always_show_ascii = False
+[heap_chunks]
+peek_nb_byte = 0
+peek_offset = 0
 
 [highlight]
 regex = False
 
-[ida-interact]
-host = 127.0.0.1
-port = 1337
-sync_cursor = False
+[libc]
+assume_version = ()
 
 [pattern]
 length = 1024
 
-[pcustom]
-max_depth = 4
-struct_path = /tmp/gef/structs
-structure_name = bold blue
-structure_size = green
-structure_type = bold red
-
-[process-search]
-ps_command = /bin/ps auxww
-
-[syscall-args]
-path = /tmp/gef/syscall-tables
-
 [theme]
 address_code = red
-address_heap = green
-address_stack = pink
-context_title_line = gray
+address_heap = bright_blue
+address_readonly = white
+address_rwx = underline
+address_stack = magenta
+address_valid_but_none = bright_black
+address_writable = green
+context_code_future = 
+context_code_past = bright_black
+context_title_line = cyan
 context_title_message = cyan
-default_title_line = gray
+default_title_line = cyan
 default_title_message = cyan
 dereference_base_address = cyan
-dereference_code = gray
 dereference_register_value = bold blue
 dereference_string = yellow
-disassemble_current_instruction = green
-old_context = gray
+disassemble_address = 
+disassemble_address_highlight = bold green
+disassemble_mnemonic_branch = bold bright_yellow
+disassemble_mnemonic_branch_highlight = bold bright_yellow
+disassemble_mnemonic_normal = yellow
+disassemble_mnemonic_normal_highlight = bold bright_yellow
+disassemble_opcode = white
+disassemble_opcode_highlight = bold white
+disassemble_operands_const = bright_blue
+disassemble_operands_const_highlight = bold bright_blue
+disassemble_operands_normal = cyan
+disassemble_operands_normal_highlight = bold cyan
+disassemble_operands_symbol = white
+disassemble_operands_symbol_highlight = bold white
+heap_arena_label = bold cyan underline
+heap_chunk_address_freed = bold yellow
+heap_chunk_address_used = bright_black
+heap_chunk_flag_is_mmapped = bold blue
+heap_chunk_flag_non_main_arena = bold yellow
+heap_chunk_flag_prev_inuse = bold red
+heap_chunk_freed = yellow
+heap_chunk_label = bold cyan underline
+heap_chunk_size = bold magenta
+heap_chunk_used = bright_black
+heap_corrupted_msg = bold red
+heap_freelist_hint = bold blue
+heap_label_active = bold green underline
+heap_label_inactive = bold red underline
+heap_management_address = bright_blue
+heap_page_address = bold
 registers_register_name = blue
 registers_value_changed = bold red
-source_current_line = green
-table_heading = blue
+source_current_line = bold green
+table_heading = bold blue
 
-[trace-run]
-max_tracing_recursion = 1
-tracefile_prefix = ./gef-trace-
+[user-defined-aliases]
 
-[unicorn-emulate]
-show_disassembly = False
-verbose = False
-
-[aliases]
-pf = print-format
-status = process-status
-binaryninja-interact = ida-interact
-bn = ida-interact
-binja = ida-interact
-lookup = scan
-grep = search-pattern
-xref = search-pattern
-flags = edit-flags
-emulate = unicorn-emulate
-cs-dis = capstone-disassemble
-sc-search = shellcode search
-sc-get = shellcode get
-ps = process-search
-start = entry-break
-nb = name-break
-ctx = context
-telescope = dereference
-pattern offset = pattern search
-hl = highlight
-highlight ls = highlight list
-hll = highlight list
-hlc = highlight clear
-highlight set = highlight add
-hla = highlight add
-highlight delete = highlight remove
-highlight del = highlight remove
-highlight unset = highlight remove
-highlight rm = highlight remove
-hlr = highlight remove
-fmtstr-helper = format-string-helper
-screen-setup = tmux-setup
+[user-defined-aliases.repeat]
 

@@ -77,8 +77,8 @@ COPY --chown=r0 files/home/r0/tmux.conf .tmux.conf
 COPY --chown=r0 files/home/r0/ssh .ssh
 COPY --chown=r0 files/home/r0/dircolors .dircolors
 COPY --chown=r0 files/home/r0/gdbinit .gdbinit
-COPY --chown=r0 files/home/r0/gdbinit-gef.py .gdbinit-gef.py
 COPY --chown=r0 files/home/r0/gef.rc .gef.rc
+COPY --chown=r0 files/home/r0/gef .gef
 COPY --chown=r0 files/home/r0/config .config
 
 COPY --chown=root files/home/r0/bashrc /root/.bashrc
