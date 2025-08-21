@@ -18,7 +18,8 @@ RUN apk add \
     qemu-system-mips \
     qemu-system-mipsel \
     qemu-system-aarch64 \
-	bash sudo pv tar dialog iptables curl wget tmux git \
+	bash sudo pv tar dialog curl wget tmux git \
+	iptables-legacy iptables \
 	vim nano asciinema \
 	coreutils util-linux \
 	iputils iproute2 \

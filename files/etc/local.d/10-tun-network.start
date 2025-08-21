@@ -3,7 +3,7 @@ chmod g+rw /dev/net/tun
 tunctl -t tap0 -u r0
 ifconfig tap0 192.168.100.1 up
 #echo 1 > /proc/sys/net/ipv4/ip_forward
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-iptables -I FORWARD 1 -i tap0 -j ACCEPT
-iptables -I FORWARD 1 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables-legacy -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables-legacy -I FORWARD 1 -i tap0 -j ACCEPT
+iptables-legacy -I FORWARD 1 -o tap0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 dnsmasq
